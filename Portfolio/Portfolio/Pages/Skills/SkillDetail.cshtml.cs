@@ -18,9 +18,14 @@ namespace Portfolio.Pages.Skills
         {
             _skillData = skillData;
         }
-        public void OnGet(int skillId)
+        public IActionResult OnGet(int skillId)
         {
             Skill = _skillData.GetSkillById(skillId);
+            if(Skill == null)
+            {
+                return RedirectToPage("/Shared/_NotFound");
+            }
+            return Page();
         }
     }
 }
