@@ -1,0 +1,16 @@
+﻿@page
+@model Portfolio.Pages.Skills.SkillDetailModel
+@{
+    ViewData["Title"] = "SkillDetail";
+}
+
+<img src="~/images/@Model.Skill.LogoFilePath" />
+<h1>@Model.Skill.SkillName Details</h1>
+<p>@Model.Skill.SkillDescription</p>
+<h2>PluralSight</h2>
+<p>@Model.Skill.PsDescription</p>
+<p>@Model.Skill.PsSkillIqScore / 300</p>
+<p>@Model.Skill.PsSkillLevel</p>
+<img src="~/images/@Model.Skill.PsChartFilePath" />
+
+<a class="btn btn-outline-primary" asp-page="./SkillsMain">Back To List</a>

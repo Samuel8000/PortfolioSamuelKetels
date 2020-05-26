@@ -9,7 +9,9 @@
 @foreach(var skill in Model.Skills)
 {
     <div>
-        <a><img src="~/images/@skill.LogoFilePath" /></a>
+        <a asp-page="./SkillDetail" asp-route-skillId="@skill.Id">
+        <img src="~/images/@skill.LogoFilePath" />
+        </a>
     </div>
 }
 
