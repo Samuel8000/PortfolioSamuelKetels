@@ -9,5 +9,6 @@ namespace Portfolio.Data
     public interface ISkillData
     {
         IEnumerable<Skill> GetAllSkills();
+        Skill GetSkillById(int skillId);
     }
 }

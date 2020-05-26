@@ -20,5 +20,10 @@ namespace Portfolio.Data
         {
             return skills.OrderBy(s => s.Id);
         }
+
+        public Skill GetSkillById(int skillId)
+        {
+            return skills.SingleOrDefault(s => s.Id == skillId);
+        }
     }
 }
