@@ -4,5 +4,12 @@
     ViewData["Title"] = "SkillsMain";
 }
 
-<h1>SkillsMain</h1>
+<h1>Development Skills</h1>
+
+@foreach(var skill in Model.Skills)
+{
+    <div>
+        <a><img src="~/images/@skill.LogoFilePath" /></a>
+    </div>
+}
 

@@ -1,5 +1,6 @@
 ﻿using Portfolio.Core;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Portfolio.Data
 {

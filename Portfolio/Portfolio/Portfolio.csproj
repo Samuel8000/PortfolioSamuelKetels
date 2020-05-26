@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\sass\" />
+    <ProjectReference Include="..\Portfolio.Data\Portfolio.Data.csproj" />
   </ItemGroup>
 
 
