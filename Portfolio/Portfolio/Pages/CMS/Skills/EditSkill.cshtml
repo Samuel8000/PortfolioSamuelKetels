@@ -7,6 +7,34 @@
 <h1>Edit @Model.Skill.SkillName</h1>
 
 <form method="post">
-
+    <input type="hidden" asp-for="Skill.Id" />
+    <div class="form-group">
+        <label asp-for="Skill.SkillName"></label>
+        <input asp-for="Skill.SkillName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Skill.SkillDescription"></label>
+        <input asp-for="Skill.SkillDescription" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Skill.LogoFilePath"></label>
+        <input asp-for="Skill.LogoFilePath" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Skill.PsDescription"></label>
+        <input asp-for="Skill.PsDescription" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Skill.PsSkillIqScore"></label>
+        <input type="number" asp-for="Skill.PsSkillIqScore" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Skill.PsChartFilePath"></label>
+        <input asp-for="Skill.PsChartFilePath" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Skill.PsSkillLevel"></label>
+        <select asp-for="Skill.PsSkillLevel" asp-items="Model.SkillLevels" class="form-control"></select>
+    </div>
     <button type="submit" class="btn btn-outline-success">Save</button>
 </form>
