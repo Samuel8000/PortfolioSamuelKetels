@@ -1,0 +1,19 @@
+﻿@page
+@model Portfolio.Pages.CMS.Skills.SkillListModel
+@{
+    ViewData["Title"] = "SkillList";
+}
+
+<h1>Skill List</h1>
+
+<table class="table">
+    @foreach (var skill in Model.Skills)
+    {
+        <tr>
+            <td>@skill.SkillName</td>
+            <td><a asp-page="./EditSkill" asp-route-skillId="@skill.Id"><i class="far fa-edit fa-sm"></i></a></td>
+        </tr>
+    }
+
+</table>
+

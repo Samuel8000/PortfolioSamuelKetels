@@ -1,0 +1,12 @@
+﻿@page "{skillId:int}"
+@model Portfolio.Pages.CMS.Skills.EditSkillModel
+@{
+    ViewData["Title"] = "EditSkill";
+}
+
+<h1>Edit @Model.Skill.SkillName</h1>
+
+<form method="post">
+
+    <button type="submit" class="btn btn-outline-success">Save</button>
+</form>
