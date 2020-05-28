@@ -14,7 +14,7 @@ namespace Portfolio.Pages.CMS.Skills
     {
         private readonly ISkillData _skillData;
         private readonly IHtmlHelper _htmlHelper;
-
+        [BindProperty]
         public Skill Skill { get; set; }
         public IEnumerable<SelectListItem> SkillLevels { get; set; }
         public EditSkillModel(ISkillData skillData, IHtmlHelper htmlHelper)
@@ -30,6 +30,18 @@ namespace Portfolio.Pages.CMS.Skills
             {
                 return RedirectToPage("/Shared/_NotFound");
             }
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                _skillData.UpdateSkill(Skill);
+                _skillData.Commit();
+            }
+            SkillLevels = _htmlHelper.GetEnumSelectList<SkillLevel>();
+            
             return Page();
         }
     }

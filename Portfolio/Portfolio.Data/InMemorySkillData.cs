@@ -16,6 +16,12 @@ namespace Portfolio.Data
                 new Skill {Id = 2, SkillName = "CSS3", SkillDescription="Personal Description and evaluation", LogoFilePath = "css3logo.png", PsChartFilePath="CSSSkillIQ.png", PsSkillLevel = SkillLevel.Proficient, PsSkillIqScore = 198, PsDescription = "Summary of courses followed"}
             };
         }
+
+        public int Commit()
+        {
+            return 0;
+        }
+
         public IEnumerable<Skill> GetAllSkills()
         {
             return skills.OrderBy(s => s.Id);
@@ -24,6 +30,22 @@ namespace Portfolio.Data
         public Skill GetSkillById(int skillId)
         {
             return skills.SingleOrDefault(s => s.Id == skillId);
+        }
+
+        public Skill UpdateSkill(Skill updatedSkill)
+        {
+            var skill = skills.SingleOrDefault(s => s.Id == updatedSkill.Id);
+            if(skill != null)
+            {
+                skill.SkillName = updatedSkill.SkillName;
+                skill.SkillDescription = updatedSkill.SkillDescription;
+                skill.LogoFilePath = updatedSkill.LogoFilePath;
+                skill.PsDescription = updatedSkill.PsDescription;
+                skill.PsChartFilePath = updatedSkill.PsChartFilePath;
+                skill.PsSkillIqScore = updatedSkill.PsSkillIqScore;
+                skill.PsSkillLevel = updatedSkill.PsSkillLevel;
+            }
+            return skill;
         }
     }
 }
