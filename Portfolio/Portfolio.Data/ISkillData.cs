@@ -10,8 +10,8 @@ namespace Portfolio.Data
     {
         IEnumerable<Skill> GetAllSkills();
         Skill GetSkillById(int skillId);
-
         Skill UpdateSkill(Skill updatedSkill);
+        Skill Add(Skill newSkill);
         int Commit();
     }
 }

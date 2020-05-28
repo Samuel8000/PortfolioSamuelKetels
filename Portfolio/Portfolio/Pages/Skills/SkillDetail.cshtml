@@ -4,6 +4,11 @@
     ViewData["Title"] = "SkillDetail";
 }
 
+@if(Model.Message != null)
+{
+    <div class="alert alert-success" id="alert">@Model.Message</div>
+}
+
 <img src="~/images/@Model.Skill.LogoFilePath" />
 <h1>@Model.Skill.SkillName Details</h1>
 <p>@Model.Skill.SkillDescription</p>

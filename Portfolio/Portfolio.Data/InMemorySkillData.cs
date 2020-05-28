@@ -17,6 +17,13 @@ namespace Portfolio.Data
             };
         }
 
+        public Skill Add(Skill newSkill)
+        {
+            skills.Add(newSkill);
+            newSkill.Id = skills.Max(s => s.Id) + 1;
+            return newSkill;
+        }
+
         public int Commit()
         {
             return 0;

@@ -12,7 +12,8 @@ namespace Portfolio.Pages.Skills
     public class SkillDetailModel : PageModel
     {
         private readonly ISkillData _skillData;
-
+        [TempData]
+        public string Message { get; set; }
         public Skill Skill { get; set; }
         public SkillDetailModel(ISkillData skillData)
         {

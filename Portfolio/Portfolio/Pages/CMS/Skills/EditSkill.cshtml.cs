@@ -22,10 +22,17 @@ namespace Portfolio.Pages.CMS.Skills
             _skillData = skillData;
             _htmlHelper = htmlHelper;
         }
-        public IActionResult OnGet(int skillId)
+        public IActionResult OnGet(int? skillId)
         {
             SkillLevels = _htmlHelper.GetEnumSelectList<SkillLevel>();
-            Skill = _skillData.GetSkillById(skillId);
+            if (skillId.HasValue)
+            {
+                Skill = _skillData.GetSkillById(skillId.Value);
+            }
+            else
+            {
+                Skill = new Skill();
+            }
             if(Skill == null)
             {
                 return RedirectToPage("/Shared/_NotFound");
@@ -35,15 +42,24 @@ namespace Portfolio.Pages.CMS.Skills
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                SkillLevels = _htmlHelper.GetEnumSelectList<SkillLevel>();
+                return Page();
+            }
+            if(Skill.Id > 0)
             {
                 _skillData.UpdateSkill(Skill);
-                _skillData.Commit();
-                return RedirectToPage("/Skills/SkillDetail", new { skillId = Skill.Id });
             }
-            SkillLevels = _htmlHelper.GetEnumSelectList<SkillLevel>();
-            
-            return Page();
+            else
+            {
+                _skillData.Add(Skill);
+            }
+
+            _skillData.Commit();
+            TempData["Message"] = $"{Skill.SkillName} Saved";
+
+            return RedirectToPage("/Skills/SkillDetail", new { skillId = Skill.Id });
         }
     }
 }
