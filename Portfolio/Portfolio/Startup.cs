@@ -29,7 +29,8 @@ namespace Portfolio
             {
                 options.UseSqlServer(Configuration.GetConnectionString("PortfolioDb"));
             });
-            services.AddSingleton<ISkillData, InMemorySkillData>();
+            services.AddScoped<ISkillData, SqlSkillData>();
+            //services.AddSingleton<ISkillData, InMemorySkillData>();
             services.AddRazorPages();
         }
 

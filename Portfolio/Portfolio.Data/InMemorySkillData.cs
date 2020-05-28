@@ -29,6 +29,16 @@ namespace Portfolio.Data
             return 0;
         }
 
+        public Skill Delete(int skillId)
+        {
+            var skill = skills.FirstOrDefault(s => s.Id == skillId);
+            if(skill != null)
+            {
+                skills.Remove(skill);
+            }
+            return skill;
+        }
+
         public IEnumerable<Skill> GetAllSkills()
         {
             return skills.OrderBy(s => s.Id);

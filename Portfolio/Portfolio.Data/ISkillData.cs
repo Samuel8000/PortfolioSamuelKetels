@@ -12,6 +12,7 @@ namespace Portfolio.Data
         Skill GetSkillById(int skillId);
         Skill UpdateSkill(Skill updatedSkill);
         Skill Add(Skill newSkill);
+        Skill Delete(int skillId);
         int Commit();
     }
 }
