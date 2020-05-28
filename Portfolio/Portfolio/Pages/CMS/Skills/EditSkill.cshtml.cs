@@ -39,6 +39,7 @@ namespace Portfolio.Pages.CMS.Skills
             {
                 _skillData.UpdateSkill(Skill);
                 _skillData.Commit();
+                return RedirectToPage("/Skills/SkillDetail", new { skillId = Skill.Id });
             }
             SkillLevels = _htmlHelper.GetEnumSelectList<SkillLevel>();
             
