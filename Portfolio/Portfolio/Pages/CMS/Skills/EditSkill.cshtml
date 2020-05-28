@@ -4,7 +4,9 @@
     ViewData["Title"] = "EditSkill";
 }
 
-<h1>Edit @Model.Skill.SkillName</h1>
+    <div>
+        <h1>@Model.Heading @Model.Skill.SkillName</h1>
+    </div>
 
 <form method="post">
     <input type="hidden" asp-for="Skill.Id" />

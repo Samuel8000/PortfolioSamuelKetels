@@ -17,6 +17,7 @@ namespace Portfolio.Pages.CMS.Skills
         [BindProperty]
         public Skill Skill { get; set; }
         public IEnumerable<SelectListItem> SkillLevels { get; set; }
+        public string Heading { get; set; }
         public EditSkillModel(ISkillData skillData, IHtmlHelper htmlHelper)
         {
             _skillData = skillData;
@@ -27,10 +28,12 @@ namespace Portfolio.Pages.CMS.Skills
             SkillLevels = _htmlHelper.GetEnumSelectList<SkillLevel>();
             if (skillId.HasValue)
             {
+                Heading = "Edit ";
                 Skill = _skillData.GetSkillById(skillId.Value);
             }
             else
             {
+                Heading = "Add New Skill";
                 Skill = new Skill();
             }
             if(Skill == null)
