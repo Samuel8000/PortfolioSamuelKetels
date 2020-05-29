@@ -30,7 +30,10 @@ namespace Portfolio
                 options.UseSqlServer(Configuration.GetConnectionString("PortfolioDb"));
             });
             services.AddScoped<ISkillData, SqlSkillData>();
+            services.AddScoped<ICertificateData, SqlCertificateData>();
             //services.AddSingleton<ISkillData, InMemorySkillData>();
+
+            //services.AddSingleton<ICertificateData, InMemoryCertificateData>();
             services.AddRazorPages();
         }
 

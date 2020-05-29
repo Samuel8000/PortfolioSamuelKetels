@@ -4,5 +4,19 @@
     ViewData["Title"] = "CertificateList";
 }
 
-<h1>CertificateList</h1>
+<h1>Certificate List</h1>
+
+@foreach(var group in Model.Certificates.GroupBy(lang => lang.Skill.SkillName))
+{
+    <table class="table">
+        @group.Key
+        @foreach (var certificate in group)
+        {
+        <tr>
+            <td class="d-table-cell">@certificate.CertificateName</td>
+        </tr>
+        }
+        
+    </table>
+}
 
