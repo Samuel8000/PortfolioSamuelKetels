@@ -13,15 +13,13 @@ namespace Portfolio
     public class EditCertificateModel : CertificateNameModel
     {
         private readonly ICertificateData _certificateData;
-        private readonly IHtmlHelper _htmlHelper;
         private readonly ISkillData _skillData;
         [BindProperty]
         public Certificate Certificate { get; set; }
 
-        public EditCertificateModel(ICertificateData certificateData, IHtmlHelper htmlHelper, ISkillData skillData)
+        public EditCertificateModel(ICertificateData certificateData, ISkillData skillData)
         {
             _certificateData = certificateData;
-            _htmlHelper = htmlHelper;
             _skillData = skillData;
         }
 

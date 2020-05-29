@@ -9,11 +9,23 @@
 <form  method="post">
     <input type="hidden" asp-for="Certificate.Id"/>
 
-    <select class="form-control" asp-for="Certificate.SkillId" 
-            asp-items="@Model.SkillsSelectList">
-        <option value="">-- Select Language --</option>
+    <div class="form-group">
+        <label asp-for="Certificate.CertificateName"></label>
+        <input asp-for="Certificate.CertificateName" class="form-control"/>
+    </div>
 
-    </select>
+    <div class="form-group">
+        <label asp-for="Certificate.CertificateDescription"></label>
+        <input asp-for="Certificate.CertificateDescription" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Certificate.Skill.SkillName"></label>
+        <select class="form-control" asp-for="Certificate.SkillId"
+                asp-items="@Model.SkillsSelectList">
+            <option value="">-- Select Language --</option>
+        </select>
+    </div>
 
     <button type="submit" class="btn btn-success">Save</button>
 </form>
