@@ -12,7 +12,8 @@ namespace Portfolio.Pages.CMS.Certificates
     public class CertificateListModel : PageModel
     {
         private readonly ICertificateData _certificateData;
-
+        [TempData]
+        public string Message { get; set; }
         public IEnumerable<Certificate> Certificates { get; set; }
         public CertificateListModel(ICertificateData certificateData)
         {

@@ -23,16 +23,43 @@ namespace Portfolio
             _skillData = skillData;
         }
 
-        public IActionResult OnGet(int certificateId)
+        public IActionResult OnGet(int? certificateId)
         {
-
-            Certificate = _certificateData.GetCertificateById(certificateId);
             PopulateSkillsDropDownList(_skillData);
+            if (certificateId.HasValue)
+            {
+                Certificate = _certificateData.GetCertificateById(certificateId.Value);
+            }
+            else
+            {
+                Certificate = new Certificate();
+            }
+
             if (Certificate == null)
             {
                 return RedirectToPage("/Shared/_NotFound");
             }
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                PopulateSkillsDropDownList(_skillData);
+                return Page();
+            }
+            if(Certificate.Id > 0)
+            {
+                _certificateData.Update(Certificate);
+            }
+            else
+            {
+                _certificateData.Add(Certificate);
+            }
+            _certificateData.Commit();
+            TempData["Message"] = $"{Certificate.CertificateName} Saved";
+            return RedirectToPage("./CertificateList");
         }
     }
 }

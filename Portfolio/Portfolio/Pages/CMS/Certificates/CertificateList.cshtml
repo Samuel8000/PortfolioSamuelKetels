@@ -4,6 +4,11 @@
     ViewData["Title"] = "CertificateList";
 }
 
+@if (Model.Message != null)
+{
+    <div class="alert alert-success" id="alert">@Model.Message</div>
+}
+
 <h1>Certificate List</h1>
 
 @foreach(var group in Model.Certificates.GroupBy(lang => lang.Skill.SkillName))
