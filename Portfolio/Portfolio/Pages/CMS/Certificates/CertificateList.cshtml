@@ -18,11 +18,13 @@
         @foreach (var certificate in group)
         {
         <tr>
-            <td class="d-table-cell">@certificate.CertificateName</td>
-            <td><a asp-page="./EditCertificate" asp-route-certificateId="@certificate.Id"><i class="far fa-edit fa-sm"></i></a></td>
+            <td style="width:80%;">@certificate.CertificateName</td>
+            <td class="align-middle"><a asp-page="./EditCertificate" asp-route-certificateId="@certificate.Id"><i class="far fa-edit fa-sm"></i></a></td>
         </tr>
         }
         
     </table>
 }
+
+<a class="btn btn-primary" asp-page="./EditCertificate">Add</a>
 
