@@ -1,0 +1,20 @@
+﻿@page "{certificateId:int}"
+@model Portfolio.EditCertificateModel
+@{
+    ViewData["Title"] = "EditCertificate";
+}
+
+<h1>Edit Certificate</h1>
+
+<form  method="post">
+    <input type="hidden" asp-for="Certificate.Id"/>
+
+    <select class="form-control" asp-for="Certificate.SkillId" 
+            asp-items="@Model.SkillsSelectList">
+        <option value="">-- Select Language --</option>
+
+    </select>
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+

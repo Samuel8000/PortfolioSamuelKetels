@@ -4,24 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Portfolio.Core;
 using Portfolio.Data;
 
-namespace Portfolio.Pages.Certificates
+namespace Portfolio
 {
-    public class CertificateDetailModel : PageModel
+    public class EditCertificateModel : CertificateNameModel
     {
         private readonly ICertificateData _certificateData;
-
+        private readonly IHtmlHelper _htmlHelper;
+        private readonly ISkillData _skillData;
+        [BindProperty]
         public Certificate Certificate { get; set; }
-        public CertificateDetailModel(ICertificateData certificateData)
+
+        public EditCertificateModel(ICertificateData certificateData, IHtmlHelper htmlHelper, ISkillData skillData)
         {
             _certificateData = certificateData;
+            _htmlHelper = htmlHelper;
+            _skillData = skillData;
         }
+
         public IActionResult OnGet(int certificateId)
         {
+
             Certificate = _certificateData.GetCertificateById(certificateId);
-            if(Certificate == null)
+            PopulateSkillsDropDownList(_skillData);
+            if (Certificate == null)
             {
                 return RedirectToPage("/Shared/_NotFound");
             }
