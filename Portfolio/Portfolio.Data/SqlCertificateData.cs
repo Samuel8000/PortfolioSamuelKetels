@@ -20,6 +20,11 @@ namespace Portfolio.Data
                  .OrderBy(c => c.SkillId);
         }
 
+        public Certificate GetCertificateById(int certificateId)
+        {
+            return _context.Certificates.Find(certificateId);
+        }
+
         public IEnumerable<Certificate> GetCertificatesBySkill(int skillId)
         {
             return _context.Certificates.Where(c => c.SkillId == skillId);

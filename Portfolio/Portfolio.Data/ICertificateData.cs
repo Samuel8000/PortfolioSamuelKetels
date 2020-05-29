@@ -10,6 +10,7 @@ namespace Portfolio.Data
     {
         IEnumerable<Certificate> GetAllCertificates();
         IEnumerable<Certificate> GetCertificatesBySkill(int skillId);
+        Certificate GetCertificateById(int certificateId);
     }
 
 }

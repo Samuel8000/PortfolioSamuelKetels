@@ -23,7 +23,7 @@
     <table class="table">
         <tr>
             <td>@certificates.CertificateName</td>
-            <td><a asp-page="./Certificates/CertificateDetail"><i class="fas fa-info-circle fa-sm"></i></a></td>
+            <td><a asp-page="/Certificates/CertificateDetail" asp-route-certificateId="@certificates.Id"><i class="fas fa-info-circle fa-sm"></i></a></td>
         </tr>
     </table>
 }

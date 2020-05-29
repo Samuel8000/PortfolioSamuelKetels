@@ -1,8 +1,9 @@
-﻿@page
+﻿@page "{certificateId:int}"
 @model Portfolio.Pages.Certificates.CertificateDetailModel
 @{
     ViewData["Title"] = "CertificateDetail";
 }
 
-<h1>CertificateDetail</h1>
+<h1>Certificate Detail</h1>
+<h2>@Model.Certificate.CertificateName</h2>
 
