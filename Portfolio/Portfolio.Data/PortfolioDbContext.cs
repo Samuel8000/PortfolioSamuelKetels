@@ -25,9 +25,9 @@ namespace Portfolio.Data
 
             modelBuilder.Entity<Certificate>()
                 .HasData(
-                new Certificate { Id = 1, CertificateName = "HTML5 Fundamentals", SkillId = 1 },
-                new Certificate { Id = 2, CertificateName = "Introduction to CSS", SkillId = 2 },
-                new Certificate { Id = 3, CertificateName = "Your First Day with CSS", SkillId = 2 }
+                new Certificate { Id = 1, CertificateName = "HTML5 Fundamentals", SkillId = 1, CertificateDescription ="Basics of HTML5" },
+                new Certificate { Id = 2, CertificateName = "Introduction to CSS", SkillId = 2, CertificateDescription = "Basics of CSS3" },
+                new Certificate { Id = 3, CertificateName = "Your First Day with CSS", SkillId = 2, CertificateDescription = "Basics of CSS3" }
                 );
         }
     }

@@ -15,14 +15,14 @@ namespace Portfolio.Data
         }
         public IEnumerable<Certificate> GetAllCertificates()
         {
-
-
             return _context.Certificates
                   .Include(c => c.Skill)
                  .OrderBy(c => c.SkillId);
-             
+        }
 
-
+        public IEnumerable<Certificate> GetCertificatesBySkill(int skillId)
+        {
+            return _context.Certificates.Where(c => c.SkillId == skillId);
         }
     }
 }

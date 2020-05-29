@@ -12,19 +12,29 @@ namespace Portfolio.Pages.Skills
     public class SkillDetailModel : PageModel
     {
         private readonly ISkillData _skillData;
+        private readonly ICertificateData _certificateData;
+
         [TempData]
         public string Message { get; set; }
         public Skill Skill { get; set; }
-        public SkillDetailModel(ISkillData skillData)
+        public string Warning { get; set; }
+        public IEnumerable<Certificate> Certificates { get; set; }
+        public SkillDetailModel(ISkillData skillData, ICertificateData certificateData)
         {
             _skillData = skillData;
+            _certificateData = certificateData;
         }
         public IActionResult OnGet(int skillId)
         {
             Skill = _skillData.GetSkillById(skillId);
+            Certificates = _certificateData.GetCertificatesBySkill(skillId);
             if(Skill == null)
             {
                 return RedirectToPage("/Shared/_NotFound");
+            }
+            if(Certificates == null)
+            {
+                Warning = "No certificates obtained";
             }
             return Page();
         }

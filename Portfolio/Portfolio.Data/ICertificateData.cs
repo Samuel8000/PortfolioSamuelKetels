@@ -9,6 +9,7 @@ namespace Portfolio.Data
     public interface ICertificateData
     {
         IEnumerable<Certificate> GetAllCertificates();
+        IEnumerable<Certificate> GetCertificatesBySkill(int skillId);
     }
 
 }
