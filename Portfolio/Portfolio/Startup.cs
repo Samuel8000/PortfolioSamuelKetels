@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Portfolio.Data;
+using Portfolio.Utility;
 
 namespace Portfolio
 {
@@ -31,9 +32,7 @@ namespace Portfolio
             });
             services.AddScoped<ISkillData, SqlSkillData>();
             services.AddScoped<ICertificateData, SqlCertificateData>();
-            //services.AddSingleton<ISkillData, InMemorySkillData>();
-
-            //services.AddSingleton<ICertificateData, InMemoryCertificateData>();
+            services.AddScoped<IFileUploader, FileUploader>();
             services.AddRazorPages();
         }
 

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Portfolio.Core;
 using Portfolio.Data;
+using Portfolio.Utility;
 
 namespace Portfolio.Pages.CMS.Skills
 {
@@ -14,14 +16,19 @@ namespace Portfolio.Pages.CMS.Skills
     {
         private readonly ISkillData _skillData;
         private readonly IHtmlHelper _htmlHelper;
+        private readonly IFileUploader _fileUploader;
+        private string uploadPath  = Constants.ImageLocation;
+        public IFormFile Logo { get; set; }
+        public IFormFile Chart { get; set; }
         [BindProperty]
         public Skill Skill { get; set; }
         public IEnumerable<SelectListItem> SkillLevels { get; set; }
         public string Heading { get; set; }
-        public EditSkillModel(ISkillData skillData, IHtmlHelper htmlHelper)
+        public EditSkillModel(ISkillData skillData, IHtmlHelper htmlHelper, IFileUploader fileUploader)
         {
             _skillData = skillData;
             _htmlHelper = htmlHelper;
+            _fileUploader = fileUploader;
         }
         public IActionResult OnGet(int? skillId)
         {
@@ -45,6 +52,14 @@ namespace Portfolio.Pages.CMS.Skills
 
         public IActionResult OnPost()
         {
+            if (Logo != null)
+            {
+                if (Skill.LogoFilePath != null)
+                {
+                    Skill.LogoFilePath = _fileUploader.ProcessUploadedImage(Logo, uploadPath);
+                }
+            }
+
             if (!ModelState.IsValid)
             {
                 SkillLevels = _htmlHelper.GetEnumSelectList<SkillLevel>();
@@ -52,6 +67,7 @@ namespace Portfolio.Pages.CMS.Skills
             }
             if(Skill.Id > 0)
             {
+
                 _skillData.UpdateSkill(Skill);
             }
             else
