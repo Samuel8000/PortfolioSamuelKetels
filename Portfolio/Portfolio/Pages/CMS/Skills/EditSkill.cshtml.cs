@@ -52,9 +52,15 @@ namespace Portfolio.Pages.CMS.Skills
 
         public IActionResult OnPost()
         {
+ 
+
             if (Logo != null)
             {
                 if (Skill.LogoFilePath != null)
+                {
+                    Skill.LogoFilePath = _fileUploader.ProcessUploadedImage(Logo, uploadPath);
+                }
+                else if(string.IsNullOrEmpty(Skill.LogoFilePath) || string.IsNullOrWhiteSpace(Skill.LogoFilePath))
                 {
                     Skill.LogoFilePath = _fileUploader.ProcessUploadedImage(Logo, uploadPath);
                 }
