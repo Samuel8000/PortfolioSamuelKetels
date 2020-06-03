@@ -13,6 +13,13 @@ namespace Portfolio.Utility
         {
             _webHostEnvironment = webHostEnvironment;
         }
+
+        public void DeleteOldFile(string path, string fileName)
+        {
+            string fileLocation = Path.Combine(_webHostEnvironment.WebRootPath, path, fileName);
+            File.Delete(fileLocation);
+        }
+
         public string ProcessUploadedImage(IFormFile formFile, string path)
         {
             string imageName = null;
