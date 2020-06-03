@@ -8,5 +8,6 @@ namespace Portfolio.Utility
     public class Constants
     {
         public const string ImageLocation = "images";
+        public const string CertificateLocation = "certificates";
     }
 }
