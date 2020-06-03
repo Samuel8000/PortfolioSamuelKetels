@@ -20,6 +20,12 @@ namespace Portfolio.Utility
             File.Delete(fileLocation);
         }
 
+        public string GetRootPath(string path, string fileName)
+        {
+            string fileLocation = Path.Combine(_webHostEnvironment.WebRootPath, path, fileName);
+            return fileLocation;
+        }
+
         public string ProcessUploadedImage(IFormFile formFile, string path)
         {
             string imageName = null;
@@ -35,5 +41,7 @@ namespace Portfolio.Utility
             }
             return imageName;
         }
+
+
     }
 }

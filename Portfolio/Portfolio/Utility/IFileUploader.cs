@@ -10,5 +10,6 @@ namespace Portfolio.Utility
     {
         string ProcessUploadedImage(IFormFile formFile, string path);
         void DeleteOldFile(string path, string fileName);
+        string GetRootPath(string path, string fileName);
     }
 }

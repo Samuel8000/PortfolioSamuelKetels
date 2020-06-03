@@ -25,10 +25,6 @@
     <ProjectReference Include="..\Portfolio.Data\Portfolio.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\certificates\" />
-  </ItemGroup>
-
 
 
 </Project>
