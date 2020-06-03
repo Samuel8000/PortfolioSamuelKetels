@@ -24,7 +24,7 @@
         <tr>
             <td>@certificates.CertificateName</td>
             <td><a asp-page="/Certificates/CertificateDetail" asp-route-certificateId="@certificates.Id"><i class="fas fa-info-circle fa-sm"></i></a></td>
-            <td><a asp-page="/Certificates/Certificate" asp-route-certificateId="@certificates.Id"><i class="fas fa-award fa-sm"></i></a></td>
+            <td><a asp-page="/Certificates/Certificate" asp-route-certificateId="@certificates.Id" target="_blank"><i class="fas fa-award fa-sm"></i></a></td>
         </tr>
     </table>
 }
