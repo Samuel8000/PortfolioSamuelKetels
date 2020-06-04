@@ -28,18 +28,18 @@ namespace Portfolio.Utility
 
         public string ProcessUploadedFile(IFormFile formFile, string path)
         {
-            string imageName = null;
+            string fileName = null;
             if(formFile != null)
             {
                 string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, path);
-                imageName = Guid.NewGuid().ToString() + "_" + formFile.FileName;
-                string imagePath = Path.Combine(uploadFolder, imageName);
-                using (var filestream = new FileStream(imagePath, FileMode.Create))
+                fileName = Guid.NewGuid().ToString() + "_" + formFile.FileName;
+                string filePath = Path.Combine(uploadFolder, fileName);
+                using (var filestream = new FileStream(filePath, FileMode.Create))
                 {
                     formFile.CopyTo(filestream);
                 }
             }
-            return imageName;
+            return fileName;
         }
 
     }

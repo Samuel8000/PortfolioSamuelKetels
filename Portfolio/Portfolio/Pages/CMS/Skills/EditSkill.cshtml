@@ -28,14 +28,10 @@
         <label asp-for="Logo"></label>
         <div class="custom-file">
 
-            <input asp-for="Logo" class="custom-file-input" />
-            <label class="custom-file-label">Click here to upload logo</label>
-
+            <input asp-for="Logo" class="custom-file-input" id="customFile"/>
+            <label class="custom-file-label" for="customFile">Click here to upload logo</label>
         </div>
 
-    </div>
-    <div class="form-group row col-sm-4">
-        <img class="img-thumbnail" src="@logoPath" asp-append-version="true" />
     </div>
     <div class="form-group">
         <label asp-for="Skill.PsDescription"></label>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -52,20 +49,7 @@ namespace Portfolio.Pages.CMS.Skills
 
         public IActionResult OnPost()
         {
- 
-
-            if (Logo != null)
-            {
-                if (Skill.LogoFilePath != null)
-                {
-                    _fileUploader.DeleteOldFile(uploadPath, Skill.LogoFilePath);
-                    Skill.LogoFilePath = _fileUploader.ProcessUploadedFile(Logo, uploadPath);
-                }
-                else if(string.IsNullOrEmpty(Skill.LogoFilePath) || string.IsNullOrWhiteSpace(Skill.LogoFilePath))
-                {
-                    Skill.LogoFilePath = _fileUploader.ProcessUploadedFile(Logo, uploadPath);
-                }
-            }
+            UploadImage();
 
             if (!ModelState.IsValid)
             {
@@ -85,6 +69,22 @@ namespace Portfolio.Pages.CMS.Skills
             TempData["Message"] = $"{Skill.SkillName} Saved";
 
             return RedirectToPage("/Skills/SkillDetail", new { skillId = Skill.Id });
+        }
+
+        private void UploadImage()
+        {
+            if (Logo != null)
+            {
+                if (Skill.LogoFilePath != null)
+                {
+                    _fileUploader.DeleteOldFile(uploadPath, Skill.LogoFilePath);
+                    Skill.LogoFilePath = _fileUploader.ProcessUploadedFile(Logo, uploadPath);
+                }
+                else if (string.IsNullOrEmpty(Skill.LogoFilePath) || string.IsNullOrWhiteSpace(Skill.LogoFilePath))
+                {
+                    Skill.LogoFilePath = _fileUploader.ProcessUploadedFile(Logo, uploadPath);
+                }
+            }
         }
     }
 }
