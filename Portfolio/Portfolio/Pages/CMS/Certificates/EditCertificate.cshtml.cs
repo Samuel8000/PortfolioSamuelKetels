@@ -56,11 +56,11 @@ namespace Portfolio
                 if(Certificate.CertificateFileName != null)
                 {
                     _fileUploader.DeleteOldFile(uploadPath, Certificate.CertificateFileName);
-                    Certificate.CertificateFileName = _fileUploader.ProcessUploadedFile(CertificatePdf, uploadPath);
+                    Certificate.CertificateFileName = _fileUploader.ProcessUploadedImage(CertificatePdf, uploadPath);
                 }
                 else if(string.IsNullOrEmpty(Certificate.CertificateFileName) || string.IsNullOrWhiteSpace(Certificate.CertificateFileName))
                 {
-                    Certificate.CertificateFileName = _fileUploader.ProcessUploadedFile(CertificatePdf, uploadPath);
+                    Certificate.CertificateFileName = _fileUploader.ProcessUploadedImage(CertificatePdf, uploadPath);
                 }
             }
 

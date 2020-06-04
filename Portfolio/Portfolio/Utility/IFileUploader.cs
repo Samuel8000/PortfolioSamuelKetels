@@ -8,7 +8,7 @@ namespace Portfolio.Utility
 {
     public interface IFileUploader
     {
-        string ProcessUploadedFile(IFormFile formFile, string path);
+        string ProcessUploadedImage(IFormFile formFile, string path);
         void DeleteOldFile(string path, string fileName);
         string GetRootPath(string path, string fileName);
     }

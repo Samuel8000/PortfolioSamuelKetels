@@ -26,7 +26,7 @@ namespace Portfolio.Utility
             return fileLocation;
         }
 
-        public string ProcessUploadedFile(IFormFile formFile, string path)
+        public string ProcessUploadedImage(IFormFile formFile, string path)
         {
             string imageName = null;
             if(formFile != null)
@@ -41,7 +41,6 @@ namespace Portfolio.Utility
             }
             return imageName;
         }
-
 
     }
 }
