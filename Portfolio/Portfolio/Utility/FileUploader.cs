@@ -26,13 +26,13 @@ namespace Portfolio.Utility
             return fileLocation;
         }
 
-        public string ProcessUploadedImage(IFormFile formFile, string path)
+        public string ProcessUploadedFile(IFormFile formFile, string path)
         {
             string imageName = null;
             if(formFile != null)
             {
                 string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, path);
-                imageName = "uploaded_" + Guid.NewGuid().ToString() + "_" + formFile.FileName;
+                imageName = formFile.FileName;
                 string imagePath = Path.Combine(uploadFolder, imageName);
                 using (var filestream = new FileStream(imagePath, FileMode.Create))
                 {

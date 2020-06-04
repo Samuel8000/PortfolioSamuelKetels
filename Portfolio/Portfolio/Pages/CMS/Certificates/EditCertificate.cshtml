@@ -6,17 +6,18 @@
 
 <h1>Edit Certificate</h1>
 
-<form  method="post">
-    <input type="hidden" asp-for="Certificate.Id"/>
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Certificate.Id" />
+    <input type="hidden" asp-for="Certificate.CertificateFileName" />
 
     <div class="form-group">
         <label asp-for="Certificate.CertificateName"></label>
-        <input asp-for="Certificate.CertificateName" class="form-control"/>
+        <input asp-for="Certificate.CertificateName" class="form-control" />
     </div>
 
     <div class="form-group">
         <label asp-for="Certificate.CertificateDescription"></label>
-        <input asp-for="Certificate.CertificateDescription" class="form-control"/>
+        <input asp-for="Certificate.CertificateDescription" class="form-control" />
     </div>
 
     <div class="form-group">
@@ -27,6 +28,24 @@
         </select>
     </div>
 
+    <div class="form-group">
+        <label asp-for="CertificatePdf"></label>
+        <div class="custom-file">
+            <input asp-for="CertificatePdf" class="custom-file-input form-control" type="file" name="CertificatePdf"/>
+            <label class="custom-file-label">Click here to upload certificate</label>
+        </div>
+    </div>
+
     <button type="submit" class="btn btn-success">Save</button>
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        </script>
+    }
 </form>
 
