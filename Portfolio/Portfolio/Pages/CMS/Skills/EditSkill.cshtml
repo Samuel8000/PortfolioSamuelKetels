@@ -2,7 +2,6 @@
 @model Portfolio.Pages.CMS.Skills.EditSkillModel
 @{
     ViewData["Title"] = "EditSkill";
-    var logoPath = "~/images/" + (Model.Skill.LogoFilePath);
 }
 
 <div>
@@ -12,6 +11,7 @@
 <form method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="Skill.Id" />
     <input type="hidden" asp-for="Skill.LogoFilePath" />
+    <input type="hidden" asp-for="Skill.PsChartFilePath"/>
 
     <div class="form-group">
         <label asp-for="Skill.SkillName"></label>
@@ -28,8 +28,8 @@
         <label asp-for="Logo"></label>
         <div class="custom-file">
 
-            <input asp-for="Logo" class="custom-file-input" id="customFile"/>
-            <label class="custom-file-label" for="customFile">Click here to upload logo</label>
+            <input asp-for="Logo" class="custom-file-input" />
+            <label class="custom-file-label">Click here to upload logo</label>
         </div>
 
     </div>
@@ -43,10 +43,15 @@
         <input type="number" asp-for="Skill.PsSkillIqScore" class="form-control" />
         <span class="text-danger" asp-validation-for="Skill.PsSkillIqScore"></span>
     </div>
+
     <div class="form-group">
-        <label asp-for="Skill.PsChartFilePath"></label>
-        <input asp-for="Skill.PsChartFilePath" class="form-control" />
+        <label asp-for="Chart"></label>
+        <div class="custom-file">
+            <input asp-for="Chart" class="custom-file-input"/>
+            <label class="custom-file-label">Click here to upload Skill Chart</label>
+        </div>
     </div>
+
     <div class="form-group">
         <label asp-for="Skill.PsSkillLevel"></label>
         <select asp-for="Skill.PsSkillLevel" asp-items="Model.SkillLevels" class="form-control"></select>

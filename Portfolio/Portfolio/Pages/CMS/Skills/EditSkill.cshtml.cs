@@ -49,7 +49,8 @@ namespace Portfolio.Pages.CMS.Skills
 
         public IActionResult OnPost()
         {
-            UploadImage();
+            UploadLogo();
+            UploadChart();
 
             if (!ModelState.IsValid)
             {
@@ -71,18 +72,35 @@ namespace Portfolio.Pages.CMS.Skills
             return RedirectToPage("/Skills/SkillDetail", new { skillId = Skill.Id });
         }
 
-        private void UploadImage()
+        private void UploadLogo()
         {
+
             if (Logo != null)
             {
                 if (Skill.LogoFilePath != null)
                 {
                     _fileUploader.DeleteOldFile(uploadPath, Skill.LogoFilePath);
-                    Skill.LogoFilePath = _fileUploader.ProcessUploadedFile(Logo, uploadPath);
+                    Skill.LogoFilePath =_fileUploader.ProcessUploadedFile(Logo, uploadPath);
                 }
                 else if (string.IsNullOrEmpty(Skill.LogoFilePath) || string.IsNullOrWhiteSpace(Skill.LogoFilePath))
                 {
                     Skill.LogoFilePath = _fileUploader.ProcessUploadedFile(Logo, uploadPath);
+                }
+            }
+        }
+        private void UploadChart()
+        {
+
+            if (Chart != null)
+            {
+                if (Skill.PsChartFilePath != null)
+                {
+                    _fileUploader.DeleteOldFile(uploadPath, Skill.PsChartFilePath);
+                    Skill.PsChartFilePath = _fileUploader.ProcessUploadedFile(Chart, uploadPath);
+                }
+                else if (string.IsNullOrEmpty(Skill.PsChartFilePath) || string.IsNullOrWhiteSpace(Skill.PsChartFilePath))
+                {
+                    Skill.PsChartFilePath = _fileUploader.ProcessUploadedFile(Chart, uploadPath);
                 }
             }
         }
