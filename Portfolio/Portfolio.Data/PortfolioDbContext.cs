@@ -14,6 +14,7 @@ namespace Portfolio.Data
         }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
