@@ -14,6 +14,7 @@ namespace Portfolio.Core
         public ContactOption ContactOption { get; set; }
         public ContactType ContactType { get; set; }
         public string Remarks { get; set; }
+        public DateTime DateContacted { get; set; }
 
     }
 }
