@@ -1,4 +1,6 @@
 ﻿using Portfolio.Core;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Portfolio.Data
 {
@@ -6,6 +8,7 @@ namespace Portfolio.Data
     {
         private readonly PortfolioDbContext _context;
 
+        
 
         public SqlContactData(PortfolioDbContext context)
         {
@@ -21,6 +24,16 @@ namespace Portfolio.Data
         public int Commit()
         {
             return _context.SaveChanges();
+        }
+
+        public IEnumerable<Contact> GetAllContactsOrderedByDate()
+        {
+            return _context.Contacts.OrderByDescending(c => c.DateContacted);
+        }
+
+        public Contact GetContactById(int contactId)
+        {
+            return _context.Contacts.Find(contactId);
         }
     }
 }
