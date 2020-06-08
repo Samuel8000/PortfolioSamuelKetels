@@ -49,14 +49,13 @@ namespace Portfolio
                 return Page();
             }
 
-
             Contact.DateContacted = TodaysDate;
             _contactData.Add(Contact);
             _contactData.Commit();
             ContactTypes = _htmlHelper.GetEnumSelectList<ContactType>();
             ContactOptions = _htmlHelper.GetEnumSelectList<ContactOption>();
             return Page();
-            
+           
         }
     }
 }
