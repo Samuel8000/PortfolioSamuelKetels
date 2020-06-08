@@ -15,6 +15,7 @@ namespace Portfolio.Core
         public ContactType ContactType { get; set; }
         public string Remarks { get; set; }
         public DateTime DateContacted { get; set; }
+        public bool Replied { get; set; }
 
     }
 }
