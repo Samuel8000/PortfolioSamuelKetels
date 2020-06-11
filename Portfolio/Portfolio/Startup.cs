@@ -34,6 +34,7 @@ namespace Portfolio
             services.AddScoped<ICertificateData, SqlCertificateData>();
             services.AddScoped<IContactData, SqlContactData>();
             services.AddScoped<IFileUploader, FileUploader>();
+            services.AddScoped<IMailer, Mailer>();
             services.AddRazorPages();
         }
 

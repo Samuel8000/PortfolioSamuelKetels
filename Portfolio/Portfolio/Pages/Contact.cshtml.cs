@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Portfolio.Core;
 using Portfolio.Data;
+using Portfolio.Utility;
 
 namespace Portfolio
 {
@@ -15,6 +16,7 @@ namespace Portfolio
     {
         private readonly IHtmlHelper _htmlHelper;
         private readonly IContactData _contactData;
+        private readonly IMailer _mailer;
 
         public IEnumerable<SelectListItem> ContactTypes { get; set; }
         public IEnumerable<SelectListItem> ContactOptions { get; set; }
@@ -28,34 +30,39 @@ namespace Portfolio
             }
         }
 
-        public ContactModel(IHtmlHelper htmlHelper, IContactData contactData)
+        public ContactModel(IHtmlHelper htmlHelper, IContactData contactData, IMailer mailer)
         {
             _htmlHelper = htmlHelper;
             _contactData = contactData;
-
+            _mailer = mailer;
         }
         public void OnGet()
         {
-            ContactTypes = _htmlHelper.GetEnumSelectList<ContactType>();
-            ContactOptions = _htmlHelper.GetEnumSelectList<ContactOption>();
+            LoadEnums();
         }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                ContactTypes = _htmlHelper.GetEnumSelectList<ContactType>();
-                ContactOptions = _htmlHelper.GetEnumSelectList<ContactOption>();
+                LoadEnums();
                 return Page();
             }
 
             Contact.DateContacted = TodaysDate;
             _contactData.Add(Contact);
             _contactData.Commit();
-            ContactTypes = _htmlHelper.GetEnumSelectList<ContactType>();
-            ContactOptions = _htmlHelper.GetEnumSelectList<ContactOption>();
+            //_mailer.SendEmail();
+            LoadEnums();
+
             return Page();
            
+        }
+
+        private void LoadEnums()
+        {
+            ContactTypes = _htmlHelper.GetEnumSelectList<ContactType>();
+            ContactOptions = _htmlHelper.GetEnumSelectList<ContactOption>();
         }
     }
 }
