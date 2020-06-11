@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Portfolio.Data;
 
 namespace Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioDbContext))]
-    partial class PortfolioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200611054742_AddedEmailProps")]
+    partial class AddedEmailProps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,12 +98,18 @@ namespace Portfolio.Data.Migrations
                     b.Property<DateTime>("DateContacted")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Contact");
                 });
 
             modelBuilder.Entity("Portfolio.Core.EmailSetting", b =>
@@ -185,6 +193,19 @@ namespace Portfolio.Data.Migrations
                             SkillDescription = "Personal Description and evaluation",
                             SkillName = "CSS3"
                         });
+                });
+
+            modelBuilder.Entity("Portfolio.Core.ReplyContact", b =>
+                {
+                    b.HasBaseType("Portfolio.Core.Contact");
+
+                    b.Property<bool>("ContactReplied")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DateReplied")
+                        .HasColumnType("datetime2");
+
+                    b.HasDiscriminator().HasValue("ReplyContact");
                 });
 
             modelBuilder.Entity("Portfolio.Core.Certificate", b =>
