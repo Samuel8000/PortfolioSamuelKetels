@@ -8,25 +8,27 @@
 {
     <div class="alert alert-success" id="alert">@Model.Message</div>
 }
+<div class="container">
 
-<img src="~/images/@Model.Skill.LogoFilePath" />
-<h1>@Model.Skill.SkillName Details</h1>
-<p>@Model.Skill.SkillDescription</p>
-<h2>PluralSight</h2>
-<p>@Model.Skill.PsDescription</p>
-<p>@Model.Skill.PsSkillIqScore / 300</p>
-<p>@Model.Skill.PsSkillLevel</p>
-<img src="~/images/@Model.Skill.PsChartFilePath" />
-<h3>Certificates</h3>
-@foreach (var certificates in Model.Certificates)
-{
-    <table class="table">
-        <tr>
-            <td>@certificates.CertificateName</td>
-            <td><a asp-page="/Certificates/CertificateDetail" asp-route-certificateId="@certificates.Id"><i class="fas fa-info-circle fa-sm"></i></a></td>
-            <td><a asp-page="/Certificates/Certificate" asp-route-certificateId="@certificates.Id" target="_blank"><i class="fas fa-award fa-sm"></i></a></td>
-        </tr>
-    </table>
-}
+    <img src="~/images/@Model.Skill.LogoFilePath" />
+    <h1>@Model.Skill.SkillName Details</h1>
+    <p>@Model.Skill.SkillDescription</p>
+    <h2>PluralSight</h2>
+    <p>@Model.Skill.PsDescription</p>
+    <p>@Model.Skill.PsSkillIqScore / 300</p>
+    <p>@Model.Skill.PsSkillLevel</p>
+    <img src="~/images/@Model.Skill.PsChartFilePath" />
+    <h3>Certificates</h3>
+    @foreach (var certificates in Model.Certificates)
+    {
+        <table class="table">
+            <tr>
+                <td>@certificates.CertificateName</td>
+                <td><a asp-page="/Certificates/CertificateDetail" asp-route-certificateId="@certificates.Id"><i class="fas fa-info-circle fa-sm"></i></a></td>
+                <td><a asp-page="/Certificates/Certificate" asp-route-certificateId="@certificates.Id" target="_blank"><i class="fas fa-award fa-sm"></i></a></td>
+            </tr>
+        </table>
+    }
 
-<a class="btn btn-outline-primary" asp-page="./SkillsMain">Back To List</a>
+    <a class="btn btn-outline-primary" asp-page="./SkillsMain">Back To List</a>
+</div>
