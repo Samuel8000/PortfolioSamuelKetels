@@ -2,3 +2,8 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
+
+$(document).ready(function () {
+    $('input[type=text]').removeClass('form-control');
+    $('input[type=text]').addClass('input-field');
+})

@@ -9,3 +9,11 @@
 
 .custom-table {
   font-size: 14px; }
+
+.input-field {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #00C29E;
+  width: 500px; }
+  .input-field:focus {
+    border-bottom: 1px solid #93C83C; }
