@@ -9,11 +9,19 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    background: #F1F1E6;
-}
 
 .navbar {
-    background: #006073;
+    background: rgba(0,0,0, 0.95);
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
+.footer {
+    background: rgba(0,0,0, 0.95);
+
+    color: white;
+}
+
+.test {
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+}

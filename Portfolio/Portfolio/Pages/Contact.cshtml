@@ -4,9 +4,63 @@
     ViewData["Title"] = "Contact";
 }
 
-<div class="container">
+<div class="container bg-white">
     <h1>Contact</h1>
-    <form method="post" id="formId">
+    <div class="contact-info">
+        <div>
+            <h2>Contact Info</h2>
+            <ul class="info">
+                <li>
+                    <span><i class="far fa-envelope fa-2x"></i></span>
+                    <span>ketels.samuel@gmail.com</span>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></li>
+                <li><a href="#"><i class="fab fa-codepen fa-2x"></i></a></li>
+                <li><a href="#"><i class="fab fa-stack-overflow fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="contact-form">
+        <form method="post" id="formId">
+            <input type="hidden" asp-for="TodaysDate" />
+            <div class="input-field w-100">
+                <input type="text" asp-for="Contact.ContactFirstName" required />
+                <span>First Name</span>
+            </div>
+            <div class="input-field w-100">
+                <input type="text" asp-for="Contact.ContactLastName" required />
+                <span>Last Name</span>
+            </div>
+            <div class="input-field w-100">
+                <input type="text" asp-for="Contact.ContactEmailAddress" required />
+                <span>Email Address</span>
+            </div>
+            <div class="input-field w-100">
+                <input type="text" asp-for="Contact.ContactPhoneNumber" required />
+                <span>Phone Number</span>
+            </div>
+            <div class="input-field w-100">
+                <textarea asp-for="Contact.Remarks"></textarea>
+                <span>Please leave a comment...</span>
+            </div>
+            @*<div class="input-field w-100">
+                <input type="text" asp-for="Contact." required />
+                <span>Email Address</span>
+            </div>*@
+            <div class="input-field w-100">
+                <label asp-for="Contact.ContactType"></label>
+                <select asp-for="Contact.ContactType" asp-items="Model.ContactTypes"></select>
+            </div>
+            <div class="input-field w-100">
+                <label asp-for="Contact.ContactOption"></label>
+                <select asp-for="Contact.ContactOption" asp-items="Model.ContactOptions"></select>
+            </div>
+            <button type="submit" class="btn btn-success" id="saveButton" data-toggle="modal" data-target="#saveModal">Save</button>
+        </form>
+    </div>
+    @*<form method="post" id="formId">
         <div class="form-group">
             <input type="hidden" asp-for="TodaysDate" />
 
@@ -30,7 +84,7 @@
         </div>
         <div class="form-group">
             <label asp-for="Contact.ContactType"></label>
-            <select asp-for="Contact.ContactType" asp-items="Model.ContactTypes" class="form-control"></select>
+            <select asp-for="Contact.ContactType" asp-items="Model.ContactTypes"></select>
         </div>
         <div class="form-group">
             <label asp-for="Contact.CompanyName"></label>
@@ -44,8 +98,8 @@
             <label asp-for="Contact.Remarks"></label>
             <input type="text" asp-for="Contact.Remarks" class="form-control" />
         </div>
-        <button type="submit" class="btn btn-success" id="saveButton" data-toggle="modal" data-target="#saveModal">Save</button>
-    </form>
+
+    </form>*@
 </div>
 
 
