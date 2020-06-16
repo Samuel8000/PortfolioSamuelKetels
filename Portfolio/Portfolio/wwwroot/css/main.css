@@ -54,10 +54,12 @@
   padding: 0;
   font-family: 'Poppins', sans-serif; }
 
-html {
+.hero-image {
   background-image: url("../images/background.jpg");
   background-position: center;
-  background-size: cover; }
+  background-size: cover;
+  height: 43.75vh;
+  padding: 0; }
 
 .footer {
   color: black; }
@@ -66,4 +68,6 @@ html {
   background-color: 200, 200, 200, 0.5; }
 
 .container, .container-fluid {
-  background-color: transparent; }
+  background-color: transparent;
+  padding-right: 0;
+  padding-left: 0; }
