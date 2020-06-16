@@ -55,11 +55,35 @@
   font-family: 'Poppins', sans-serif; }
 
 .hero-image {
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: cover;
-  height: 43.75vh;
-  padding: 0; }
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr 0.75fr; }
+  .hero-image .middle-img img {
+    min-height: 100%;
+    object-fit: cover;
+    display: block; }
+  .hero-image .left-img img,
+  .hero-image .right-img img {
+    object-fit: cover;
+    opacity: 0.5;
+    display: block;
+    min-height: 100%;
+    min-width: 100%;
+    filter: grayscale(55%);
+    grid-column-start: 1;
+    grid-column-end: 7; }
+
+.left-img {
+  display: grid;
+  grid-template-columns: 10% 20% 20% 20% 20% 10%;
+  grid-template-rows: 10% 20% 20% 20% 20% 10%; }
+
+.test {
+  z-index: 1;
+  filter: grayscale(0%);
+  opacity: 1;
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 3; }
 
 .footer {
   color: black; }
@@ -68,6 +92,5 @@
   background-color: 200, 200, 200, 0.5; }
 
 .container, .container-fluid {
-  background-color: transparent;
   padding-right: 0;
   padding-left: 0; }

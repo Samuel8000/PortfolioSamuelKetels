@@ -1,10 +1,27 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-    <div class="container-fluid hero-image img-fluid">
 
+    <div class="container-fluid">
+            <div class="hero-image">
+                <div class="left-img">
+                    <div  class="test">
+                        <p>test</p>
+                    </div>
+                    <img class="img-fluid" src="~/images/background.jpg" />
+                </div>
+                <div class="middle-img">
+                    <img class="img-fluid" src="~/images/background.png" alt="Picture of me in front of a giant buddha" />
+                </div>
+                <div class="right-img">
+                    <img class="img-fluid" src="~/images/background2.png" />
+                </div>
+            </div>
+    </div>
+    <div class="container d-block">
+        <h1 class="text-center text-uppercase">Hi! I'm Samuel</h1>
     </div>
 
