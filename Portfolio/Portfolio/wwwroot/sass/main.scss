@@ -24,4 +24,6 @@
     color: $icon-color;
 }
 
-
+.btn-test {
+    @include custom-btn(9em, $main-orange, white, #BA6E00);
+}

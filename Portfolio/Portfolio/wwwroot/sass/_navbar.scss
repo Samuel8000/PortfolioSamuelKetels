@@ -15,7 +15,7 @@
         right: 0;
         transform: scale(0,1);
         transform-origin: left;
-        transition: transform ease-in-out 300ms;
+        transition: transform ease-in-out 200ms;
     }
 
     &:hover::after {
@@ -25,4 +25,8 @@
 
 .navbar-brand-font {
     @include custom-font(1.75em);
+}
+
+.active {
+    color: $main-orange !important;
 }

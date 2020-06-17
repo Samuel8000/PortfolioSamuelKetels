@@ -13,3 +13,10 @@ $text-field-active-green: #93C83C;
     font-weight: 700;
     font-size: $f-size;
 }
+
+@mixin custom-btn($width, $bg-color, $fg-color, $bord-color) {
+    width: $width;
+    background-color: $bg-color;
+    border-bottom: 5px solid $bord-color;
+    color: $fg-color;
+}
