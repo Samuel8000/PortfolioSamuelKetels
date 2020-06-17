@@ -6,6 +6,10 @@
         min-height: 100%;
         object-fit: cover;
         display: block;
+        grid-column-start: 1;
+        grid-column-end: 7;
+        grid-row-start: 1;
+        grid-row-end: 7;
     }
 
     .left-img img,
@@ -21,19 +25,19 @@
     }
 }
 
-.left-img {
+.middle-img {
     display: grid;
     grid-template-columns: 10% 20% 20% 20% 20% 10%;
-    grid-template-rows: 10% 20% 20% 20% 20% 10%;
+    grid-template-rows: 10% 15% 20% 30% 10% 7.5% 7.5%;
 }
 
 .test {
     z-index: 1;
     filter: grayscale(0%);
     opacity: 1;
-    grid-column-start: 3;
+    grid-column-start: 2;
     grid-column-end: 5;
-    grid-row-start: 3;
+    grid-row-start: 4;
 }
 
 .link {
