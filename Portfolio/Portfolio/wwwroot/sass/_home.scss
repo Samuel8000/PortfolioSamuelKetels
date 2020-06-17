@@ -43,15 +43,16 @@
     &:hover {
         color: $main-orange;
         font-size: 1.1em;
+        text-decoration: none;
     }
 
     &:visited {
         color: $main-orange;
+        text-decoration: none;
     }
 }
 
 .title {
-    font-family: 'Amatic SC', cursive;
-    font-weight: 700;
-    font-size: 4.5em;
+    @include custom-font(4.5em);
+
 }

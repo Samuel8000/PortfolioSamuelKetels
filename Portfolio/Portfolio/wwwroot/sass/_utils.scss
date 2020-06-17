@@ -5,4 +5,11 @@
 $main-orange: #e3902b;
 $background-blue: #16384c;
 $textfield-blue: #00C29E;
+$icon-color: #2F4858; 
 $text-field-active-green: #93C83C;
+
+@mixin custom-font($f-size) {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: $f-size;
+}

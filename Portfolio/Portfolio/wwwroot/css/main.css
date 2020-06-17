@@ -63,6 +63,11 @@
 .nav-link:hover::after {
   transform: scale(1, 1); }
 
+.navbar-brand-font {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+  font-size: 1.75em; }
+
 .hero-image {
   display: grid;
   grid-template-columns: 0.50fr 1fr 0.5fr; }
@@ -99,9 +104,11 @@
   color: #e3902b; }
   .link:hover {
     color: #e3902b;
-    font-size: 1.1em; }
+    font-size: 1.1em;
+    text-decoration: none; }
   .link:visited {
-    color: #e3902b; }
+    color: #e3902b;
+    text-decoration: none; }
 
 .title {
   font-family: 'Amatic SC', cursive;
@@ -119,3 +126,6 @@
 .container, .container-fluid {
   padding-right: 0;
   padding-left: 0; }
+
+.greenish {
+  color: #2F4858; }
