@@ -56,6 +56,10 @@
     }
 }
 
+.icon-height {
+    height: 100px;
+}
+
 .title {
     @include custom-font(2em);
 

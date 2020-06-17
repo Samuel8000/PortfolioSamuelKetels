@@ -117,6 +117,9 @@
     color: #e3902b;
     text-decoration: none; }
 
+.icon-height {
+  height: 100px; }
+
 .title {
   font-family: 'Amatic SC', cursive;
   font-weight: 700;
@@ -163,10 +166,10 @@
   padding-right: 0;
   padding-left: 0; }
 
-.greenish {
+.icon-color {
   color: #2F4858; }
 
-.btn-test {
+.btn-style {
   width: 9em;
   background-color: #e3902b;
   border-bottom: 5px solid #BA6E00;

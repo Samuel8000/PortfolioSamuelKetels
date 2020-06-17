@@ -20,10 +20,10 @@
     padding-left: 0;
 }
 
-.greenish {
+.icon-color {
     color: $icon-color;
 }
 
-.btn-test {
+.btn-style {
     @include custom-btn(9em, $main-orange, white, #BA6E00);
 }

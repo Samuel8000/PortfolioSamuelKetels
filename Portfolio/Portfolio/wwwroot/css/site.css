@@ -28,6 +28,8 @@ a {
 -------------------------------------------------- */
 html {
   font-size: 14px;
+  margin: 0;
+ 
 }
 @media (min-width: 768px) {
   html {
@@ -59,6 +61,7 @@ html {
 }
 
 body {
+
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
