@@ -4,24 +4,34 @@
     ViewData["Title"] = "Home";
 }
 
+<div class="container d-block">
+    <h1 class="text-center text-uppercase m-4 title">Hi! I'm Samuel</h1>
+</div>
 
-    <div class="container-fluid">
-            <div class="hero-image">
-                <div class="left-img">
-                    <div  class="test">
-                        <p>test</p>
-                    </div>
-                    <img class="img-fluid" src="~/images/background.jpg" />
-                </div>
-                <div class="middle-img">
-                    <img class="img-fluid" src="~/images/background.png" alt="Picture of me in front of a giant buddha" />
-                </div>
-                <div class="right-img">
-                    <img class="img-fluid" src="~/images/background2.png" />
-                </div>
+<div class="container-fluid">
+    <div class="hero-image">
+        <div class="left-img">
+            <div class="test">
+                
             </div>
+            <img class="img-fluid" src="~/images/background.jpg" />
+        </div>
+        <div class="middle-img">
+            <img class="img-fluid" src="~/images/background.png" alt="Picture of me in front of a giant buddha" />
+        </div>
+        <div class="right-img">
+            <img class="img-fluid" src="~/images/background2.png" />
+        </div>
     </div>
-    <div class="container d-block">
-        <h1 class="text-center text-uppercase">Hi! I'm Samuel</h1>
+</div>
+
+<div class="container">
+    <p class="pt-3 pl-3 pr-3">Welcome to my ASP.Net Core portfolio application. Take a tour to know all <a class="link" asp-page="/AboutMe">about me</a>, my current certified <a class="link" asp-page="/Skills/SkillsMain">skill set</a> 
+    and the <a class="link" asp-page="/Projects/ProjectsMain">projects</a> I have completed and uploaded on Github.</p>
+    <p class="pl-3 pr-3">If you want to see all functionality in action, click the button below, fill out the form and I'll send you the demo credentials.</p>
+    <div class="d-flex justify-content-center">
+        <a class="w-50 btn btn-warning">contact me</a>
     </div>
+</div>
+
 

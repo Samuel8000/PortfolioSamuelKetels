@@ -6,14 +6,14 @@
 
     <div class="container">
         <h1 class="text-center text-uppercase">Certified Development Skills</h1>
-        <div class="row justify-content-center">
+        <div class="row d-flex justify-content-center">
 
             @foreach (var skill in Model.Skills)
             {
-                <div class="cc-container d-flex col-lg-3 col-md-6 col-sm-12 m-3 p-3">
-                    <div class="cc-card justify-content-center align-content-center p-3">
-                        <div class="cc-img justify-content-center align-content-center">
-                                <img class="img-fluid" src="~/images/@skill.LogoFilePath" />
+                <div class="cc-container m-3 pt-3">
+                    <div class="cc-card justify-content-center">
+                        <div class="cc-img d-block">
+                                <img class="img-fluid ml-5" src="~/images/@skill.LogoFilePath" />
                         </div>
                         <div class="cc-content">     
                             <h2 class="text-center mb-2 mt-2">@skill.SkillName</h2>
