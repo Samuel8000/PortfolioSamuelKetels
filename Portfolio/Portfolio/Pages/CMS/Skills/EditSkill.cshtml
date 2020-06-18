@@ -4,68 +4,70 @@
     ViewData["Title"] = "EditSkill";
 }
 
-<div>
-    <h1>@Model.Heading @Model.Skill.SkillName</h1>
-</div>
-
-<form method="post" enctype="multipart/form-data">
-    <input type="hidden" asp-for="Skill.Id" />
-    <input type="hidden" asp-for="Skill.LogoFilePath" />
-    <input type="hidden" asp-for="Skill.PsChartFilePath"/>
-
-    <div class="form-group">
-        <label asp-for="Skill.SkillName"></label>
-        <input asp-for="Skill.SkillName" class="form-control" />
-        <span class="text-danger" asp-validation-for="Skill.SkillName"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Skill.SkillDescription"></label>
-        <input asp-for="Skill.SkillDescription" class="form-control" />
-        <span class="text-danger" asp-validation-for="Skill.SkillDescription"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Logo"></label>
-        <div class="custom-file">
-
-            <input asp-for="Logo" class="custom-file-input" />
-            <label class="custom-file-label">Click here to upload logo</label>
+    <div class="container">
+        <div>
+            <h1>@Model.Heading @Model.Skill.SkillName</h1>
         </div>
 
-    </div>
-    <div class="form-group">
-        <label asp-for="Skill.PsDescription"></label>
-        <input asp-for="Skill.PsDescription" class="form-control" />
-        <span class="text-danger" asp-validation-for="Skill.PsDescription"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Skill.PsSkillIqScore"></label>
-        <input type="number" asp-for="Skill.PsSkillIqScore" class="form-control" />
-        <span class="text-danger" asp-validation-for="Skill.PsSkillIqScore"></span>
-    </div>
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Skill.Id" />
+            <input type="hidden" asp-for="Skill.LogoFilePath" />
+            <input type="hidden" asp-for="Skill.PsChartFilePath" />
 
-    <div class="form-group">
-        <label asp-for="Chart"></label>
-        <div class="custom-file">
-            <input asp-for="Chart" class="custom-file-input"/>
-            <label class="custom-file-label">Click here to upload Skill Chart</label>
-        </div>
-    </div>
+            <div class="form-group">
+                <label asp-for="Skill.SkillName"></label>
+                <input asp-for="Skill.SkillName" class="form-control" />
+                <span class="text-danger" asp-validation-for="Skill.SkillName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Skill.SkillDescription"></label>
+                <input asp-for="Skill.SkillDescription" class="form-control" />
+                <span class="text-danger" asp-validation-for="Skill.SkillDescription"></span>
+            </div>
 
-    <div class="form-group">
-        <label asp-for="Skill.PsSkillLevel"></label>
-        <select asp-for="Skill.PsSkillLevel" asp-items="Model.SkillLevels" class="form-control"></select>
-    </div>
-    <button type="submit" class="btn btn-success">Save</button>
-    @section Scripts {
-        <script asp-append-version="true">
-            $(document).ready(function () {
-                $('.custom-file-input').on("change", function () {
-                    var fileName = $(this).val().split("\\").pop();
-                    $(this).next('.custom-file-label').html(fileName);
-                });
-            });
-        </script>
-    }
-</form>
+            <div class="form-group">
+                <label asp-for="Logo"></label>
+                <div class="custom-file">
 
+                    <input asp-for="Logo" class="custom-file-input" />
+                    <label class="custom-file-label">Click here to upload logo</label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Skill.PsDescription"></label>
+                <input asp-for="Skill.PsDescription" class="form-control" />
+                <span class="text-danger" asp-validation-for="Skill.PsDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Skill.PsSkillIqScore"></label>
+                <input type="number" asp-for="Skill.PsSkillIqScore" class="form-control" />
+                <span class="text-danger" asp-validation-for="Skill.PsSkillIqScore"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Chart"></label>
+                <div class="custom-file">
+                    <input asp-for="Chart" class="custom-file-input" />
+                    <label class="custom-file-label">Click here to upload Skill Chart</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Skill.PsSkillLevel"></label>
+                <select asp-for="Skill.PsSkillLevel" asp-items="Model.SkillLevels" class="form-control"></select>
+            </div>
+            <button type="submit" class="btn btn-success">Save</button>
+            @section Scripts {
+                <script asp-append-version="true">
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileName = $(this).val().split("\\").pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        });
+                    });
+                </script>
+            }
+        </form>
+
+    </div>
