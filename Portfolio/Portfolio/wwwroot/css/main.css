@@ -118,7 +118,10 @@
     text-decoration: none; }
 
 .icon-height {
-  height: 100px; }
+  height: 5em; }
+
+.icon-textblock {
+  height: 7.5em; }
 
 .title {
   font-family: 'Amatic SC', cursive;
