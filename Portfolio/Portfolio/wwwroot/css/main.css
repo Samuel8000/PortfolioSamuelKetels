@@ -13,6 +13,11 @@
 .custom-table {
   font-size: 14px; }
 
+.title-container {
+  background-color: #4A557C;
+  border-radius: 5px;
+  color: white; }
+
 .cc-container {
   width: 15em;
   background: white;
