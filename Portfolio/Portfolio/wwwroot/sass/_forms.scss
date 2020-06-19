@@ -7,7 +7,7 @@
 }
 
 .title-container {
-    background-color: #4A557C;
-    border-radius: 5px;
-    color: white;
+    .title{
+        @include title-border();
+    }
 }

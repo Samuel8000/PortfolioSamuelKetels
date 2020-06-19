@@ -13,10 +13,9 @@
 .custom-table {
   font-size: 14px; }
 
-.title-container {
-  background-color: #4A557C;
-  border-radius: 5px;
-  color: white; }
+.title-container .title {
+  border-top: 2px solid #e3902b;
+  border-bottom: 2px solid #e3902b; }
 
 .cc-container {
   width: 15em;

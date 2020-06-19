@@ -20,3 +20,8 @@ $text-field-active-green: #93C83C;
     border-bottom: 5px solid $bord-color;
     color: $fg-color;
 }
+
+@mixin title-border {
+    border-top: 2px solid $main-orange;
+    border-bottom: 2px solid $main-orange;
+}
