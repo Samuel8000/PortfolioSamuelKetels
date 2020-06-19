@@ -132,17 +132,23 @@
   font-weight: 700;
   font-size: 2em; }
 
-@media (min-width: 575.98px) {
+@media (min-width: 576px) {
   .title {
     font-family: 'Amatic SC', cursive;
     font-weight: 700;
-    font-size: 2em; } }
+    font-size: 2.5em;
+    padding-top: 2em; }
+  .intro-text {
+    display: block;
+    padding-top: 10em; } }
 
-@media (min-width: 767.98px) {
+@media (min-width: 768px) {
   .title {
     font-family: 'Amatic SC', cursive;
     font-weight: 700;
-    font-size: 3em; }
+    font-size: 2.5em; }
+  .intro-text {
+    padding-top: unset; }
   .hero-image {
     display: grid;
     grid-template-columns: 0.50fr 1fr 0.5fr;
@@ -151,15 +157,24 @@
       min-height: 100%;
       width: 100vw; }
     .hero-image .left-img img, .hero-image .right-img img {
-      display: block; }
+      display: block;
+      max-width: 10vw; }
+  .btn-style {
+    margin-right: 2em; }
   .caption {
-    grid-row-start: 4; } }
+    grid-row-start: 3; } }
 
 @media (min-width: 1200px) {
   .title {
     font-family: 'Amatic SC', cursive;
     font-weight: 700;
-    font-size: 4em; } }
+    font-size: 4em; }
+  .caption {
+    grid-row-start: 2; } }
+
+@media (min-width: 1700px) {
+  .title {
+    padding-top: 3em; } }
 
 * {
   margin: 0;
