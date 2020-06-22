@@ -10,16 +10,16 @@
         </div>
         <form method="post">
             <div class="form-group">
-                <label class="col-form-label"></label>
-                <input class="form-control" type="text" />
+                <label asp-for="EmailSetting.FromName" class="col-form-label"></label>
+                <input asp-for="EmailSetting.FromName" class="form-control" type="text" />
             </div>
             <div class="form-group">
-                <label class="col-form-label"></label>
-                <input class="form-control" type="email" />
+                <label asp-for="EmailSetting.FromAddress" class="col-form-label"></label>
+                <input asp-for="EmailSetting.FromAddress" class="form-control" type="email" />
             </div>
             <div class="form-group">
-                <label class="col-form-label"></label>
-                <input class="form-control" type="password" />
+                <label asp-for="EmailSetting.Password" class="col-form-label"></label>
+                <input asp-for="EmailSetting.Password" class="form-control" type="password" />
             </div>
             <a ></a>
         </form>
