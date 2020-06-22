@@ -31,9 +31,16 @@ namespace Portfolio
             {
                 options.UseSqlServer(Configuration.GetConnectionString("PortfolioDb"));
             });
+
+            //Data Classes
+
             services.AddScoped<ISkillData, SqlSkillData>();
             services.AddScoped<ICertificateData, SqlCertificateData>();
             services.AddScoped<IContactData, SqlContactData>();
+            services.AddScoped<IEmailSettingsData, SqlEmailSettingsData>();
+
+            //Utilities
+
             services.AddScoped<IFileUploader, FileUploader>();
             services.AddScoped<IMailer, Mailer>();
 
