@@ -10,12 +10,12 @@
 <h1>EmailAccountsList</h1>
 
 <table class="table">
-    @foreach (var account in Model.EmailAccounts)
+    @foreach (var emailSettings in Model.EmailAccounts)
     {
         <tr>
-            <td>@account.FromName</td>
-            <td>@account.FromAddress</td>
-            <td><a asp-page="./EmailSetup" asp-route-skillId="@account.Id"><i class="far fa-edit fa-sm"></i></a></td>
+            <td>@emailSettings.FromName</td>
+            <td>@emailSettings.FromAddress</td>
+            <td><a asp-page="./EmailSetup" asp-route-emailSettingsId="@emailSettings.Id"><i class="far fa-edit fa-sm"></i></a></td>
         </tr>
     }
 

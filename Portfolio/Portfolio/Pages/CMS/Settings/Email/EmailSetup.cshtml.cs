@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Core;
+using Portfolio.Core.Modelhelpers;
 using Portfolio.Data;
 
 namespace Portfolio.Pages.CMS.Settings.Email
@@ -12,24 +13,29 @@ namespace Portfolio.Pages.CMS.Settings.Email
     public class EmailSetupModel : PageModel
     {
         private readonly IEmailSettingsData _emailSettingsData;
+        private readonly IPasswordHasher _passwordHasher;
 
-        public EmailSetting EmailSetting { get; set; }
+        [BindProperty]
+        public EmailSetting EmailSettings { get; set; }
+        [BindProperty]
+        public string Password { get; set; }
 
-        public EmailSetupModel(IEmailSettingsData emailSettingsData)
+        public EmailSetupModel(IEmailSettingsData emailSettingsData, IPasswordHasher passwordHasher)
         {
             _emailSettingsData = emailSettingsData;
+            _passwordHasher = passwordHasher;
         }
         public IActionResult OnGet(int? emailSettingsId)
         {
             if (emailSettingsId.HasValue)
             {
-                EmailSetting = _emailSettingsData.GetEmailSettingById(emailSettingsId.Value);
+                EmailSettings = _emailSettingsData.GetEmailSettingById(emailSettingsId.Value);
             }
             else
             {
-                EmailSetting = new EmailSetting();
+                EmailSettings = new EmailSetting();
             }
-            if (EmailSetting == null)
+            if (EmailSettings == null)
             {
                 return RedirectToPage("/Shared/_NotFound");
             }
@@ -38,21 +44,27 @@ namespace Portfolio.Pages.CMS.Settings.Email
 
         public IActionResult OnPost()
         {
+            EmailSettings.Password = _passwordHasher.Hash(Password);
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            if(EmailSetting.Id > 0)
+            if(EmailSettings.Id > 0)
             {
-                _emailSettingsData.UpdateEmailSetting(EmailSetting);
+
+                _emailSettingsData.UpdateEmailSetting(EmailSettings);
             }
+           
             else
             {
-                _emailSettingsData.NewEmailSetting(EmailSetting);
+                _emailSettingsData.NewEmailSetting(EmailSettings);
             }
             _emailSettingsData.Commit();
 
-            return RedirectToPage("/Email/EmailAccountsList");
+            return Page();
         }
+
+
+
     }
 }

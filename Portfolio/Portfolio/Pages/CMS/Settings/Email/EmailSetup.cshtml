@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{emailSettingsId:int?}"
 @model Portfolio.Pages.CMS.Settings.Email.EmailSetupModel
 @{
     ViewData["Title"] = "EmailSetup";
@@ -9,19 +9,21 @@
             <h1 class="title text-center p-2">Setup Email</h1>
         </div>
         <form method="post">
+            <input type="hidden" asp-for="EmailSettings.Id" />
+            <input type="hidden" asp-for="EmailSettings.Password" />
             <div class="form-group">
-                <label asp-for="EmailSetting.FromName" class="col-form-label"></label>
-                <input asp-for="EmailSetting.FromName" class="form-control" type="text" />
+                <label asp-for="EmailSettings.FromName" class="col-form-label"></label>
+                <input asp-for="EmailSettings.FromName" class="form-control" type="text" />
             </div>
             <div class="form-group">
-                <label asp-for="EmailSetting.FromAddress" class="col-form-label"></label>
-                <input asp-for="EmailSetting.FromAddress" class="form-control" type="email" />
+                <label asp-for="EmailSettings.FromAddress" class="col-form-label"></label>
+                <input asp-for="EmailSettings.FromAddress" class="form-control" type="email" />
             </div>
             <div class="form-group">
-                <label asp-for="EmailSetting.Password" class="col-form-label"></label>
-                <input asp-for="EmailSetting.Password" class="form-control" type="password" />
+                <label asp-for="Password" class="col-form-label"></label>
+                <input asp-for="Password" class="form-control" type="password" />
             </div>
-            <a ></a>
+            <button type="submit" class="btn btn-success">Save</button>
         </form>
 
     </div>

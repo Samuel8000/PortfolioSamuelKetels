@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Portfolio.Core.Modelhelpers;
 using Portfolio.Data;
 using Portfolio.Utility;
 
@@ -37,12 +38,10 @@ namespace Portfolio
             services.AddScoped<ISkillData, SqlSkillData>();
             services.AddScoped<ICertificateData, SqlCertificateData>();
             services.AddScoped<IContactData, SqlContactData>();
-            services.AddScoped<IEmailSettingsData, SqlEmailSettingsData>();
 
             //Utilities
 
             services.AddScoped<IFileUploader, FileUploader>();
-            services.AddScoped<IMailer, Mailer>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddRazorPages();
