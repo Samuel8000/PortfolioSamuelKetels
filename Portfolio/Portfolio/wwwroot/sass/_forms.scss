@@ -1,10 +1,131 @@
-﻿.contact-info {
+﻿.form-container {
+    min-width: 68.5em;
+    min-height: 34.25em;
+    position: relative;
+    z-index: 1000;
 
+    .contact-info {
+        position: absolute;
+        top: 2.5em;
+        width: 21.75em;
+        height: calc(100% - 5em);
+        background: $main-orange;
+        color: #402E32;
+        z-index: 1;
+        padding: 2em;
+        box-shadow: 0 20px 20px rgba(0,0,0,0.2);
+
+        h2 {
+            font-size: 3em;
+            color: #402E32;
+            font-weight: 700;
+            padding: 0;
+        }
+
+        .info {
+            position: relative;
+            list-style: none;
+
+            li {
+                position: relative;
+                list-style: none;
+                display: flex;
+                margin: 1.25em;
+                cursor: default;
+                align-items: flex-start;
+
+                span {
+                    margin-right: 1em;
+                }
+            }
+        }
+
+        .contact-icons {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+
+            li {
+                margin: 1.25em;
+
+                a {
+                    color: #402E32;
+
+                    :hover {
+                        color: #DFE0DF;
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-form {
+        position: absolute;
+        padding: 4.35em 3.1em;
+        margin-left: 9.35em;
+        padding-left: 15.5em;
+        width: calc(100% - 9.35em);
+        height: 100%;
+        border: 1px solid rgba(80,80,80,0.2);
+        border-radius: 5px;
+        box-shadow: 0.5em 2em 2em rgba(80,80,80,0.2);
+
+        .form-box {
+            position: relative;
+            flex-wrap: wrap;
+
+            .input-field {
+                display: block;
+                position: relative;
+                margin: 0 0 1em 0;
+
+                input, textarea, select {
+                    min-width: 20em !important;
+                    font-size: 0.9em;
+                    padding: 5px 0;
+                    color: $background-blue;
+                    border: none;
+                    border-bottom: 1px solid $main-orange;
+                    outline: none;
+                }
+
+                textarea, select {
+                    min-width: 45em !important;
+                    resize: none;
+                }
+
+                textarea {
+                    margin-top: 1.5em;
+                    height: 7.25em;
+                }
+
+                span {
+                    position: absolute;
+                    left: 0;
+                    padding: 5px 0;
+                    color: $background-blue;
+                    transition: 0.5s;
+                    pointer-events: none;
+                }
+
+                textarea:focus ~ span {
+                    transform: translateY(-15px);
+                    font-size: 0.8em;
+                    color: #3A8930;
+                }
+
+                input:focus ~ span {
+                    transform: translateY(-15px);
+                    font-size: 0.8em;
+                    color: #3A8930;
+                }
+            }
+        }
+    }
 }
 
-.info {
 
-}
 
 .title-container {
     .title{
