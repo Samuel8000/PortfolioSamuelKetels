@@ -85,21 +85,25 @@
           min-width: 45em !important;
           resize: none; }
         .form-container .contact-form .form-box .input-field textarea {
-          margin-top: 1.5em;
+          margin-top: 1.25em;
           height: 7.25em; }
+        .form-container .contact-form .form-box .input-field label, .form-container .contact-form .form-box .input-field span {
+          font-size: 0.9em;
+          font-style: italic;
+          color: #696969; }
         .form-container .contact-form .form-box .input-field span {
           position: absolute;
           left: 0;
-          padding: 5px 0;
+          padding-top: 5px;
           color: #16384c;
           transition: 0.5s;
           pointer-events: none; }
-        .form-container .contact-form .form-box .input-field textarea:focus ~ span {
+        .form-container .contact-form .form-box .input-field textarea:focus ~ span, .form-container .contact-form .form-box .input-field textarea:valid ~ span {
           transform: translateY(-15px);
           font-size: 0.8em;
           color: #3A8930; }
-        .form-container .contact-form .form-box .input-field input:focus ~ span {
-          transform: translateY(-15px);
+        .form-container .contact-form .form-box .input-field input:focus ~ span, .form-container .contact-form .form-box .input-field input:valid ~ span {
+          transform: translateY(-20px);
           font-size: 0.8em;
           color: #3A8930; }
 

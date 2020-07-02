@@ -30,25 +30,25 @@
                     <input type="hidden" asp-for="TodaysDate" />
                     <div class="form-box d-flex justify-content-between align-content-between">
                         <div class="input-field">
-                            <input class="fixed-input" type="text" asp-for="Contact.ContactFirstName" required />
+                            <input type="text" asp-for="Contact.ContactFirstName" required />
                             <span>First Name</span>
                         </div>
 
                         <div class="input-field">
-                            <input class="fixed-input" type="text" asp-for="Contact.ContactLastName" required />
+                            <input type="text" asp-for="Contact.ContactLastName" required />
                             <span>Last Name</span>
                         </div>
 
                         <div class="input-field">
-                            <input class="fixed-input" type="text" asp-for="Contact.ContactEmailAddress" required />
+                            <input type="text" asp-for="Contact.ContactEmailAddress" required />
                             <span>Email Address</span>
                         </div>
                         <div class="input-field">
-                            <input  class="fixed-input" type="text" asp-for="Contact.ContactPhoneNumber" required />
+                            <input asp-for="Contact.ContactPhoneNumber" required />
                             <span>Phone Number</span>
                         </div>
                             <div class="input-field">
-                                <textarea asp-for="Contact.Remarks"></textarea>
+                                <textarea id="comment" asp-for="Contact.Remarks" required></textarea>
                                 <span>Please leave a comment...</span>
                             </div>
                     </div>
@@ -141,5 +141,11 @@
                 return false;
             };
         };
+    </script>
+    <script>
+        var commentArea = document.getElementById('comment');
+        if (commentArea.value !== "") {
+            commentArea.removeAttribute("required");
+        }
     </script>
 }

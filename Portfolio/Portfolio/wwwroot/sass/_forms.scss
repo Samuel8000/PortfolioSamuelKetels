@@ -96,27 +96,33 @@
                 }
 
                 textarea {
-                    margin-top: 1.5em;
+                    margin-top: 1.25em;
                     height: 7.25em;
+                }
+
+                label, span {
+                    font-size: 0.9em;
+                    font-style: italic;
+                    color: #696969;
                 }
 
                 span {
                     position: absolute;
                     left: 0;
-                    padding: 5px 0;
+                    padding-top: 5px;
                     color: $background-blue;
                     transition: 0.5s;
                     pointer-events: none;
                 }
 
-                textarea:focus ~ span {
+                textarea:focus ~ span, textarea:valid ~ span {
                     transform: translateY(-15px);
                     font-size: 0.8em;
                     color: #3A8930;
                 }
 
-                input:focus ~ span {
-                    transform: translateY(-15px);
+                input:focus ~ span, input:valid ~ span {
+                    transform: translateY(-20px);
                     font-size: 0.8em;
                     color: #3A8930;
                 }
