@@ -4,17 +4,20 @@
     ViewData["Title"] = "SkillList";
 }
 
-<h1>Skill List</h1>
+    <div class="container">
+        <h1>Skill List</h1>
 
-<table class="table">
-    @foreach (var skill in Model.Skills)
-    {
-        <tr>
-            <td>@skill.SkillName</td>
-            <td><a asp-page="./EditSkill" asp-route-skillId="@skill.Id"><i class="far fa-edit fa-sm"></i></a></td>
-        </tr>
-    }
+        <table class="table">
+            @foreach (var skill in Model.Skills)
+            {
+                <tr>
+                    <td>@skill.SkillName</td>
+                    <td><a asp-page="./EditSkill" asp-route-skillId="@skill.Id"><i class="far fa-edit fa-sm"></i></a></td>
+                </tr>
+            }
 
-</table>
-<a class="btn btn-outline-success" asp-page="./EditSkill">Add</a>
+        </table>
+        <a class="btn btn-outline-success" asp-page="./EditSkill">Add</a>
+
+    </div>
 

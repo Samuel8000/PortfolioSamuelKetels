@@ -27,3 +27,11 @@
 .btn-style {
     @include custom-btn(9em, $main-orange, white, #BA6E00);
 }
+
+.subtitleh2 {
+    @include custom-font(3em);
+}
+
+.subtitleh3 {
+    @include custom-font(2.25em);
+}

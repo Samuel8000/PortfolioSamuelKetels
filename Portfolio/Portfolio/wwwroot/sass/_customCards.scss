@@ -17,7 +17,7 @@
             color: #384955;
             visibility: hidden;
             opacity: 0;
-            transition: 0.5s ease-in-out;
+            transition: 0.4s ease-out;
 
             .flex-column a {
                 width: 10.5em;
@@ -29,6 +29,7 @@
             max-height: 20em;
 
             .cc-content {
+                transition: 0.7s ease-in;
                 visibility: visible;
                 opacity: 1;
             }
@@ -41,7 +42,6 @@
             & img {
                 margin: 0 auto;
                 width: 50%;
-                //max-width: 100%;
             }
         }
     }

@@ -129,6 +129,10 @@
             }
         }
     }
+
+    .btn-submit {
+        @include custom-btn(9em, #00BC75, whitesmoke, #008544);
+    }
 }
 
 
