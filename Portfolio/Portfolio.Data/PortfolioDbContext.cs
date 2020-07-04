@@ -16,6 +16,8 @@ namespace Portfolio.Data
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<EmailSetting> EmailSettings { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>()

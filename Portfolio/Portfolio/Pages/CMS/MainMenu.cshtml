@@ -4,15 +4,24 @@
     ViewData["Title"] = "MainMenu";
 }
 
-<div class="container mt-3">
-    <div class="title-container">
-        <h1 class="text-center title pt-0">Content Management System</h1>
+    <div class="container mt-3">
+        <div class="title-container">
+            <h1 class="text-center title pt-0">Content Management System</h1>
+        </div>
+
+        <div class="box">
+            <a asp-page="./Skills/SkillList">Skills</a>
+        </div>
+        <div class="box">
+            <a asp-page="./Certificates/CertificateList">Certificates</a>
+        </div>
+        <div class="box">
+            <a asp-page="./Contacts/ContactList">Contacts</a>
+        </div>
+        @*<div class="box">
+            <a asp-page="./Settings/Email/EmailAccountsList">Setup Email</a>
+        </div>*@
+        <div class="box">
+            <a asp-page="./Projects/ProjectsList">Projects</a>
+        </div>
     </div>
-    
-    <div class="box">
-        <a asp-page="./Skills/SkillList">Skills</a>
-    </div>
-    <a asp-page="./Certificates/CertificateList">Certificates</a>
-    <a asp-page="./Contacts/ContactList">Contacts</a>
-    <a asp-page="./Settings//Email/EmailAccountsList">Setup Email</a>
-</div>
