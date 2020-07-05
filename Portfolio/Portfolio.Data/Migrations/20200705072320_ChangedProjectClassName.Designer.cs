@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Portfolio.Data;
 
 namespace Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioDbContext))]
-    partial class PortfolioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200705072320_ChangedProjectClassName")]
+    partial class ChangedProjectClassName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,33 +131,6 @@ namespace Portfolio.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EmailSettings");
-                });
-
-            modelBuilder.Entity("Portfolio.Core.FreeCodeCampProject", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("FccCategory")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FccProjectDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FccProjectLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FccProjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FccProjectThumb")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FccProjects");
                 });
 
             modelBuilder.Entity("Portfolio.Core.PersonalProject", b =>

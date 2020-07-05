@@ -4,8 +4,39 @@
     ViewData["Title"] = "ProjectsList";
 }
     <div class="container">
-        <div class="title-container">
+        <div class="title-container mt-3">
             <h1 class="title text-center pt-0">Projects</h1>
         </div>
+        <div>
+            <h2 class="subtitleh2 pt-0">Personal Projects</h2>
+        </div>
+        <table class="table">
+            @foreach (var project in Model.PersonalProjects)
+            {
+                <tr>
+                    <td class="w80">@project.ProjectName</td>
+                    <td class="w10">@project.DateCompleted</td>
+                    <td class="w10"><a asp-page="./EditProject" asp-route-projectId="@project.Id"><i class="far fa-edit fa-sm"></i></a></td>
+                </tr>
+            }
+
+        </table>
+        <a class="btn btn-outline-success" asp-page="./EditProject">Add</a>
+        <hr />
+        <h2 class="subtitleh2 pt-0">FreeCodeCamp Projects</h2>
+        <h3 class="subtitleh3">Responsive Web Design</h3>
+        <table class="table">
+            @foreach (var fccProject in Model.FccRWDProjects)
+            {
+                <tr>
+                    <td class="w80">@fccProject.FccProjectName</td>
+                    <td class="w10"><a asp-page="./EditFccProject" asp-route-fccProjectId="@fccProject.Id"><i class="far fa-edit fa-sm"></i></a></td>
+                </tr>
+            }
+
+        </table>
+        <h3 class="subtitleh3">JavaScript</h3>
+        <a class="btn btn-outline-success" asp-page="./EditFccProject">Add</a>
+
     </div>
 

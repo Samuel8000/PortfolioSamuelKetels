@@ -38,6 +38,7 @@ namespace Portfolio
             services.AddScoped<ISkillData, SqlSkillData>();
             services.AddScoped<ICertificateData, SqlCertificateData>();
             services.AddScoped<IContactData, SqlContactData>();
+            services.AddScoped<IProjectData, SqlProjectData>();
 
             //Utilities
 

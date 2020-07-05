@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Portfolio.Core
 {
-    public class Project
+    public class PersonalProject
     {
         public int Id { get; set; }
         public string ProjectName { get; set; }
