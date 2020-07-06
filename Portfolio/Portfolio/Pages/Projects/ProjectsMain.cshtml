@@ -10,8 +10,33 @@
         </div>
         <div>
             <h2 class="subtitleh2 pt-0">Personal Projects</h2>
-            <div>
-               
+            <div class="border border-dark">
+                @foreach (var perproject in Model.PersonalProjects)
+                {
+                <div class="d-flex">
+                    <div class="p-3">
+                        <img class="img-fluid" src="~/images/@perproject.ProjectThumb" />
+                    </div>
+                    <div class="d-flex flex-column p-3">
+                        <div>
+                            <h4>@perproject.ProjectName</h4>
+                        </div>
+                        <p>@perproject.ProjectDescription</p>
+                        <div class="d-flex justify-content-end align-content-end">
+                            <a href="@perproject.CodeLink"><i class="fab fa-github"></i>View on GitHub</a>
+                        </div>
+                    </div>
+
+
+                </div>
+                    <div class="d-flex justify-content-end">
+                        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag1</div>
+                        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag2</div>
+                        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag3</div>
+                        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag4</div>
+                        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag5</div>
+                    </div>
+                }
             </div>
         </div>
             <h2 class="subtitleh2 pt-0">FreeCodeCamp Projects</h2>

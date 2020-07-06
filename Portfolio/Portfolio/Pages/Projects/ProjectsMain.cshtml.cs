@@ -12,15 +12,16 @@ namespace Portfolio
     public class ProjectsMainModel : PageModel
     {
         private readonly IProjectData _projectData;
-
+        [BindProperty]
         public IEnumerable<PersonalProject> PersonalProjects { get; set; }
+
         public ProjectsMainModel(IProjectData projectData)
         {
             _projectData = projectData;
         }
         public void OnGet()
         {
-
+            PersonalProjects = _projectData.GetAllPersonalProjects();
         }
     }
 }

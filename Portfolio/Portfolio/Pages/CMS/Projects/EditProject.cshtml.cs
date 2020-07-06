@@ -81,14 +81,19 @@ namespace Portfolio.Pages.CMS.Projects
 
         private void UploadThumb()
         {
+
             if(ProjectThumb != null)
             {
-                _fileUploader.DeleteOldFile(uploadPath, PersonalProject.ProjectThumb);
-                PersonalProject.ProjectThumb = _fileUploader.ProcessUploadedFile(ProjectThumb, uploadPath);
-            }
-            else if(string.IsNullOrEmpty(PersonalProject.ProjectThumb) || string.IsNullOrWhiteSpace(PersonalProject.ProjectThumb))
-            {
-                PersonalProject.ProjectThumb = _fileUploader.ProcessUploadedFile(ProjectThumb, uploadPath);
+                if(PersonalProject.ProjectThumb != null)
+                {
+                    _fileUploader.DeleteOldFile(uploadPath, PersonalProject.ProjectThumb);
+                    PersonalProject.ProjectThumb = _fileUploader.ProcessUploadedFile(ProjectThumb, uploadPath);
+                }
+
+                else if (string.IsNullOrEmpty(PersonalProject.ProjectThumb) || string.IsNullOrWhiteSpace(PersonalProject.ProjectThumb))
+                {
+                    PersonalProject.ProjectThumb = _fileUploader.ProcessUploadedFile(ProjectThumb, uploadPath);
+                }
             }
         }
     }

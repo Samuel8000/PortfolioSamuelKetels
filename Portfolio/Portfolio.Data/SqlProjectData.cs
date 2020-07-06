@@ -1,4 +1,5 @@
-﻿using Portfolio.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,8 @@ namespace Portfolio.Data
 
         public PersonalProject AddPersonalProject(PersonalProject newProject)
         {
-            throw new NotImplementedException();
+            _context.Add(newProject);
+            return newProject;
         }
 
         public int Commit()
@@ -36,7 +38,9 @@ namespace Portfolio.Data
 
         public PersonalProject UpdatePersonalProject(PersonalProject updatedProject)
         {
-            throw new NotImplementedException();
+            var entity = _context.Projects.Attach(updatedProject);
+            entity.State = EntityState.Modified;
+            return updatedProject;
         }
 
         public FreeCodeCampProject GetFreeCodeCampProjectById(int fccProjectId)
