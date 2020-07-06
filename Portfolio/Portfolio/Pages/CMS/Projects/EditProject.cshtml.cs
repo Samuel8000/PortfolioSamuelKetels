@@ -17,8 +17,10 @@ namespace Portfolio.Pages.CMS.Projects
         private readonly IProjectData _projectData;
         private readonly IHtmlHelper _htmlHelper;
         private readonly IFileUploader _fileUploader;
+        private string uploadPath = Constants.ImageLocation;
 
         public IFormFile ProjectThumb { get; set; }
+        [BindProperty]
         public PersonalProject PersonalProject { get; set; }
         public IEnumerable<SelectListItem> ProjectTags { get; set; }
         public string Heading { get; set; }
@@ -53,6 +55,41 @@ namespace Portfolio.Pages.CMS.Projects
                 return RedirectToPage("/Shared/_NotFound");
             }
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            UploadThumb();
+            if (!ModelState.IsValid)
+            {
+                ProjectTags = _htmlHelper.GetEnumSelectList<ProjectTag>();
+                return Page();
+            }
+            if(PersonalProject.Id > 0)
+            {
+                _projectData.UpdatePersonalProject(PersonalProject);
+            }
+            else
+            {
+                _projectData.AddPersonalProject(PersonalProject);
+            }
+
+            _projectData.Commit();
+
+            return RedirectToPage("/CMS/Projects/ProjectsList");
+        }
+
+        private void UploadThumb()
+        {
+            if(ProjectThumb != null)
+            {
+                _fileUploader.DeleteOldFile(uploadPath, PersonalProject.ProjectThumb);
+                PersonalProject.ProjectThumb = _fileUploader.ProcessUploadedFile(ProjectThumb, uploadPath);
+            }
+            else if(string.IsNullOrEmpty(PersonalProject.ProjectThumb) || string.IsNullOrWhiteSpace(PersonalProject.ProjectThumb))
+            {
+                PersonalProject.ProjectThumb = _fileUploader.ProcessUploadedFile(ProjectThumb, uploadPath);
+            }
         }
     }
 }

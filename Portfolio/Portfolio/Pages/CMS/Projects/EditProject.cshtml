@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="PersonalProject.ProjectDescription"></label>
-                <input class="form-control" asp-for="PersonalProject.ProjectDescription" />
+                <textarea class="form-control" asp-for="PersonalProject.ProjectDescription"></textarea>
             </div>
             <div class="form-group">
                 <label asp-for="ProjectThumb"></label>
@@ -32,6 +32,11 @@
                 <label asp-for="PersonalProject.DateCompleted"></label>
                 <input id="date" class="form-control" asp-for="PersonalProject.DateCompleted" type="date" asp-format="{0:dd-MM-yyyy}" />
             </div>
+
+            <div class="form-group">
+                <label asp-for="PersonalProject.CodeLink"></label>
+                <input asp-for="PersonalProject.CodeLink" class="form-control"/>
+            </div>  
             <div class="row d-flex justify-content-between">
                 <div class="form-group col-2">
                     <label asp-for="PersonalProject.Tag1"></label>

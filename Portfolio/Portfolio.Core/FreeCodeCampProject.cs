@@ -11,6 +11,7 @@ namespace Portfolio.Core
         public string FccProjectDescription { get; set; }
         public string FccProjectLink { get; set; }
         public string FccProjectThumb { get; set; }
+        public string CodeLink { get; set; }
         public FccCategory FccCategory { get; set; }
     }
 

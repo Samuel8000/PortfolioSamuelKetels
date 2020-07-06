@@ -13,9 +13,9 @@ namespace Portfolio.Data
 
         FreeCodeCampProject GetFreeCodeCampProjectById(int fccProjectId);
 
-        PersonalProject UpdateProject(PersonalProject updatedProject);
+        PersonalProject UpdatePersonalProject(PersonalProject updatedProject);
 
-        PersonalProject AddProject(PersonalProject newProject);
+        PersonalProject AddPersonalProject(PersonalProject newProject);
 
         int Commit();
 

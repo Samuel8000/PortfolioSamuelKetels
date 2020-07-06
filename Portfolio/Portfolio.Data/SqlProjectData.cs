@@ -14,7 +14,7 @@ namespace Portfolio.Data
             _context = context;
         }
 
-        public PersonalProject AddProject(PersonalProject newProject)
+        public PersonalProject AddPersonalProject(PersonalProject newProject)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace Portfolio.Data
             return _context.Projects.Find(projectId);
         }
 
-        public PersonalProject UpdateProject(PersonalProject updatedProject)
+        public PersonalProject UpdatePersonalProject(PersonalProject updatedProject)
         {
             throw new NotImplementedException();
         }
