@@ -59,7 +59,7 @@
             </div>
             <button type="submit" class="btn btn-success">Save</button>
             @section Scripts {
-                <script asp-append-version="true">
+                <script>
                     $(document).ready(function () {
                         $('.custom-file-input').on("change", function () {
                             var fileName = $(this).val().split("\\").pop();

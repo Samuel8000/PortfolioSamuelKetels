@@ -4,6 +4,8 @@ namespace Portfolio.Core
 {
     public enum ProjectTag
     {
+        [Display(Name ="Pick a tag")]
+        PickOne,
         [Display(Name ="C#")]
         CSharp,
         HTML5,
