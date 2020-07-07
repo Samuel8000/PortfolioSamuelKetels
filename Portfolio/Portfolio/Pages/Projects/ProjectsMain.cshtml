@@ -32,14 +32,16 @@
                 <div class="d-flex justify-content-end">
                     @foreach (var tag in @Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetValues(Portfolio.Core.ProjectTag.PickOne))
                     {
-                        if (tag == perproject.Tag1)
+                        if (tag == perproject.Tag1 || tag == perproject.Tag2)
                         {
                             var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
                             <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
                         }
+
+
                     }
-                    <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag1</div>
-                    <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag2</div>
+                    @*<div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag1</div>
+                    <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag2</div>*@
                     <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag3</div>
                     <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag4</div>
                     <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag5</div>
