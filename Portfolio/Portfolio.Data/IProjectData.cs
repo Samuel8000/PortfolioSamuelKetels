@@ -9,6 +9,10 @@ namespace Portfolio.Data
         IEnumerable<PersonalProject> GetAllPersonalProjects();
         IEnumerable<FreeCodeCampProject> GetFreeCodeCampRWDProjects();
 
+        IEnumerable<PPTag> GetTagsPerPersonalProject(int projectId);
+
+        PPTag GetPPTagsByPersonalProjectId(int projectId);
+
         PersonalProject GetPersonalProjectById(int projectId);
 
         FreeCodeCampProject GetFreeCodeCampProjectById(int fccProjectId);
@@ -16,6 +20,9 @@ namespace Portfolio.Data
         PersonalProject UpdatePersonalProject(PersonalProject updatedProject);
 
         PersonalProject AddPersonalProject(PersonalProject newProject);
+
+        PPTag AddTags(PPTag newPPTag);
+        PPTag UpdateTags(PPTag updatedPPTag);
 
         int Commit();
 

@@ -53,5 +53,27 @@ namespace Portfolio.Data
             return _context.FccProjects.Where(f => f.FccCategory == FccCategory.ResponsiveWebDesign);
         }
 
+        public IEnumerable<PPTag> GetTagsPerPersonalProject(int projectId)
+        {
+            return _context.PersonalProjectTags.Where(p => p.PersonalProjectId == projectId);
+        }
+
+        public PPTag GetPPTagsByPersonalProjectId(int projectId)
+        {
+            return _context.PersonalProjectTags.Find(projectId);
+        }
+
+        public PPTag AddTags(PPTag newPPTag)
+        {
+            _context.Add(newPPTag);
+            return newPPTag;
+        }
+
+        public PPTag UpdateTags(PPTag updatedPPTag)
+        {
+            var entity = _context.PersonalProjectTags.Attach(updatedPPTag);
+            entity.State = EntityState.Modified;
+            return updatedPPTag;
+        }
     }
 }

@@ -22,7 +22,10 @@ namespace Portfolio.Pages.CMS.Projects
         public IFormFile ProjectThumb { get; set; }
         [BindProperty]
         public PersonalProject PersonalProject { get; set; }
+        [BindProperty]
+        public PPTag PPTag { get; set; }
         public IEnumerable<SelectListItem> ProjectTags { get; set; }
+
         public string Heading { get; set; }
         public DateTime TodaysDate 
         {
@@ -44,11 +47,14 @@ namespace Portfolio.Pages.CMS.Projects
             if (projectId.HasValue)
             {
                 PersonalProject = _projectData.GetPersonalProjectById(projectId.Value);
+                PPTag = _projectData.GetPPTagsByPersonalProjectId(projectId.Value);
+                
             }
             else
             {
                 Heading = "Add";
                 PersonalProject = new PersonalProject();
+                PPTag = new PPTag();
             }
             if(PersonalProject == null)
             {
@@ -68,10 +74,12 @@ namespace Portfolio.Pages.CMS.Projects
             if(PersonalProject.Id > 0)
             {
                 _projectData.UpdatePersonalProject(PersonalProject);
+                _projectData.UpdateTags(PPTag);
             }
             else
             {
                 _projectData.AddPersonalProject(PersonalProject);
+                _projectData.AddTags(PPTag);
             }
 
             _projectData.Commit();

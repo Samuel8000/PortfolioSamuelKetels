@@ -7,6 +7,7 @@ namespace Portfolio.Core
 {
     public class PPTag
     {
+        public int Id { get; set; }
         [Display(Name = "Tag 1")]
         public ProjectTag Tag1 { get; set; }
         [Display(Name = "Tag 2")]

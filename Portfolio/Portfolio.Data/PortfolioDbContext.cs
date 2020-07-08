@@ -18,6 +18,7 @@ namespace Portfolio.Data
         public DbSet<EmailSetting> EmailSettings { get; set; }
         public DbSet<PersonalProject> Projects { get; set; }
         public DbSet<FreeCodeCampProject> FccProjects { get; set; }
+        public DbSet<PPTag> PersonalProjectTags { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>()
