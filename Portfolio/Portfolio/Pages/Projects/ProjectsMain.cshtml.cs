@@ -15,15 +15,16 @@ namespace Portfolio
         [BindProperty]
         public IEnumerable<PersonalProject> PersonalProjects { get; set; }
 
-        public ProjectTag ProjectTags { get; set; }
-
         public ProjectsMainModel(IProjectData projectData)
         {
             _projectData = projectData;
+
         }
         public void OnGet()
         {
             PersonalProjects = _projectData.GetAllPersonalProjects();
+
+
         }
     }
 }

@@ -30,21 +30,38 @@
 
                 </div>
                 <div class="d-flex justify-content-end">
-                    @foreach (var tag in @Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetValues(Portfolio.Core.ProjectTag.PickOne))
+                    @foreach (var tag in @Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetValues(Portfolio.Core.ProjectTag.CSharp))
                     {
-                        if (tag == perproject.Tag1 || tag == perproject.Tag2)
+                        if (tag == perproject.Tag1) /*|| tag == perproject.Tag2 || tag == perproject.Tag3 || tag == perproject.Tag4 || tag == perproject.Tag5)*/
                         {
                             var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
                             <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
                         }
 
+                        if (tag == perproject.Tag2) /*|| tag == perproject.Tag2 || tag == perproject.Tag3 || tag == perproject.Tag4 || tag == perproject.Tag5)*/
+                        {
+                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
+                            <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
+                        }
+
+                        if (tag == perproject.Tag3) /*|| tag == perproject.Tag2 || tag == perproject.Tag3 || tag == perproject.Tag4 || tag == perproject.Tag5)*/
+                        {
+                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
+                            <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
+                        }
+
+                        else if (perproject.Tag5 == Portfolio.Core.ProjectTag.PickOne)
+                        {
+                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
+                            <div class="badge badge-info p-2 mr-2 mb-2 d-none">@Html.DisplayFor(e => desc)</div>
+                        }
 
                     }
                     @*<div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag1</div>
-                    <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag2</div>*@
-                    <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag3</div>
-                    <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag4</div>
-                    <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag5</div>
+        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag2</div>*@
+                    @*<div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag3</div>
+        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag4</div>
+        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag5</div>*@
                 </div>
                 }
             </div>
