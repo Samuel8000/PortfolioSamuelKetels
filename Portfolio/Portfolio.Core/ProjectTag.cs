@@ -19,6 +19,8 @@ namespace Portfolio.Core
         [Display(Name ="ASP.NET")]
         AspNet,
         [Display(Name =".NET Core")]
-        NetCore
+        NetCore,
+        [Display(Name = "Sass")]
+        Sass
     }
 }

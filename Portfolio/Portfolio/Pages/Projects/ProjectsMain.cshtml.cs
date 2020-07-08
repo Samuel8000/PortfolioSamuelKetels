@@ -15,6 +15,8 @@ namespace Portfolio
         [BindProperty]
         public IEnumerable<PersonalProject> PersonalProjects { get; set; }
 
+        public IEnumerable<PPTag> Tags { get; set; }
+
         public ProjectsMainModel(IProjectData projectData)
         {
             _projectData = projectData;

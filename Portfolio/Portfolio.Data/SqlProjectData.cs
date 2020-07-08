@@ -75,5 +75,12 @@ namespace Portfolio.Data
             entity.State = EntityState.Modified;
             return updatedPPTag;
         }
+
+        public IEnumerable<PPTag> GetAllTagsWithProject(int projectId)
+        {
+            return _context.PersonalProjectTags
+                .Include(p => p.PersonalProject)
+                .Where(p => p.PersonalProjectId == projectId);
+        }
     }
 }
