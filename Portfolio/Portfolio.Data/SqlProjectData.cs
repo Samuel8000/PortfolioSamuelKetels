@@ -17,7 +17,7 @@ namespace Portfolio.Data
 
         public PersonalProject AddPersonalProject(PersonalProject newProject)
         {
-            _context.Add(newProject);
+            _context.Projects.Add(newProject);
             return newProject;
         }
 
@@ -60,12 +60,12 @@ namespace Portfolio.Data
 
         public PPTag GetPPTagsByPersonalProjectId(int projectId)
         {
-            return _context.PersonalProjectTags.Find(projectId);
+            return _context.PersonalProjectTags.FirstOrDefault(t => t.PersonalProjectId == projectId);
         }
 
         public PPTag AddTags(PPTag newPPTag)
         {
-            _context.Add(newPPTag);
+            _context.PersonalProjectTags.Add(newPPTag);
             return newPPTag;
         }
 
@@ -76,11 +76,15 @@ namespace Portfolio.Data
             return updatedPPTag;
         }
 
-        public IEnumerable<PPTag> GetAllTagsWithProject(int projectId)
+        public IEnumerable<PPTag> GetAllTagsWithProject()
         {
             return _context.PersonalProjectTags
-                .Include(p => p.PersonalProject)
-                .Where(p => p.PersonalProjectId == projectId);
+                .Include(p => p.PersonalProject);
+        }
+
+        public IEnumerable<PPTag> GetPPTags()
+        {
+            return _context.PersonalProjectTags;
         }
     }
 }

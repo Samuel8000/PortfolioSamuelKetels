@@ -14,7 +14,6 @@ namespace Portfolio
         private readonly IProjectData _projectData;
         [BindProperty]
         public IEnumerable<PersonalProject> PersonalProjects { get; set; }
-
         public IEnumerable<PPTag> Tags { get; set; }
 
         public ProjectsMainModel(IProjectData projectData)
@@ -25,7 +24,7 @@ namespace Portfolio
         public void OnGet()
         {
             PersonalProjects = _projectData.GetAllPersonalProjects();
-
+            Tags = _projectData.GetAllTagsWithProject();
 
         }
     }

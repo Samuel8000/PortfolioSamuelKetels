@@ -21,7 +21,9 @@ namespace Portfolio.Data
 
         PersonalProject AddPersonalProject(PersonalProject newProject);
 
-        IEnumerable<PPTag> GetAllTagsWithProject(int projectId);
+        IEnumerable<PPTag> GetAllTagsWithProject();
+
+        IEnumerable<PPTag> GetPPTags();
         PPTag AddTags(PPTag newPPTag);
         PPTag UpdateTags(PPTag updatedPPTag);
 

@@ -9,9 +9,9 @@
             <h1 class="text-center title pt-0">@Model.Heading Project</h1>
         </div>
         <form method="post" enctype="multipart/form-data">
-            <input type="hidden" asp-for="PersonalProject.Id" />
+            <input type="hidden" asp-for="PersonalProject.Id"/>
             <input type="hidden" asp-for="PPTag.PersonalProjectId"/>
-           *<input type="hidden" asp-for="PPTag.Id"/>
+            <input type="hidden" asp-for="PPTag.Id"/>
             <input type="hidden" asp-for="PersonalProject.ProjectThumb" />
 
             <div class="form-group">
@@ -38,13 +38,12 @@
             <div class="form-group">
                 <label asp-for="PersonalProject.CodeLink"></label>
                 <input asp-for="PersonalProject.CodeLink" class="form-control"/>
-            </div>  
+            </div> 
+            
             <div class="row d-flex justify-content-between">
                 <div class="form-group col-2">
                     <label asp-for="PPTag.Tag1"></label>
                     <select asp-for="PPTag.Tag1" asp-items="Model.ProjectTags" class="form-control"></select>
-                    @*<label asp-for="PersonalProject.Tag1"></label>
-        <select asp-for="PersonalProject.Tag1" asp-items="Model.ProjectTags" class="form-control"></select>*@
                 </div>
                 <div class="form-group col-2">
                     <label asp-for="PPTag.Tag2"></label>

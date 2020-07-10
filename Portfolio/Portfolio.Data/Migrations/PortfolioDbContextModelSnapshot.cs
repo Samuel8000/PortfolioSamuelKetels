@@ -216,21 +216,6 @@ namespace Portfolio.Data.Migrations
                     b.Property<string>("ProjectThumb")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Tag1")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tag2")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tag3")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tag4")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tag5")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Projects");

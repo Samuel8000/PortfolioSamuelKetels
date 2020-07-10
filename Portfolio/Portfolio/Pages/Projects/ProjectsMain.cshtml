@@ -10,64 +10,65 @@
         </div>
         <div>
             <h2 class="subtitleh2 pt-0">Personal Projects</h2>
-            <div class="border border-dark">
-                @foreach (var perproject in Model.PersonalProjects)
+
+            @foreach (var tag in Model.Tags)
+            {
+        <div class="border border-dark mb-3">
+            <div class="d-flex">
+                <div class="p-3 projectthumb">
+                    <img class="img-fluid" src="~/images/@tag.PersonalProject.ProjectThumb" />
+                </div>
+                <div class="d-flex flex-column p-3">
+                    <div>
+                        <h4>@tag.PersonalProject.ProjectName</h4>
+                    </div>
+                    <p>@tag.PersonalProject.ProjectDescription</p>
+                    <div class="d-flex justify-content-end align-content-end">
+                        <a href="@tag.PersonalProject..CodeLink"><i class="fab fa-github"></i>View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                @foreach (var label in @Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetValues(Portfolio.Core.ProjectTag.CSharp))
+
                 {
-                <div class="d-flex">
-                    <div class="p-3 projectthumb">
-                        <img class="img-fluid" src="~/images/@perproject.ProjectThumb" />
-                    </div>
-                    <div class="d-flex flex-column p-3">
-                        <div>
-                            <h4>@perproject.ProjectName</h4>
-                        </div>
-                        <p>@perproject.ProjectDescription</p>
-                        <div class="d-flex justify-content-end align-content-end">
-                            <a href="@perproject.CodeLink"><i class="fab fa-github"></i>View on GitHub</a>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="d-flex justify-content-end">
-
-                    @foreach (var tag in @Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetValues(Portfolio.Core.ProjectTag.CSharp))
+                    if (label == tag.Tag1 && label != Core.ProjectTag.PickOne)
                     {
-                        if (tag == perproject.Tag1) /*|| tag == perproject.Tag2 || tag == perproject.Tag3 || tag == perproject.Tag4 || tag == perproject.Tag5)*/
-                        {
-                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
-                            <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
-                        }
-
-                        if (tag == perproject.Tag2) /*|| tag == perproject.Tag2 || tag == perproject.Tag3 || tag == perproject.Tag4 || tag == perproject.Tag5)*/
-                        {
-                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
-                            <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
-                        }
-
-                        if (tag == perproject.Tag3) /*|| tag == perproject.Tag2 || tag == perproject.Tag3 || tag == perproject.Tag4 || tag == perproject.Tag5)*/
-                        {
-                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
-                            <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
-                        }
-
-                        else if (perproject.Tag5 == Portfolio.Core.ProjectTag.PickOne)
-                        {
-                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(tag);
-                            <div class="badge badge-info p-2 mr-2 mb-2 d-none">@Html.DisplayFor(e => desc)</div>
-                        }
-
+                        var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(label);
+                        <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
                     }
-                    @*<div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag1</div>
-        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag2</div>*@
-                    @*<div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag3</div>
-        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag4</div>
-        <div class="badge badge-info p-2 mr-2 mb-2">@perproject.Tag5</div>*@
-                </div>
+                    if (label == tag.Tag2 && label != Core.ProjectTag.PickOne)
+                    {
+                        var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(label);
+                        <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
+                    }
+                    if (label == tag.Tag3 && label != Core.ProjectTag.PickOne)
+                    {
+                        var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(label);
+                        <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
+                    }
+                    if (label == tag.Tag4 && label != Core.ProjectTag.PickOne)
+                    {
+                        var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(label);
+                        <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
+                    }
+                    if (label == tag.Tag5 && label != Core.ProjectTag.PickOne)
+                    {
+                        var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ProjectTag>.GetDisplayValue(label);
+                        <div class="badge badge-info p-2 mr-2 mb-2">@Html.DisplayFor(e => desc)</div>
+                    }
+
                 }
             </div>
         </div>
-            <h2 class="subtitleh2 pt-0">FreeCodeCamp Projects</h2>
-            <h3 class="subtitleh3">Responsive Web Design</h3>
+                    }
 
-        </div>
+
+
+
+
+                <h2 class="subtitleh2 pt-0">FreeCodeCamp Projects</h2>
+                <h3 class="subtitleh3">Responsive Web Design</h3>
+            </div>
+            </div>

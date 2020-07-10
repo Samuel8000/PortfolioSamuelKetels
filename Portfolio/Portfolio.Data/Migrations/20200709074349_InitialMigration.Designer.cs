@@ -10,8 +10,8 @@ using Portfolio.Data;
 namespace Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioDbContext))]
-    [Migration("20200705072320_ChangedProjectClassName")]
-    partial class ChangedProjectClassName
+    [Migration("20200709074349_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -133,24 +133,45 @@ namespace Portfolio.Data.Migrations
                     b.ToTable("EmailSettings");
                 });
 
-            modelBuilder.Entity("Portfolio.Core.PersonalProject", b =>
+            modelBuilder.Entity("Portfolio.Core.FreeCodeCampProject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateCompleted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ProjectDescription")
+                    b.Property<string>("CodeLink")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProjectName")
+                    b.Property<int>("FccCategory")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FccProjectDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProjectThumb")
+                    b.Property<string>("FccProjectLink")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FccProjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FccProjectThumb")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FccProjects");
+                });
+
+            modelBuilder.Entity("Portfolio.Core.PPTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PersonalProjectId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Tag1")
                         .HasColumnType("int");
@@ -166,6 +187,36 @@ namespace Portfolio.Data.Migrations
 
                     b.Property<int>("Tag5")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonalProjectId");
+
+                    b.ToTable("PersonalProjectTags");
+                });
+
+            modelBuilder.Entity("Portfolio.Core.PersonalProject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CodeLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCompleted")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProjectDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProjectName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProjectThumb")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -236,6 +287,15 @@ namespace Portfolio.Data.Migrations
                     b.HasOne("Portfolio.Core.Skill", "Skill")
                         .WithMany()
                         .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Portfolio.Core.PPTag", b =>
+                {
+                    b.HasOne("Portfolio.Core.PersonalProject", "PersonalProject")
+                        .WithMany()
+                        .HasForeignKey("PersonalProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

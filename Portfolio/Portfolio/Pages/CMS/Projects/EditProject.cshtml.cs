@@ -25,7 +25,6 @@ namespace Portfolio.Pages.CMS.Projects
         [BindProperty]
         public PPTag PPTag { get; set; }
         public IEnumerable<SelectListItem> ProjectTags { get; set; }
-
         public string Heading { get; set; }
         public DateTime TodaysDate 
         {
@@ -46,6 +45,7 @@ namespace Portfolio.Pages.CMS.Projects
             ProjectTags = _htmlHelper.GetEnumSelectList<ProjectTag>();
             if (projectId.HasValue)
             {
+                Heading = "Edit";
                 PersonalProject = _projectData.GetPersonalProjectById(projectId.Value);
                 PPTag = _projectData.GetPPTagsByPersonalProjectId(projectId.Value);
                 
@@ -74,12 +74,17 @@ namespace Portfolio.Pages.CMS.Projects
             if(PersonalProject.Id > 0)
             {
                 _projectData.UpdatePersonalProject(PersonalProject);
+                _projectData.Commit();
+                PPTag.PersonalProjectId = PersonalProject.Id;
                 _projectData.UpdateTags(PPTag);
             }
             else
             {
                 _projectData.AddPersonalProject(PersonalProject);
+                _projectData.Commit();
+                PPTag.PersonalProjectId = PersonalProject.Id;
                 _projectData.AddTags(PPTag);
+
             }
 
             _projectData.Commit();

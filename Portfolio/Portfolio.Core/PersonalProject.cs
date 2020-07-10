@@ -19,15 +19,6 @@ namespace Portfolio.Core
         public DateTime DateCompleted { get; set; }
         [Display(Name = "GitHub URL")]
         public string CodeLink { get; set; }
-        [Display(Name = "Tag 1")]
-        public ProjectTag Tag1 { get; set; }
-        [Display(Name = "Tag 2")]
-        public ProjectTag Tag2 { get; set; }
-        [Display(Name = "Tag 3")]
-        public ProjectTag Tag3 { get; set; }
-        [Display(Name = "Tag 4")]
-        public ProjectTag Tag4 { get; set; }
-        [Display(Name = "Tag 5")]
-        public ProjectTag Tag5 { get; set; }
+
     }
 }
