@@ -13,6 +13,9 @@
 .custom-table {
   font-size: 14px; }
 
+.bg-th {
+  background: #00BFA5; }
+
 .form-container {
   min-width: 68.5em;
   min-height: 34.25em;
@@ -310,8 +313,14 @@
 .w10 {
   width: 10%; }
 
+.w20 {
+  width: 20%; }
+
 .w80 {
   width: 80%; }
+
+.w70 {
+  width: 70%; }
 
 .projectthumb {
   width: 192px;

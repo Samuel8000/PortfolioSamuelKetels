@@ -11,12 +11,23 @@
             <h2 class="subtitleh2 pt-0">Personal Projects</h2>
         </div>
         <table class="table">
+
+                <tr class="bg-th">
+                    <th>Project Name</th>
+                    <th class="text-center">Completion Date</th>
+                    <th class="text-center">Edit</th>
+                </tr>
+
             @foreach (var project in Model.PersonalProjects)
             {
                 <tr>
-                    <td class="w80">@project.ProjectName</td>
-                    <td class="w10">@project.DateCompleted</td>
-                    <td class="w10"><a asp-page="./EditProject" asp-route-projectId="@project.Id"><i class="far fa-edit fa-sm"></i></a></td>
+                    <td class="w70">@project.ProjectName</td>
+                    
+                    <td class="w20 text-center">
+                         @project.DateCompleted.ToShortDateString()
+                        
+                    </td>
+                    <td class="w10 text-center"><a asp-page="./EditProject" asp-route-projectId="@project.Id"><i class="far fa-edit fa-sm"></i></a></td>
                 </tr>
             }
 
