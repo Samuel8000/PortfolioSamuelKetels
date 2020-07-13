@@ -1,27 +1,48 @@
 ﻿@page
 @model Portfolio.MainMenuModel
 @{
-    ViewData["Title"] = "MainMenu";
+    ViewData["Title"] = "CMS";
 }
 
     <div class="container mt-3">
         <div class="title-container">
             <h1 class="text-center title pt-0">Content Management System</h1>
         </div>
-
-        <div class="box">
-            <a asp-page="./Skills/SkillList">Skills</a>
-        </div>
-        <div class="box">
-            <a asp-page="./Certificates/CertificateList">Certificates</a>
-        </div>
-        <div class="box">
-            <a asp-page="./Contacts/ContactList">Contacts</a>
-        </div>
-        @*<div class="box">
-            <a asp-page="./Settings/Email/EmailAccountsList">Setup Email</a>
-        </div>*@
-        <div class="box">
-            <a asp-page="./Projects/ProjectsList">Projects</a>
+        <div class="row">
+            <div class="box">
+                <a asp-page="./Skills/SkillList"><i class="fas fa-code"></i>
+                <br />Skills</a>
+            </div>
+            <div class="box">
+                <a asp-page="./Certificates/CertificateList"><i class="fas fa-award"></i>
+                <br />Certificates</a>
+            </div>
+            <div class="box">
+                <a asp-page="./Contacts/ContactList"><i class="far fa-address-book"></i>
+                <br />Contacts</a>
+            </div>
+            <div class="box">
+                <a asp-page="./Projects/ProjectsList"><i class="fas fa-project-diagram"></i>
+                <br />Projects</a>
+            </div>
         </div>
     </div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            $(".box").each(function () {
+                $(this).addClass("col-2 d-flex justify-content-center align-items-center text-uppercase");
+            });
+            $(".row").each(function () {
+                $(this).addClass("d-flex justify-content-between");
+            });
+            $("a").each(function () {
+                $(this).addClass("text-center icon-color");
+            });
+            $(".fas, .far").each(function () {
+                $(this).addClass("fa-4x mb-2 p-2");
+            });
+        });
+    </script>
+}

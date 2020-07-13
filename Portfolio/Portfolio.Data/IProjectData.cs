@@ -7,7 +7,7 @@ namespace Portfolio.Data
     public interface IProjectData
     {
         IEnumerable<PersonalProject> GetAllPersonalProjects();
-        IEnumerable<FreeCodeCampProject> GetFreeCodeCampRWDProjects();
+        IEnumerable<FreeCodeCampProject> GetFreeCodeCampProjects(FccCategory fccCategory);
 
         IEnumerable<PPTag> GetTagsPerPersonalProject(int projectId);
 
@@ -16,6 +16,10 @@ namespace Portfolio.Data
         PersonalProject GetPersonalProjectById(int projectId);
 
         FreeCodeCampProject GetFreeCodeCampProjectById(int fccProjectId);
+
+        FreeCodeCampProject AddFccProject(FreeCodeCampProject newProject);
+
+        FreeCodeCampProject UpdateFccProject(FreeCodeCampProject updatedProject);
 
         PersonalProject UpdatePersonalProject(PersonalProject updatedProject);
 

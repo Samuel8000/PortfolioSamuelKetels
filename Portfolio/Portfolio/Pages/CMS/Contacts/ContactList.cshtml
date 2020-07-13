@@ -1,58 +1,88 @@
 ﻿@page
 @model Portfolio.Pages.CMS.Contacts.ContactListModel
 @{
-    ViewData["Title"] = "ContactList";
+    ViewData["Title"] = "CMS - Contact List";
 }
 
+    <div class="container">
+        <div class="title-container mt-3 mb-0">
+            <h1 class="title text-center pt-0">Contact List</h1>
+        </div>
 
-<h1>ContactList</h1>
+        <table class="table custom-table">
 
+            <tr class="bg-th">
+                <th>Contact Date</th>
+                <th>Name</th>
+                <th>Email Address</th>
+                <th>Reason</th>
+                <th>Profile</th>
+                <th>Reply</th>
+            </tr>
 
-<table class="table custom-table">
+            @foreach (var contact in Model.Contacts)
+            {
+                <tr>
+                    <td class="table-column-width-md">@contact.DateContacted.ToShortDateString()</td>
+                    <td class="table-column-width-lg">@contact.ContactFirstName @contact.ContactLastName</td>
+                    <td class="table-column-width-md">@contact.ContactEmailAddress</td>
 
-    @foreach (var contact in Model.Contacts)
-    {
-    <tr>
-        <td class="table-column-width-lg">@contact.ContactFirstName @contact.ContactLastName</td>
-        <td class="table-column-width-lg">@contact.ContactEmailAddress</td>
-        <td class="table-column-width-md">@contact.ContactOption</td>
-        <td class="table-column-width-md">@contact.ContactType</td>
-        <td class="table-column-width-sm"><a 
-                                             data-email="@contact.ContactEmailAddress" 
-                                             data-lastname="@contact.ContactLastName"
-                                             data-toggle="modal" data-target="#replyModal" class="openReplyModal"><i class="fas fa-reply fa-sm"></i></a></td>
-    </tr>
-    }
-</table>
+                    @foreach (var option in @Portfolio.Utility.EnumHelper<Portfolio.Core.ContactOption>.GetValues(Portfolio.Core.ContactOption.AccessToCMS))
+                    {
+                        if (option == contact.ContactOption)
+                        {
+                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ContactOption>.GetDisplayValue(option);
+                            <td class="table-column-width-lg">@Html.DisplayFor(c => desc)</td>
+                        }
+                    }
 
-<div class="modal" tabindex="-1" role="dialog" id="replyModal">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Reply</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post">
-                    <input type="hidden" asp-for="@Model.Contact.Id" />>
-                    <div class="form-group">
-                        <label>To</label>
-                        <input asp-for="@Model.Contact.ContactEmailAddress" id="contactEmail" class="form-control"/>
+                    @foreach (var option in @Portfolio.Utility.EnumHelper<Portfolio.Core.ContactType>.GetValues(Portfolio.Core.ContactType.Employer))
+                    {
+                        if (option == contact.ContactType)
+                        {
+                            var desc = Portfolio.Utility.EnumHelper<Portfolio.Core.ContactType>.GetDisplayValue(option);
+                            <td class="table-column-width-md">@Html.DisplayFor(c => desc)</td>
+                        }
+                    }
+                    <td class="table-column-width-sm text-center icon-color">
+                        <a data-email="@contact.ContactEmailAddress"
+                           data-lastname="@contact.ContactLastName"
+                           data-toggle="modal" data-target="#replyModal" class="openReplyModal"><i class="fas fa-reply fa-sm"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+        <div class="modal" tabindex="-1" role="dialog" id="replyModal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <input  class="form-control" />
+                    <div class="modal-body">
+                        <form method="post">
+                            <input type="hidden" asp-for="@Model.Contact.Id" />
+                            <div class="form-group">
+                                <label>To</label>
+                                <input asp-for="@Model.Contact.ContactEmailAddress" id="contactEmail" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input class="form-control" />
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Send</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+
 
 @section Scripts {
     <script>

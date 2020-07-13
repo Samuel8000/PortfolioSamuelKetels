@@ -24,7 +24,7 @@ namespace Portfolio.Pages.CMS.Projects
         public void OnGet()
         {
             PersonalProjects = _projectData.GetAllPersonalProjects();
-            FccRWDProjects = _projectData.GetFreeCodeCampRWDProjects();
+            FccRWDProjects = _projectData.GetFreeCodeCampProjects(FccCategory.ResponsiveWebDesign);
                 
         }
     }

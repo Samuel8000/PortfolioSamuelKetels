@@ -1,30 +1,34 @@
 ﻿@page
 @model Portfolio.Pages.CMS.Certificates.CertificateListModel
 @{
-    ViewData["Title"] = "CertificateList";
+    ViewData["Title"] = "CMS - Certificate List";
 }
 
-@if (Model.Message != null)
-{
-    <div class="alert alert-success" id="alert">@Model.Message</div>
-}
+    <div class="container">
 
-<h1>Certificate List</h1>
-
-@foreach(var group in Model.Certificates.GroupBy(lang => lang.Skill.SkillName))
-{
-    <table class="table">
-        @group.Key
-        @foreach (var certificate in group)
+        @if (Model.Message != null)
         {
-        <tr>
-            <td style="width:80%;">@certificate.CertificateName</td>
-            <td class="align-middle"><a asp-page="./EditCertificate" asp-route-certificateId="@certificate.Id"><i class="far fa-edit fa-sm"></i></a></td>
-        </tr>
+            <div class="alert alert-success" id="alert">@Model.Message</div>
         }
-        
-    </table>
-}
 
-<a class="btn btn-primary" asp-page="./EditCertificate">Add</a>
+        <div class="title-container mt-3">
+            <h1 class="title text-center pt-0">Certificate List</h1>
+        </div>
+        <div class="d-flex justify-content-end">
+            <a class="icon-color mb-2 mt-1" asp-page="./EditCertificate"><i class="far fa-plus-square fa-2x"></i></a>
+        </div>
+        @foreach (var group in Model.Certificates.GroupBy(lang => lang.Skill.SkillName))
+        {
+            <table class="table">
+                <h2 class="subtitleh3 bg-th p-2 mb-0">@group.Key</h2>
+                @foreach (var certificate in group)
+                {
+                    <tr>
+                        <td class="w80">@certificate.CertificateName</td>
+                        <td class="w20 text-center"><a class="icon-color" asp-page="./EditCertificate" asp-route-certificateId="@certificate.Id"><i class="far fa-edit fa-sm"></i></a></td>
+                    </tr>
+                }
 
+            </table>
+        }
+    </div>

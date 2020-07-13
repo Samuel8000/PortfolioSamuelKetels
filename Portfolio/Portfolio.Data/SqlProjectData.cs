@@ -43,16 +43,35 @@ namespace Portfolio.Data
             return updatedProject;
         }
 
+
+        #region FCC
         public FreeCodeCampProject GetFreeCodeCampProjectById(int fccProjectId)
         {
             return _context.FccProjects.Find(fccProjectId);
         }
 
-        public IEnumerable<FreeCodeCampProject> GetFreeCodeCampRWDProjects()
+        public IEnumerable<FreeCodeCampProject> GetFreeCodeCampProjects(FccCategory fccCategory)
         {
-            return _context.FccProjects.Where(f => f.FccCategory == FccCategory.ResponsiveWebDesign);
+            return _context.FccProjects.Where(f => f.FccCategory == fccCategory);
         }
 
+        public FreeCodeCampProject AddFccProject(FreeCodeCampProject newProject)
+        {
+            _context.FccProjects.Add(newProject);
+            return newProject;
+        }
+
+        public FreeCodeCampProject UpdateFccProject(FreeCodeCampProject updatedProject)
+        {
+            var entity = _context.FccProjects.Attach(updatedProject);
+            entity.State = EntityState.Modified;
+            return updatedProject;
+        }
+
+        #endregion
+
+
+        #region Tags
         public IEnumerable<PPTag> GetTagsPerPersonalProject(int projectId)
         {
             return _context.PersonalProjectTags.Where(p => p.PersonalProjectId == projectId);
@@ -86,5 +105,7 @@ namespace Portfolio.Data
         {
             return _context.PersonalProjectTags;
         }
+
+        #endregion
     }
 }

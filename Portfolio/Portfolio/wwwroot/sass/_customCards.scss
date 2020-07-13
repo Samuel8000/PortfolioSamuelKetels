@@ -46,3 +46,13 @@
         }
     }
 }
+
+.box {
+    position: relative;
+    width: 8.5em;
+    height: 8.5em;
+    margin: .5em;
+    border-radius: 1.5em;
+    box-shadow: -15px -15px 15px rgba(255,255,255,0.5),
+                15px 15px 15px rgba(0,0,0,0.05);
+}

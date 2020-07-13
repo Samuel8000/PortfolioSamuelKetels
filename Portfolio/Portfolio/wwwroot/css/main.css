@@ -14,7 +14,9 @@
   font-size: 14px; }
 
 .bg-th {
-  background: #00BFA5; }
+  background: #2F4858;
+  color: white;
+  font-weight: 400; }
 
 .form-container {
   min-width: 68.5em;
@@ -151,6 +153,14 @@
       .cc-container .cc-card .cc-img img {
         margin: 0 auto;
         width: 50%; }
+
+.box {
+  position: relative;
+  width: 8.5em;
+  height: 8.5em;
+  margin: .5em;
+  border-radius: 1.5em;
+  box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.5), 15px 15px 15px rgba(0, 0, 0, 0.05); }
 
 .nav-logo {
   width: 135px;
@@ -293,6 +303,10 @@
 
 .icon-color {
   color: #2F4858; }
+  .icon-color:hover {
+    color: #e3902b;
+    text-decoration: none;
+    cursor: pointer; }
 
 .btn-style {
   width: 9em;
@@ -316,11 +330,14 @@
 .w20 {
   width: 20%; }
 
+.w70 {
+  width: 70%; }
+
 .w80 {
   width: 80%; }
 
-.w70 {
-  width: 70%; }
+.w90 {
+  width: 90%; }
 
 .projectthumb {
   width: 192px;

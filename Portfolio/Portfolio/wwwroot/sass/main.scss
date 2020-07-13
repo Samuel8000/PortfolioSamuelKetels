@@ -20,9 +20,18 @@
     padding-left: 0;
 }
 
-.icon-color {
-    color: $icon-color;
-}
+
+    .icon-color {
+        color: $icon-color;
+
+        &:hover {
+            color: $main-orange;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+
+
 
 .btn-style {
     @include custom-btn(9em, $main-orange, white, #BA6E00);
@@ -44,14 +53,19 @@
     width: 20%;
 }
 
-.w80{
-    width: 80%;
-}
+
 
 .w70 {
     width: 70%;
 }
 
+.w80 {
+    width: 80%;
+}
+
+.w90{
+    width: 90%;
+}
 .projectthumb {
     width:192px;
     height: 108px;
