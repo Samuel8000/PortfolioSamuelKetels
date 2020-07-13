@@ -20,7 +20,9 @@
         @foreach (var group in Model.Certificates.GroupBy(lang => lang.Skill.SkillName))
         {
             <table class="table">
-                <h2 class="subtitleh3 bg-th p-2 mb-0">@group.Key</h2>
+
+                    <h2 class="subtitleh3 bg-th p-2 mb-0">@group.Key</h2>
+
                 @foreach (var certificate in group)
                 {
                     <tr>

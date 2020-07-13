@@ -21,16 +21,18 @@
 }
 
 
-    .icon-color {
+.icon-color {
         color: $icon-color;
 
         &:hover {
             color: $main-orange;
-            text-decoration: none;
-            cursor: pointer;
+            text-decoration: none;            
         }
     }
 
+.no-pointer{
+    cursor: default;
+}
 
 
 .btn-style {

@@ -305,8 +305,10 @@
   color: #2F4858; }
   .icon-color:hover {
     color: #e3902b;
-    text-decoration: none;
-    cursor: pointer; }
+    text-decoration: none; }
+
+.no-pointer {
+  cursor: default; }
 
 .btn-style {
   width: 9em;
