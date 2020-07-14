@@ -298,6 +298,9 @@
 .detail-img {
   width: 150px; }
 
+.skill-img {
+  width: 25em; }
+
 * {
   margin: 0;
   padding: 0;

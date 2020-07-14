@@ -12,33 +12,52 @@
     <div class="title-container">
         <h1 class="text-center title pt-0">@Model.Skill.SkillName Details</h1>
     </div>
+    <h2 class="subtitleh2">Summary</h2>
     <div class="d-flex flex-row">
-        <img class="img-fluid p-3 detail-img" src="~/images/@Model.Skill.LogoFilePath" />
         <p class="p-3">@Model.Skill.SkillDescription</p>
     </div>
-    <h2 class="subtitleh2">PluralSight</h2>
+    <hr />
     <div class="d-flex flex-row">
-        <div>
-            <img src="~/images/@Model.Skill.PsChartFilePath" />
-            <p>@Model.Skill.PsDescription</p>
+        <div class="w-50">
+            <h2 class="subtitleh2">PluralSight</h2>
         </div>
-        <div class="d-flex flex-row">
-            <p>@Model.Skill.PsSkillIqScore / 300</p>
-            <p>@Model.Skill.PsSkillLevel</p>
-        </div>
+        <div class="d-flex pr-3 pl-3 w-50">
 
+            <div class="d-flex w-50 justify-content-center align-content-center pt-2">
+                <p class="subtitleh3">Score: @Model.Skill.PsSkillIqScore / 300</p>
+            </div>
+            <div class="d-flex w-50 justify-content-center pt-2">
+                <p class="subtitleh3">Skill Level: @Model.Skill.PsSkillLevel</p>
+            </div>
+
+        </div>
     </div>
-    <h3>Certificates</h3>
-    @foreach (var certificates in Model.Certificates)
-    {
-        <table class="table">
-            <tr>
-                <td>@certificates.CertificateName</td>
-                <td><a asp-page="/Certificates/CertificateDetail" asp-route-certificateId="@certificates.Id"><i class="fas fa-info-circle fa-sm"></i></a></td>
-                <td><a asp-page="/Certificates/Certificate" asp-route-certificateId="@certificates.Id" target="_blank"><i class="fas fa-award fa-sm"></i></a></td>
-            </tr>
-        </table>
-    }
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-row">
+            <img class="img-fluid p-3 skill-img" src="~/images/@Model.Skill.PsChartFilePath" />
+            <p class="p-3">@Model.Skill.PsDescription</p>
+        </div>
+    </div>
+    <hr />
+    <h3 class="subtitleh2">Certificates</h3>
+    <table class="table">
+        <tr class="bg-th">
+            <th>Certificate</th>
+            <th class="text-center">Details</th>
+            <th class="text-center">Certificate</th>
+        </tr>
+        @foreach (var certificates in Model.Certificates)
+        {
 
-    <a class="btn btn-outline-primary" asp-page="./SkillsMain">Back To List</a>
-</div>
+            <tr>
+                <td class="w70">@certificates.CertificateName</td>
+                <td class="w10 text-center"><a class="icon-color" asp-page="/Certificates/CertificateDetail" asp-route-certificateId="@certificates.Id"><i class="fas fa-info-circle fa-sm"></i></a></td>
+                <td class="w20 text-center"><a class="icon-color" asp-page="/Certificates/Certificate" asp-route-certificateId="@certificates.Id" target="_blank"><i class="fas fa-award fa-sm"></i></a></td>
+            </tr>
+
+        }
+    </table>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-style mr-0" asp-page="./SkillsMain"><i class="fas fa-arrow-alt-circle-left fa-1x"></i> To List</a>
+    </div>
+    </div>
