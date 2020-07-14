@@ -1,9 +1,11 @@
 ﻿@import '_utils';
 @import '_tables';
 @import '_forms';
-@import '_customCards';
+/*@import '_customCards';*/
 @import '_navbar';
 @import '_home';
+@import '_threedCards';
+@import '_details';
 
 * {
     margin: 0;

@@ -8,16 +8,26 @@
 {
     <div class="alert alert-success" id="alert">@Model.Message</div>
 }
-<div class="container">
+<div class="container mt-3">
+    <div class="title-container">
+        <h1 class="text-center title pt-0">@Model.Skill.SkillName Details</h1>
+    </div>
+    <div class="d-flex flex-row">
+        <img class="img-fluid p-3 detail-img" src="~/images/@Model.Skill.LogoFilePath" />
+        <p class="p-3">@Model.Skill.SkillDescription</p>
+    </div>
+    <h2 class="subtitleh2">PluralSight</h2>
+    <div class="d-flex flex-row">
+        <div>
+            <img src="~/images/@Model.Skill.PsChartFilePath" />
+            <p>@Model.Skill.PsDescription</p>
+        </div>
+        <div class="d-flex flex-row">
+            <p>@Model.Skill.PsSkillIqScore / 300</p>
+            <p>@Model.Skill.PsSkillLevel</p>
+        </div>
 
-    <img src="~/images/@Model.Skill.LogoFilePath" />
-    <h1>@Model.Skill.SkillName Details</h1>
-    <p>@Model.Skill.SkillDescription</p>
-    <h2>PluralSight</h2>
-    <p>@Model.Skill.PsDescription</p>
-    <p>@Model.Skill.PsSkillIqScore / 300</p>
-    <p>@Model.Skill.PsSkillLevel</p>
-    <img src="~/images/@Model.Skill.PsChartFilePath" />
+    </div>
     <h3>Certificates</h3>
     @foreach (var certificates in Model.Certificates)
     {
