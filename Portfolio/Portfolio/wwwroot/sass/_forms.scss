@@ -129,16 +129,20 @@
             }
         }
     }
-
-    .btn-submit {
-        @include custom-btn(9em, #00BC75, whitesmoke, #008544);
-    }
 }
-
-
 
 .title-container {
     .title{
         @include title-border();
     }
+}
+
+.text-area {
+    width: 100%;
+    height: 15em;
+    resize: none;
+    color: #404040;
+    padding: 0.5em;
+    border: 1px solid #DCDCDC;
+    border-radius: 5px;
 }

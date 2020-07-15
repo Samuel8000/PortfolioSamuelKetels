@@ -8,18 +8,29 @@
         <div class="title-container">
             <h1 class="text-center title pt-0">About Me Updates</h1>
         </div>
+        <div class="d-flex justify-content-end">
+            <a class="w10 text-right mt-3 mb-3 icon-color" asp-page="./EditAboutMe"><i class="far fa-plus-square fa-2x"></i></a>
+        </div>
+
+
+        <table class="table">
+            <tr class="bg-th">
+                <th>Date Updated</th>
+                <th class="text-center">Live?</th>
+                <th class="text-center">Edit</th>
+            </tr>
+            @foreach (var info in Model.AboutMeList)
+            {
+                 <tr>
+                     <td class="w80">@info.DateUpdated.ToShortDateString()</td>
+                     <td class="w10 text-center"><input type="checkbox" asp-for="@info.Live"/></td>
+                     <td class="w10 text-center"><a class="icon-color" asp-page="./EditAboutMe" asp-route-infoId="@info.Id"><i class="far fa-edit fa-sm"></i></a></td>
+                 </tr>
+            }
+
+
+
+        </table>
+
     </div>
-
-    <table class="table">
-        <tr class="bg-th">
-            <th>Date Updated</th>
-            <th>Live?</th>
-        </tr>
-
-        
-
-        <tr>
-            <td></td>
-        </tr>
-    </table>
 

@@ -36,9 +36,12 @@
     cursor: default;
 }
 
-
 .btn-style {
     @include custom-btn(9em, $main-orange, white, #BA6E00);
+}
+
+.btn-submit {
+    @include custom-btn(9em, #00BC75, whitesmoke, #008544);
 }
 
 .subtitleh2 {
@@ -56,8 +59,6 @@
 .w20{
     width: 20%;
 }
-
-
 
 .w70 {
     width: 70%;

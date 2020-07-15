@@ -19,7 +19,7 @@ namespace Portfolio.Data
         public DbSet<PersonalProject> Projects { get; set; }
         public DbSet<FreeCodeCampProject> FccProjects { get; set; }
         public DbSet<PPTag> PersonalProjectTags { get; set; }
-        public DbSet<AboutMe> AboutMe { get; set; }
+        public DbSet<AboutMeInfo> AboutMe { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>()

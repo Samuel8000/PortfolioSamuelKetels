@@ -39,7 +39,7 @@ namespace Portfolio
             services.AddScoped<ICertificateData, SqlCertificateData>();
             services.AddScoped<IContactData, SqlContactData>();
             services.AddScoped<IProjectData, SqlProjectData>();
-            services.AddScoped<IAboutMe, SqlAboutMe>();
+            services.AddScoped<IAboutMeData, SqlAboutMe>();
 
             //Utilities
 

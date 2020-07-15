@@ -1,8 +1,41 @@
-﻿@page
+﻿@page "{infoId:int?}"
 @model Portfolio.Pages.CMS.AboutMe.EditAboutMeModel
 @{
     ViewData["Title"] = "EditAboutMe";
 }
 
-<h1>EditAboutMe</h1>
+
+    <div class="container mt-3">
+        <div class="title-container">
+            <h1 class="text-center title pt-0">Edit About Me Information</h1>
+        </div>
+
+
+        <form method="post">
+            <input type="hidden" asp-for="AboutMeInfo.Id" />
+
+            <div class="form-group">
+                <label asp-for="AboutMeInfo.PersonalInfo"></label>
+                <textarea asp-for="AboutMeInfo.PersonalInfo" class="text-area"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AboutMeInfo.DevelopmentInfo"></label>
+                <textarea asp-for="AboutMeInfo.DevelopmentInfo" class="text-area"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AboutMeInfo.DateUpdated"></label>
+                <input asp-for="AboutMeInfo.DateUpdated" type="date" asp-format="{0:dd-MM-yyyy}" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="form-check-label" asp-for="AboutMeInfo.Live"></label>
+                <input type="checkbox" asp-for="AboutMeInfo.Live" class="ml-5 form-check-input" />
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="submit" class="btn btn-submit" value="Save" />
+            </div>
+        </form>
+    </div>
 
