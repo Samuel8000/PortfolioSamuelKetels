@@ -8,71 +8,29 @@
     <div class="title-container">
         <h1 class="text-center title pt-0">Certified Development Skills</h1>
     </div>
-        <div class="d-flex justify-content-center mt-5">
-            @foreach (var skill in Model.Skills)
-            {
-                <div class="cc-container d-flex justify-content-center">
-                    <div class="cc-card">
-                        <div class="cc-face cc-face1">
-                            <div class="cc-content">
-                                <div class="cc-img">
-                                    <img class="img-fluid ml-5 mb-3" src="~/images/@skill.LogoFilePath" />
-                                </div>
-                                <h2 class="text-center mb-2">@skill.SkillName</h2>
+    <div class="d-flex justify-content-center mt-5">
+        @foreach (var skill in Model.Skills)
+        {
+            <div class="cc-container d-flex justify-content-center">
+                <div class="cc-card">
+                    <div class="cc-face cc-face1">
+                        <div class="cc-content">
+                            <div class="cc-img">
+                                <img class="img-fluid ml-5 mb-3" src="~/images/@skill.LogoFilePath" />
                             </div>
+                            <h2 class="text-center mb-2">@skill.SkillName</h2>
                         </div>
-                        <div class="cc-face cc-face2">
-                            <div class="cc-content d-flex flex-column">
-                                <h2 class="text-center mb-2">@skill.SkillName</h2>
-                                <a class="text-uppercase btn btn-style m-2" asp-page="./SkillDetail" asp-route-skillId="@skill.Id">Details</a>
-                                @* TO DO: make modal with list of certificates per skill *@
-                                <a class="text-uppercase btn btn-style m-2" 
-                                    asp-page="./SkillDetail" asp-route-skillId="@skill.Id">Certificates</a>
-                            </div>
+                    </div>
+                    <div class="cc-face cc-face2">
+                        <div class="cc-content d-flex flex-column">
+                            <h2 class="text-center mb-2">@skill.SkillName</h2>
+                            <a class="text-uppercase btn btn-style m-2" asp-page="./SkillDetail" asp-route-skillId="@skill.Id">Details &amp; Certificates</a>
                         </div>
                     </div>
                 </div>
-            }
-
-        </div>
-</div>
-
-@*<div class="modal" tabindex="-1" role="dialog" id="certificateModal">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Thanks for contacting me!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
-            <div class="modal-body" id="Preview">
-                @foreach (var certificates in Model.Certificates)
-                {
-                <form method="get" asp-page-handler="Certificates" >
-                    <input type="hidden" asp-for="@certificates.SkillId" />
-                    <table>
+        }
 
-
-                        <tr>
-                            <td class="w70">@certificates.CertificateName</td>
-                            <td class="w10 text-center"><a class="icon-color" asp-page="/Certificates/CertificateDetail" asp-route-certificateId="@certificates.Id"><i class="fas fa-info-circle fa-sm"></i></a></td>
-                            <td class="w20 text-center"><a class="icon-color" asp-page="/Certificates/Certificate" asp-route-certificateId="@certificates.Id" target="_blank"><i class="fas fa-award fa-sm"></i></a></td>
-                        </tr>
-
-
-                    </table>
-                </form>
-                }
-                </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
     </div>
-</div>*@
-
-
-
-}
+</div>
 
