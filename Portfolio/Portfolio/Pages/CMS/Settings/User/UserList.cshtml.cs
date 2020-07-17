@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Portfolio
+namespace Portfolio.Pages.CMS.Settings.User
 {
     [AllowAnonymous]
-    public class MainMenuModel : PageModel
+    public class UserListModel : PageModel
     {
         public void OnGet()
         {
