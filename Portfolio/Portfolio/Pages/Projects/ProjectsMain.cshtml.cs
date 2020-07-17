@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Core;
@@ -6,6 +7,7 @@ using Portfolio.Data;
 
 namespace Portfolio
 {
+    [AllowAnonymous]
     public class ProjectsMainModel : PageModel
     {
         private readonly IProjectData _projectData;

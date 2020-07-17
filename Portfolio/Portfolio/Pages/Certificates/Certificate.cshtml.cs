@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Core;
@@ -11,6 +12,7 @@ using Portfolio.Utility;
 
 namespace Portfolio.Pages.Certificates
 {
+    [AllowAnonymous]
     public class CertificateModel : PageModel
     {
         private readonly ICertificateData _certificateData;

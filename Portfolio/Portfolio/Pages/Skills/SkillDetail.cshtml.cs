@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Core;
@@ -9,6 +10,7 @@ using Portfolio.Data;
 
 namespace Portfolio.Pages.Skills
 {
+    [AllowAnonymous]
     public class SkillDetailModel : PageModel
     {
         private readonly ISkillData _skillData;
