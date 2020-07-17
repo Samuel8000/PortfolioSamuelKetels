@@ -44,11 +44,12 @@ namespace Portfolio
             services.AddScoped<IContactData, SqlContactData>();
             services.AddScoped<IProjectData, SqlProjectData>();
             services.AddScoped<IAboutMeData, SqlAboutMe>();
+            services.AddScoped<IUserData, SqlUserData>();
 
             //Utilities
 
             services.AddScoped<IFileUploader, FileUploader>();
-
+            services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 

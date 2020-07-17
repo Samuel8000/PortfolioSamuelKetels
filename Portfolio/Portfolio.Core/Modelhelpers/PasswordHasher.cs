@@ -24,7 +24,7 @@ namespace Portfolio.Core.Modelhelpers
                 password,
                 SaltSize,
                 Options.Iterations,
-                HashAlgorithmName.SHA256))
+                HashAlgorithmName.SHA512))
             {
                 var key = Convert.ToBase64String(algorithm.GetBytes(KeySize));
                 var salt = Convert.ToBase64String(algorithm.Salt);
@@ -53,7 +53,7 @@ namespace Portfolio.Core.Modelhelpers
                 password,
                 salt,
                 iterations,
-                HashAlgorithmName.SHA256))
+                HashAlgorithmName.SHA512))
             {
                 var keyToCheck = algorithm.GetBytes(KeySize);
                 var verified = keyToCheck.SequenceEqual(key);
