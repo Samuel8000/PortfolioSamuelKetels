@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Portfolio
 {
-    [AllowAnonymous]
+    [Authorize]
     public class MainMenuModel : PageModel
     {
         public void OnGet()

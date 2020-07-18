@@ -1,0 +1,36 @@
+﻿@page
+@model Portfolio.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container">
+
+    <div class="title-container mt-3">
+        <h1 class="title text-center pt-0">Please enter your credentials</h1>
+    </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="AccountLogin.ReturnUrl" />
+
+        <fieldset>
+            <div class="form-group">
+                <label asp-for="AccountLogin.UserName"></label>
+                <input class="form-control" placeholder="Username" asp-for="AccountLogin.UserName" autofocus>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountLogin.Password"></label>
+                <input type="password" class="form-control" placeholder="Password" asp-for="AccountLogin.Password" autocomplete="off">
+            </div>
+            <div class="form-group login-remember">
+                <label asp-for="AccountLogin.RememberLogin">
+                    <input asp-for="AccountLogin.RememberLogin">
+                    <strong>Remember Me</strong>
+                </label>
+            </div>
+            <div class="d-flex justify-content-end mr-0">
+                <button type="submit" class="btn btn-style">Login</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

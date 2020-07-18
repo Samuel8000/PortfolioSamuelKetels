@@ -8,6 +8,22 @@ namespace Portfolio.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AboutMe",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PersonalInfo = table.Column<string>(nullable: true),
+                    DevelopmentInfo = table.Column<string>(nullable: true),
+                    DateUpdated = table.Column<DateTime>(nullable: false),
+                    Live = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AboutMe", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Contacts",
                 columns: table => new
                 {
@@ -53,7 +69,6 @@ namespace Portfolio.Data.Migrations
                     FccProjectDescription = table.Column<string>(nullable: true),
                     FccProjectLink = table.Column<string>(nullable: true),
                     FccProjectThumb = table.Column<string>(nullable: true),
-                    CodeLink = table.Column<string>(nullable: true),
                     FccCategory = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -95,6 +110,21 @@ namespace Portfolio.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Skills", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    Role = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -182,6 +212,9 @@ namespace Portfolio.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AboutMe");
+
+            migrationBuilder.DropTable(
                 name: "Certificates");
 
             migrationBuilder.DropTable(
@@ -195,6 +228,9 @@ namespace Portfolio.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "PersonalProjectTags");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Skills");

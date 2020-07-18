@@ -19,30 +19,19 @@ namespace Portfolio.Pages
     public class LoginModel : PageModel
     {
         private readonly IUserData _userData;
-        private readonly IPasswordHasher _passwordHasher;
 
         public string ReturnUrl { get; set; }
         [BindProperty]
-        public Login LoginTest { get; set; }
+        public Login AccountLogin { get; set; }
 
-        public Core.User Account { get; set; }
-
-
-        public LoginModel(IUserData userData, IPasswordHasher passwordHasher)
+        public LoginModel(IUserData userData)
         {
             _userData = userData;
-            _passwordHasher = passwordHasher;
         }
 
-        public IActionResult Login(string returnUrl = ("./Login)"))
+        public async Task<IActionResult> OnPost(string returnUrl = "/")
         {
-            ReturnUrl = LoginTest.ReturnUrl;
-            return RedirectToPage(new Login { ReturnUrl = returnUrl });
-        }
-
-        public async Task<IActionResult> OnPost()
-        {
-            var user = _userData.GetUserNameAndPassword(LoginTest.UserName, LoginTest.Password);
+            var user = _userData.GetUserNameAndPassword(AccountLogin.UserName, AccountLogin.Password);
             if(user == null)
             {
                 return Unauthorized();
@@ -59,11 +48,19 @@ namespace Portfolio.Pages
 
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
-                principal, new AuthenticationProperties { IsPersistent = LoginTest.RememberLogin });
+                principal, new AuthenticationProperties { IsPersistent = AccountLogin.RememberLogin });
 
+            if (returnUrl == "/Account/Login")
+            {
+                return LocalRedirect("./Index");
+            }
+            return LocalRedirect(AccountLogin.ReturnUrl = returnUrl);
+        }
+        
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToPage("./Index");
         }
-
-        
     }
 }
