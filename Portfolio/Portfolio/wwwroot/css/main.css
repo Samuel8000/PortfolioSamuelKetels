@@ -371,3 +371,8 @@
 .projectthumb {
   width: 192px;
   height: 108px; }
+
+.logout-btn {
+  color: #C35353; }
+  .logout-btn:hover {
+    color: #C35353; }

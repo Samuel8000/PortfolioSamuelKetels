@@ -35,12 +35,24 @@
                         <li class="nav-item pr-3">
                             <a is-active-route class="nav-link text-dark" asp-area="" asp-page="/Contact">contact</a>
                         </li>
-                        <li class="nav-item pr-3">
-                            <a is-active-route class="nav-link text-dark" asp-area="" asp-page="/CMS/MainMenu">cms</a>
-                        </li>
-                        <li class="nav-item pr-3">
-                            <a is-active-route class="nav-link text-dark" asp-area="" asp-page="/Login">login</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item pr-3">
+                                <a is-active-route class="nav-link text-dark" asp-area="" asp-page="/CMS/MainMenu">cms</a>
+                            </li>
+
+                            <li class="nav-item pr-3">
+                                <form class="form-inline" asp-area="" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })">
+                                    <input class="btn logout-btn" value="logout @User.Identity.Name " type="submit" />
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item pr-3">
+                                <a is-active-route class="nav-link text-dark font-weight-bold text-uppercase" asp-area="" asp-page="/Account/Login">login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -67,6 +67,29 @@ namespace Portfolio.Data.Migrations
                     b.HasIndex("SkillId");
 
                     b.ToTable("Certificates");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CertificateDescription = "Basics of HTML5",
+                            CertificateName = "HTML5 Fundamentals",
+                            SkillId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CertificateDescription = "Basics of CSS3",
+                            CertificateName = "Introduction to CSS",
+                            SkillId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CertificateDescription = "Basics of CSS3",
+                            CertificateName = "Your First Day with CSS",
+                            SkillId = 2
+                        });
                 });
 
             modelBuilder.Entity("Portfolio.Core.Contact", b =>
@@ -281,6 +304,30 @@ namespace Portfolio.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skills");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LogoFilePath = "html5logo.png",
+                            PsChartFilePath = "HTMLSkillIQ.png",
+                            PsDescription = "Summary of courses followed",
+                            PsSkillIqScore = 230,
+                            PsSkillLevel = 3,
+                            SkillDescription = "Personal Description and evaluation",
+                            SkillName = "HTML5"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LogoFilePath = "css3logo.png",
+                            PsChartFilePath = "CSSSkillIQ.png",
+                            PsDescription = "Summary of courses followed",
+                            PsSkillIqScore = 198,
+                            PsSkillLevel = 2,
+                            SkillDescription = "Personal Description and evaluation",
+                            SkillName = "CSS3"
+                        });
                 });
 
             modelBuilder.Entity("Portfolio.Core.User", b =>

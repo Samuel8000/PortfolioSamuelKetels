@@ -61,7 +61,7 @@ namespace Portfolio.Pages.CMS.Settings.User
                 _userData.AddUser(Account);
             }
             _userData.Commit();
-            return Page();
+            return RedirectToPage("/CMS/Settings/User/UserList");
         }
 
         private string Hashit()

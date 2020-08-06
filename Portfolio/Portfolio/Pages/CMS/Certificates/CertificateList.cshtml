@@ -21,7 +21,12 @@
         {
             <table class="table">
 
-                    <h2 class="subtitleh3 bg-th p-2 mb-0">@group.Key</h2>
+                    <tr class="bg-th">
+                        <th class="subtitleh3 p-2 mb-0">@group.Key</th>
+                        <th class="subtitleh3 text-center p-2 mb-0">Edit</th>
+                    </tr>
+
+                    
 
                 @foreach (var certificate in group)
                 {
