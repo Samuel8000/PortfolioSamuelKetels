@@ -11,7 +11,6 @@
         <form method="post" id="courseForm">
             <input type="hidden" asp-for="Course.Id" />
 
-
             <div class="form-group">
                 <label asp-for="Course.CourseName"></label>
                 <input asp-for="Course.CourseName" class="form-control" id="courseName"/>
@@ -56,8 +55,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id="certId">
-
+                    <form method="post" id="certId" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Certificate.Id" />
+                        <div class="form-group">
+                            <label asp-for="Certificate.CertificateName"></label>
+                            <input type="text" asp-for="Certificate.CertificateName" class="form-control" id="certName" />
+                        </div>
                     </form>
                     <button type="submit" id="submitAll" class="btn btn-secondary" data-dismiss="modal">Save all</button>
 
@@ -80,11 +83,16 @@
                     backdrop: 'static',
                     keyboard: true
                 })
+                $('#courseName').change(function () {
+                    $('#certName').val($(this).val());
+                });
                 $('#submitAll').on('click', function (e) {
                     $('#courseForm').submit();
                 })
 
             } 
         });
+
+
     </script>
 }

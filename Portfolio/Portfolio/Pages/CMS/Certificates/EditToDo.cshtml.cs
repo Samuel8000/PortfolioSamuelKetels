@@ -16,17 +16,22 @@ namespace Portfolio.Pages.CMS.Certificates
         private readonly ICourseData _courseData;
         private readonly ISkillData _skillData;
         private readonly IHtmlHelper _htmlHelper;
+        private readonly ICertificateData _certificateData;
 
         [BindProperty]
         public Course Course { get; set; }
+
+        [BindProperty]
+        public Certificate Certificate { get; set; }
         public string Heading { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
 
-        public EditToDoModel(ICourseData courseData, ISkillData skillData, IHtmlHelper htmlHelper)
+        public EditToDoModel(ICourseData courseData, ISkillData skillData, IHtmlHelper htmlHelper, ICertificateData certificateData)
         {
             _courseData = courseData;
             _skillData = skillData;
             _htmlHelper = htmlHelper;
+            _certificateData = certificateData;
         }
         public IActionResult OnGet(int? courseId)
         {
@@ -71,6 +76,12 @@ namespace Portfolio.Pages.CMS.Certificates
             }
 
             _courseData.Commit();
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
 
             return RedirectToPage("./ToDoList");
         }
