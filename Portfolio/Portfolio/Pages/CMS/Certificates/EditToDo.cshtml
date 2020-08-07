@@ -1,11 +1,13 @@
-﻿@page "{todoId=int?}"
+﻿@page "{todoId:int?}"
 @model Portfolio.Pages.CMS.Certificates.EditToDoModel
 @{
     ViewData["Title"] = "To Do Item";
 }
 
     <div class="container">
-        <h1>EditToDo</h1>
+        <div class="title-container mt-3">
+            <h1 class="text-center title pt-0">@Model.Heading</h1>
+        </div>
         <form method="post">
             <input type="hidden" asp-for="Course.Id" />
 
@@ -26,6 +28,20 @@
                         asp-items="@Model.SkillsSelectList">
                     <option value="">-- Select Language --</option>
                 </select>
+                <a class="icon-color" asp-page="/CMS/Skills/EditSkill"><i class="far fa-plus-square mr-3"></i>Add Skill</a>
+            </div>
+
+            <div class="form-group">
+                <label class="form-check-label" for="done">Course Completed?</label>
+                <input type="checkbox" asp-for="Course.Done" class="form-check-input ml-3" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Course.DateCompleted"></label>
+                <input id="date" class="form-control" asp-for="Course.DateCompleted" type="date" asp-format="{0:dd-MM-yyyy}" value="01/01/1950"/>
+            </div>
+
+            <div class="d-flex justify-content-end pt-3">
+                <input type="submit" class="btn btn-submit w20" value="Save" />
             </div>
         </form>
     </div>

@@ -28,12 +28,16 @@ namespace Portfolio.Data
 
         public IEnumerable<Course> GetAllCoursesDone()
         {
-            return _context.Courses.Where(c => c.Done == true);
+            return _context.Courses
+                .Include(c => c.Skill)
+                .Where(c => c.Done == true);
         }
 
         public IEnumerable<Course> GetAllCoursesToDo()
         {
-            return _context.Courses.Where(c => c.Done == false);
+            return _context.Courses
+                .Include(c => c.Skill)
+                .Where(c => c.Done == false);
         }
 
         public Course GetCourseById(int courseId)

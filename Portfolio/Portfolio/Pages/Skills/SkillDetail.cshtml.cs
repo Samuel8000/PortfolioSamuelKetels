@@ -30,6 +30,7 @@ namespace Portfolio.Pages.Skills
         {
             Skill = _skillData.GetSkillById(skillId);
             Certificates = _certificateData.GetCertificatesBySkill(skillId);
+
             if(Skill == null)
             {
                 return RedirectToPage("/Shared/_NotFound");

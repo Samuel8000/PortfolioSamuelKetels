@@ -41,16 +41,20 @@ namespace Portfolio.Pages.CMS.Certificates
             {
                 Heading = "Add Course To Follow";
                 Course = new Course();
+
             }
             if(Course == null)
             {
                 return RedirectToPage(Constants.NotFound);
             }
+
             return Page();
         }
 
         public IActionResult OnPost()
         {
+            //To Do - add logic so when a course is completed I add the certificate for it and data is being transferred to Certificates
+
             PopulateSkillsDropDownList(_skillData);
             if (!ModelState.IsValid)
             {
@@ -65,6 +69,9 @@ namespace Portfolio.Pages.CMS.Certificates
             {
                 Course = _courseData.AddCourse(Course);
             }
+
+            _courseData.Commit();
+
             return RedirectToPage("./ToDoList");
         }
     }
