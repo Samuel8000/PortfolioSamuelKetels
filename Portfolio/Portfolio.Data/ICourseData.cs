@@ -8,5 +8,12 @@ namespace Portfolio.Data
     {
         IEnumerable<Course> GetAllCoursesToDo();
         IEnumerable<Course> GetAllCoursesDone();
+
+        Course GetCourseById(int courseId);
+
+        Course AddCourse(Course course);
+        Course UpdateCourse(Course course);
+
+        int Commit();
     }
 }

@@ -9,6 +9,6 @@ namespace Portfolio.Utility
     {
         public const string ImageLocation = "images";
         public const string CertificateLocation = "certificates";
-        public const string EmailPassword = "hpdeskjet895cxi";
+        public const string NotFound = "/Shared/_NotFound";
     }
 }

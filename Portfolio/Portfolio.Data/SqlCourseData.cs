@@ -1,4 +1,5 @@
-﻿using Portfolio.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,17 @@ namespace Portfolio.Data
             _context = context;
         }
 
+        public Course AddCourse(Course course)
+        {
+            _context.Courses.Add(course);
+            return course;
+        }
+
+        public int Commit()
+        {
+            return _context.SaveChanges();
+        }
+
         public IEnumerable<Course> GetAllCoursesDone()
         {
             return _context.Courses.Where(c => c.Done == true);
@@ -22,6 +34,18 @@ namespace Portfolio.Data
         public IEnumerable<Course> GetAllCoursesToDo()
         {
             return _context.Courses.Where(c => c.Done == false);
+        }
+
+        public Course GetCourseById(int courseId)
+        {
+            return _context.Courses.Find(courseId);
+        }
+
+        public Course UpdateCourse(Course course)
+        {
+            var entity = _context.Courses.Attach(course);
+            entity.State = EntityState.Modified;
+            return course;
         }
     }
 }
