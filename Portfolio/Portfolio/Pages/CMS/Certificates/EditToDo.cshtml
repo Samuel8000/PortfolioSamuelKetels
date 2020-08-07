@@ -1,4 +1,4 @@
-﻿@page "{todoId:int?}"
+﻿@page "{courseId:int?}"
 @model Portfolio.Pages.CMS.Certificates.EditToDoModel
 @{
     ViewData["Title"] = "To Do Item";
@@ -8,13 +8,13 @@
         <div class="title-container mt-3">
             <h1 class="text-center title pt-0">@Model.Heading</h1>
         </div>
-        <form method="post">
+        <form method="post" id="courseForm">
             <input type="hidden" asp-for="Course.Id" />
 
 
             <div class="form-group">
                 <label asp-for="Course.CourseName"></label>
-                <input asp-for="Course.CourseName" class="form-control" />
+                <input asp-for="Course.CourseName" class="form-control" id="courseName"/>
             </div>
 
             <div class="form-group">
@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label asp-for="Course.Skill.SkillName">Language</label>
                 <select class="form-control" asp-for="Course.SkillId"
-                        asp-items="@Model.SkillsSelectList">
+                        asp-items="@Model.SkillsSelectList" id="courseSkillid">
                     <option value="">-- Select Language --</option>
                 </select>
                 <a class="icon-color" asp-page="/CMS/Skills/EditSkill"><i class="far fa-plus-square mr-3"></i>Add Skill</a>
@@ -33,15 +33,58 @@
 
             <div class="form-group">
                 <label class="form-check-label" for="done">Course Completed?</label>
-                <input type="checkbox" asp-for="Course.Done" class="form-check-input ml-3" />
+                <input type="checkbox" asp-for="Course.Done" class="form-check-input ml-3" id="doneCheck"/>
             </div>
             <div class="form-group">
                 <label asp-for="Course.DateCompleted"></label>
-                <input id="date" class="form-control" asp-for="Course.DateCompleted" type="date" asp-format="{0:dd-MM-yyyy}" value="01/01/1950"/>
+                <input class="form-control" asp-for="Course.DateCompleted" type="date" asp-format="{0:dd-MM-yyyy}" value="01/01/1950"/>
             </div>
 
             <div class="d-flex justify-content-end pt-3">
-                <input type="submit" class="btn btn-submit w20" value="Save" />
+                <input type="submit" class="btn btn-submit w20" value="Save" id="saveToDo"/>
             </div>
         </form>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="toCert">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Make Certificate</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="certId">
+
+                    </form>
+                    <button type="submit" id="submitAll" class="btn btn-secondary" data-dismiss="modal">Save all</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{ 
+    <script>
+        
+        $('#saveToDo').on('click', function (e)
+        {
+
+            let c = $('#doneCheck');
+            if (c.is(':checked')) {
+                e.preventDefault();
+                $('#toCert').modal({
+                    show: true,
+                    backdrop: 'static',
+                    keyboard: true
+                })
+                $('#submitAll').on('click', function (e) {
+                    $('#courseForm').submit();
+                })
+
+            } 
+        });
+    </script>
+}

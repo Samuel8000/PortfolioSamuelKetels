@@ -25,7 +25,7 @@
                     <td class="w60">@todoitem.CourseName</td>
                     <td class="w10 text-center">@todoitem.CourseCategories</td>
                     <td class="w20 text-center">@todoitem.Skill.SkillName</td>
-                    <td class="w10 text-center"><a class="icon-color" asp-page="./EditToDo" asp-route-todoId="@todoitem.Id"><i class="far fa-edit fa-sm"></i></a></td>
+                    <td class="w10 text-center"><a class="icon-color" asp-page="./EditToDo" asp-route-courseId="@todoitem.Id"><i class="far fa-edit fa-sm"></i></a></td>
                 </tr>
             }
 
@@ -39,21 +39,20 @@
         <table class="table">
             <tr class="bg-th">
                 <th>Course Name</th>
-                <th class="text-center">Date Completed</th>
                 <th class="text-center">Category</th>
                 <th class="text-center">Skill</th>
-                <th class="text-center">Edit</th>
+                <th class="text-center">Date Completed</th>
             </tr>
 
             @foreach (var todoitem in Model.CoursesDone)
             {
-                <tr>
-                    <td class="w50">@todoitem.CourseName</td>
-                    <td class="w10">@todoitem.DateCompleted.ToShortDateString()</td>
-                    <td class="w10 text-center">@todoitem.CourseCategories</td>
-                    <td class="w20 text-center">@todoitem.Skill.SkillName</td>
-                    <td class="w10 text-center"><a class="icon-color" asp-page="./EditToDo" asp-route-todoId="@todoitem.Id"><i class="far fa-edit fa-sm"></i></a></td>
-                </tr>
+        <tr>
+            <td class="w60">@todoitem.CourseName</td>
+
+            <td class="w10 text-center">@todoitem.CourseCategories</td>
+            <td class="w20 text-center">@todoitem.Skill.SkillName</td>
+            <td class="w10">@todoitem.DateCompleted.ToShortDateString()</td>
+        </tr>
             }
 
         </table>
