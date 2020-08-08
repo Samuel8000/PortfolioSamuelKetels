@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Portfolio.Core
@@ -12,6 +13,8 @@ namespace Portfolio.Core
         public int SkillId { get; set; }
         public Skill Skill { get; set; }
         public bool Done { get; set; }
-        public DateTime DateCompleted { get; set; } = DateTime.Now;
+        [DisplayFormat(DataFormatString = @"{0:dd\/MM\/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Text)]
+        public DateTime DateCompleted { get; set; }
     }
 }

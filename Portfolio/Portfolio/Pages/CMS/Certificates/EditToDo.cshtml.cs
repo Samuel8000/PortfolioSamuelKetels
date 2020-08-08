@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,6 +26,7 @@ namespace Portfolio.Pages.CMS.Certificates
         public Certificate Certificate { get; set; }
         public string Heading { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
+        public IFormFile CertificatePdf { get; set; }
 
         public EditToDoModel(ICourseData courseData, ISkillData skillData, IHtmlHelper htmlHelper, ICertificateData certificateData)
         {
@@ -52,6 +54,12 @@ namespace Portfolio.Pages.CMS.Certificates
             {
                 return RedirectToPage(Constants.NotFound);
             }
+            Certificate = new Certificate
+            {
+                CertificateName = Course.CourseName,
+                SkillId = Course.SkillId,
+
+            };
 
             return Page();
         }
@@ -69,13 +77,22 @@ namespace Portfolio.Pages.CMS.Certificates
             if(Course.Id > 0)
             {
                 Course = _courseData.UpdateCourse(Course);
+                _courseData.Commit();
             }
             else
             {
                 Course = _courseData.AddCourse(Course);
+                _courseData.Commit();
+                
+                Certificate = new Certificate
+                {
+                    CertificateName = Course.CourseName,
+                    SkillId = Course.SkillId,
+                   
+                };
             }
 
-            _courseData.Commit();
+            
 
             if (!ModelState.IsValid)
             {
