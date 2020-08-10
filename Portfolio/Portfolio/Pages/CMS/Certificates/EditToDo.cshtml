@@ -64,17 +64,23 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Certificate.CertificateDescription"></label>
-                            <input type="text" asp-for="Certificate.CertificateDescription" class="form-control" id="certName" />
+                            <input type="text" asp-for="Certificate.CertificateDescription" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label asp-for="Certificate.Skill.SkillName">Language</label>
-                            <select class="form-control" asp-for="Certificate.SkillId"
+                            <select class="form-control" asp-for="Certificate.SkillId" id="certSkillId"
                                     asp-items="@Model.SkillsSelectList" disabled="disabled">
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label asp-for="CertificatePdf"></label>
+                            <div class="custom-file">
+                                <input asp-for="CertificatePdf" class="custom-file-input form-control" type="file" name="CertificatePdf" />
+                                <label class="custom-file-label">Click here to upload certificate</label>
+                            </div>
+                        </div>
+                        <button type="submit" id="submitCert" class="btn btn-secondary" data-dismiss="modal">Save all</button>
                     </form>
-                    <button type="submit" id="submitAll" class="btn btn-secondary" data-dismiss="modal">Save all</button>
-
                 </div>
             </div>
         </div>
@@ -85,7 +91,7 @@
         //Prevent modal closing direclty after submit has happened.
         //modal only shows when checkbox was ticked that course was completed because then I get a certificate
         //submit actions happen at the same time for courseform and certform.
-
+        $(document).ready(function () {
         $('#saveToDo').on('click', function (e)
         {
 
@@ -97,13 +103,22 @@
                     backdrop: 'static',
                     keyboard: true
                 });
+                $('#courseForm').submit();
 
+                $(function () {
+                    let $courseName = $('#courseName');
+                    let $certName = $('#certName');
+                    let $courseSkillId = $('#courseSkillid');
+                    let $certSkillId = $('#certSkillId');
 
-                $('#submitAll').on('click', function (e) {
-                    $('#courseForm').submit();
+                    $certName.val($courseName.val());
+                    $certSkillId.val($courseSkillId.val());
+
+                });
+
+                $('#submitCert').on('click', function () {
                     $('#certForm').submit();
                 })
-
             } 
         });
 
@@ -125,26 +140,22 @@
             });
         });
 
-        $(document).ready(function () {
-            console.log("test");
-            var dComp = $('#dateCompleted').val();
-            console.log("de originele datum is " + dComp);
-            $.datepicker.setDefaults(
-                $.extend(
-                    { 'dateFormat': 'dd/mm/yy' }));
-            $('#dateCompleted').datepicker();
+        $.datepicker.setDefaults(
+            $.extend(
+                { 'dateFormat': 'dd/mm/yy' }));
+        $('#dateCompleted').datepicker();
 
-            //$('#dateCompleted').change(function () {
-            //    dComp = $('#dateCompleted').val();
-            //    dComp = dComp.toString();
-            //    var dd = dComp.substring(0, 2);
-            //    var mm = dComp.substring(2, 4);
-            //    var yyyy = dComp.substring(4, 8);
-            //    //console.log(dd + "/" + mm + "/" + yyyy);
-            //    let formatted = dd + "/" + mm + "/" + yyyy;
-            //    console.log(formatted);
-            //    dComp = $('#dateCompleted').val(formatted);
-            //});
+        //$('#dateCompleted').change(function () {
+        //    dComp = $('#dateCompleted').val();
+        //    dComp = dComp.toString();
+        //    var dd = dComp.substring(0, 2);
+        //    var mm = dComp.substring(2, 4);
+        //    var yyyy = dComp.substring(4, 8);
+        //    //console.log(dd + "/" + mm + "/" + yyyy);
+        //    let formatted = dd + "/" + mm + "/" + yyyy;
+        //    console.log(formatted);
+        //    dComp = $('#dateCompleted').val(formatted);
+        //});
 
         });
 

@@ -15,6 +15,6 @@ namespace Portfolio.Core
         public bool Done { get; set; }
         [DisplayFormat(DataFormatString = @"{0:dd\/MM\/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Text)]
-        public DateTime DateCompleted { get; set; }
+        public DateTime DateCompleted { get; set; } = DateTime.Now;
     }
 }
