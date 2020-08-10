@@ -12,6 +12,7 @@ using Portfolio.Utility;
 
 namespace Portfolio.Pages.CMS.Certificates
 {
+    [BindProperties]
     public class EditToDoModel : CertificateNameModel
     {
         private readonly ICourseData _courseData;
@@ -23,11 +24,13 @@ namespace Portfolio.Pages.CMS.Certificates
         [BindProperty]
         public Course Course { get; set; }
         private string uploadPath = Constants.CertificateLocation;
-        [BindProperty]
+
         public Certificate Certificate { get; set; }
         public string Heading { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
         public IFormFile CertificatePdf { get; set; }
+        [BindProperty]
+        public string Description { get; set; }
 
         public EditToDoModel(ICourseData courseData, ISkillData skillData, IHtmlHelper htmlHelper, ICertificateData certificateData, IFileUploader fileUploader)
         {
@@ -39,19 +42,19 @@ namespace Portfolio.Pages.CMS.Certificates
         }
         public IActionResult OnGet(int? courseId)
         {
+            Certificate = new Certificate();
             Categories = _htmlHelper.GetEnumSelectList<CourseCategorie>();
             PopulateSkillsDropDownList(_skillData);
             if (courseId.HasValue)
             {
                 Heading = "Edit Course";
                 Course = _courseData.GetCourseById(courseId.Value);
-                Certificate = new Certificate();
+
             }
             else
             {
                 Heading = "Add Course To Follow";
                 Course = new Course();
-                Certificate = new Certificate();
 
             }
             if(Course == null)
@@ -63,6 +66,38 @@ namespace Portfolio.Pages.CMS.Certificates
 
         public IActionResult OnPost()
         {
+
+
+            //To Do - add logic so when a course is completed I add the certificate for it and data is being transferred to Certificates
+
+
+            if (!ModelState.IsValid)
+            {
+                PopulateSkillsDropDownList(_skillData);
+                Categories = _htmlHelper.GetEnumSelectList<CourseCategorie>();
+                return Page();
+            }
+            if(Course.Id > 0)
+            {
+                Course = _courseData.UpdateCourse(Course);
+                _courseData.Commit();
+                
+                Certificate = new Certificate
+                {
+                    CertificateName = Course.CourseName,
+                    SkillId = Course.SkillId,
+                    CertificateDescription = Description,
+                    CertificateFileName = _fileUploader.ProcessUploadedFile(CertificatePdf, uploadPath)
+                };
+                Certificate = _certificateData.Add(Certificate);
+                _certificateData.Commit();
+            }
+            else
+            {
+                Course = _courseData.AddCourse(Course);
+                _courseData.Commit();
+
+            }
 
             if (CertificatePdf != null)
             {
@@ -76,35 +111,43 @@ namespace Portfolio.Pages.CMS.Certificates
                     Certificate.CertificateFileName = _fileUploader.ProcessUploadedFile(CertificatePdf, uploadPath);
                 }
             }
-            //To Do - add logic so when a course is completed I add the certificate for it and data is being transferred to Certificates
-
             PopulateSkillsDropDownList(_skillData);
-            if (!ModelState.IsValid)
-            {
-                Categories = _htmlHelper.GetEnumSelectList<CourseCategorie>();
-                return Page();
-            }
-            if(Course.Id > 0)
-            {
-                Course = _courseData.UpdateCourse(Course);
-            }
-            else
-            {
-                Course = _courseData.AddCourse(Course);
 
-            }
-            _courseData.Commit();
 
-            Certificate = new Certificate
-            {
-                CertificateName = Course.CourseName,
-                SkillId = Course.SkillId
-            };
-            Certificate = _certificateData.Add(Certificate);
 
-            _certificateData.Commit();
 
             return RedirectToPage("./ToDoList");
         }
+
+        //public IActionResult OnPostCertificateData()
+        //{
+        //    if (CertificatePdf != null)
+        //    {
+        //        if (Certificate.CertificateFileName != null)
+        //        {
+        //            _fileUploader.DeleteOldFile(uploadPath, Certificate.CertificateFileName);
+        //            Certificate.CertificateFileName = _fileUploader.ProcessUploadedFile(CertificatePdf, uploadPath);
+        //        }
+        //        else if (string.IsNullOrEmpty(Certificate.CertificateFileName) || string.IsNullOrWhiteSpace(Certificate.CertificateFileName))
+        //        {
+        //            Certificate.CertificateFileName = _fileUploader.ProcessUploadedFile(CertificatePdf, uploadPath);
+        //        }
+        //    }
+        //    PopulateSkillsDropDownList(_skillData);
+
+        //    Certificate = new Certificate
+        //    {
+        //        Id =+ _certificateData.HighestId(),
+        //        CertificateName = Course.CourseName,
+        //        SkillId = Course.SkillId,
+        //        CertificateDescription = Description,
+        //        CertificateFileName = _fileUploader.ProcessUploadedFile(CertificatePdf, uploadPath)
+        //    };
+        //    Certificate = _certificateData.Add(Certificate);
+        //    _certificateData.Commit();
+
+
+        //    return RedirectToPage("./ToDoList");
+        //}
     }
 }

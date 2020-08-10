@@ -52,6 +52,11 @@ namespace Portfolio.Data
             return _context.Certificates.Where(c => c.SkillId == skillId);
         }
 
+        public int HighestId()
+        {
+            return _context.Certificates.Max(c => c.Id);
+        }
+
         public Certificate Update(Certificate updatedCertificate)
         {
             var entity = _context.Certificates.Attach(updatedCertificate);

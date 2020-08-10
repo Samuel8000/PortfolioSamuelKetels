@@ -9,7 +9,7 @@
             <h1 class="text-center title pt-0">@Model.Heading</h1>
         </div>
         <form method="post" id="courseForm">
-            <input type="hidden" asp-for="Course.Id" />
+            <input type="hidden" asp-for="Course.Id"/>
 
             <div class="form-group">
                 <label asp-for="Course.CourseName"></label>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="d-flex justify-content-end pt-3">
-                <input type="submit" class="btn btn-submit w20" value="Save" id="saveToDo"/>
+                <input type="submit" class="btn btn-submit w20" value="Save" id="saveToDo" />
             </div>
         </form>
     </div>
@@ -55,16 +55,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id="certForm" enctype="multipart/form-data">
+                    <form method="post" id="certForm" enctype="multipart/form-data" >
                         <input type="hidden" asp-for="Certificate.Id" />
+                        <input type="hidden" asp-for="Certificate.CertificateFileName"/>
                         <div class="form-group">
                             <label asp-for="Certificate.CertificateName"></label>
                             <input type="text" asp-for="Certificate.CertificateName" class="form-control" id="certName" disabled="disabled" />
                             <a class="icon-color" id="editNameBtn"><i class="far fa-edit fa-sm"></i></a>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Certificate.CertificateDescription"></label>
-                            <input type="text" asp-for="Certificate.CertificateDescription" class="form-control" />
+                            <label asp-for="Description"></label>
+                            <input type="text" asp-for="Description" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label asp-for="Certificate.Skill.SkillName">Language</label>
@@ -79,7 +80,7 @@
                                 <label class="custom-file-label">Click here to upload certificate</label>
                             </div>
                         </div>
-                        <button type="submit" id="submitCert" class="btn btn-secondary" data-dismiss="modal">Save all</button>
+                        <input type="submit" id="submitCert" class="btn btn-secondary" value="Save" data-dismiss="modal" />
                     </form>
                 </div>
             </div>
@@ -92,6 +93,17 @@
         //modal only shows when checkbox was ticked that course was completed because then I get a certificate
         //submit actions happen at the same time for courseform and certform.
         $(document).ready(function () {
+            $(function fillData() {
+                let $courseName = $('#courseName');
+                let $certName = $('#certName');
+                let $courseSkillId = $('#courseSkillid');
+                let $certSkillId = $('#certSkillId');
+
+                $certName.val($courseName.val());
+                $certSkillId.val($courseSkillId.val());
+
+            });
+
         $('#saveToDo').on('click', function (e)
         {
 
@@ -104,33 +116,24 @@
                     keyboard: true
                 });
                 $('#courseForm').submit();
+                fillData();
+            $('#submitCert').on('click', function (e) {
+                e.preventDefault();
 
-                $(function () {
-                    let $courseName = $('#courseName');
-                    let $certName = $('#certName');
-                    let $courseSkillId = $('#courseSkillid');
-                    let $certSkillId = $('#certSkillId');
-
-                    $certName.val($courseName.val());
-                    $certSkillId.val($courseSkillId.val());
-
-                });
-
-                $('#submitCert').on('click', function () {
-                    $('#certForm').submit();
-                })
+                $('#certForm').submit();
+            });
             } 
         });
 
         //Copy the values to the cert modal in case the course hasn't been saved yet
 
-        $(function () {
-            let $courseName = $('#courseName');
-            let $certName = $('#certName');
-            $courseName.on('input', function () {
-                $certName.val($courseName.val());
-            });
-        });
+        //$(function () {
+        //    let $courseName = $('#courseName');
+        //    let $certName = $('#certName');
+        //    $courseName.on('input', function () {
+        //        $certName.val($courseName.val());
+        //    });
+        //});
 
         //enabled the fields that were read only in case of error in course name
         $(function () {

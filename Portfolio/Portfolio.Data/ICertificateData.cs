@@ -14,6 +14,7 @@ namespace Portfolio.Data
         Certificate Update(Certificate updatedCertificate);
         Certificate Add(Certificate newCertificate);
         Certificate Delete(int certificateId);
+        int HighestId();
         int Commit();
     }
 
