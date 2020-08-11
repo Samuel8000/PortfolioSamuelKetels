@@ -45,7 +45,6 @@ namespace Portfolio
             services.AddScoped<IProjectData, SqlProjectData>();
             services.AddScoped<IAboutMeData, SqlAboutMe>();
             services.AddScoped<IUserData, SqlUserData>();
-            services.AddScoped<ICourseData, SqlCourseData>();
 
             //Utilities
 

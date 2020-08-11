@@ -39,6 +39,7 @@ namespace Portfolio.Data
         {
             return _context.Certificates
                   .Include(c => c.Skill)
+                  .ThenInclude(s => s.SkillPaths)
                  .OrderBy(c => c.SkillId);
         }
 

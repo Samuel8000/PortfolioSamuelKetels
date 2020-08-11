@@ -31,19 +31,56 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="CertificatePdf"></label>
                 <div class="custom-file">
                     <input asp-for="CertificatePdf" class="custom-file-input form-control" type="file" name="CertificatePdf" />
                     <label class="custom-file-label">Click here to upload certificate</label>
                 </div>
+            </div>*@
+            <div class="form-group">
+                <label class="form-check-label">Mark Course as Done</label>
+                <input type="checkbox" asp-for="Certificate.Done" class="form-check-input ml-3" id="doneCheck"/>
             </div>
+
+            <div id="afterChecked">
+                <div class="form-group">
+                    <label asp-for="CertificatePdf"></label>
+                    <div class="custom-file">
+                        <input asp-for="CertificatePdf" class="custom-file-input form-control" type="file" name="CertificatePdf" />
+                        <label class="custom-file-label">Click here to upload certificate</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Certificate.DateCompleted"></label>
+                    <input asp-for="Certificate.DateCompleted" class="form-control" />
+                </div>
+            </div>
+
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-submit">Save</button>
+                <button type="submit" class="btn btn-submit" id="saveBtn">Save</button>
             </div>
         </form>
     </div>
 
 @section Scripts {
+    <script>
+
+
+        ($('#doneCheck').click(function () {
+            if ($(this).is(':checked')) {
+                $('#afterChecked').show();
+            }
+            else {
+                $('#afterChecked').hide();
+            }
+        }));
+
+
+
+
+
+    </script>
     <script src="~/js/form.js"></script>
+
 }

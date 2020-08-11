@@ -1,4 +1,5 @@
 ﻿using Portfolio.Core.Modelhelpers;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Portfolio.Core
@@ -22,5 +23,6 @@ namespace Portfolio.Core
         public string PsChartFilePath { get; set; } = "NoChart.png";
         [Display(Name = "Skill IQ Level")]
         public SkillLevel PsSkillLevel { get; set; }
+        public ICollection<SkillPath> SkillPaths { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using Portfolio.Data;
 namespace Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioDbContext))]
-    [Migration("20200810074551_UpdateCourse")]
-    partial class UpdateCourse
+    [Migration("20200811111206_ResetDatabase")]
+    partial class ResetDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,15 @@ namespace Portfolio.Data.Migrations
                     b.Property<string>("CertificateName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CourseCategorie")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCompleted")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Done")
+                        .HasColumnType("bit");
+
                     b.Property<int>("SkillId")
                         .HasColumnType("int");
 
@@ -76,6 +85,9 @@ namespace Portfolio.Data.Migrations
                             Id = 1,
                             CertificateDescription = "Basics of HTML5",
                             CertificateName = "HTML5 Fundamentals",
+                            CourseCategorie = 0,
+                            DateCompleted = new DateTime(2020, 8, 11, 13, 12, 5, 843, DateTimeKind.Local).AddTicks(1569),
+                            Done = false,
                             SkillId = 1
                         },
                         new
@@ -83,6 +95,9 @@ namespace Portfolio.Data.Migrations
                             Id = 2,
                             CertificateDescription = "Basics of CSS3",
                             CertificateName = "Introduction to CSS",
+                            CourseCategorie = 0,
+                            DateCompleted = new DateTime(2020, 8, 11, 13, 12, 5, 845, DateTimeKind.Local).AddTicks(9765),
+                            Done = false,
                             SkillId = 2
                         },
                         new
@@ -90,6 +105,9 @@ namespace Portfolio.Data.Migrations
                             Id = 3,
                             CertificateDescription = "Basics of CSS3",
                             CertificateName = "Your First Day with CSS",
+                            CourseCategorie = 0,
+                            DateCompleted = new DateTime(2020, 8, 11, 13, 12, 5, 845, DateTimeKind.Local).AddTicks(9839),
+                            Done = false,
                             SkillId = 2
                         });
                 });
@@ -131,35 +149,6 @@ namespace Portfolio.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("Portfolio.Core.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CourseCategories")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CourseName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateCompleted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Done")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("SkillId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SkillId");
-
-                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("Portfolio.Core.EmailSetting", b =>
@@ -354,15 +343,6 @@ namespace Portfolio.Data.Migrations
                 });
 
             modelBuilder.Entity("Portfolio.Core.Certificate", b =>
-                {
-                    b.HasOne("Portfolio.Core.Skill", "Skill")
-                        .WithMany()
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Portfolio.Core.Course", b =>
                 {
                     b.HasOne("Portfolio.Core.Skill", "Skill")
                         .WithMany()

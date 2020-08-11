@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Portfolio.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class ResetDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -160,7 +160,10 @@ namespace Portfolio.Data.Migrations
                     CertificateName = table.Column<string>(nullable: true),
                     CertificateDescription = table.Column<string>(nullable: true),
                     CertificateFileName = table.Column<string>(nullable: true),
-                    SkillId = table.Column<int>(nullable: false)
+                    SkillId = table.Column<int>(nullable: false),
+                    CourseCategorie = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false),
+                    DateCompleted = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -185,18 +188,18 @@ namespace Portfolio.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Certificates",
-                columns: new[] { "Id", "CertificateDescription", "CertificateFileName", "CertificateName", "SkillId" },
-                values: new object[] { 1, "Basics of HTML5", null, "HTML5 Fundamentals", 1 });
+                columns: new[] { "Id", "CertificateDescription", "CertificateFileName", "CertificateName", "CourseCategorie", "DateCompleted", "Done", "SkillId" },
+                values: new object[] { 1, "Basics of HTML5", null, "HTML5 Fundamentals", 0, new DateTime(2020, 8, 11, 13, 12, 5, 843, DateTimeKind.Local).AddTicks(1569), false, 1 });
 
             migrationBuilder.InsertData(
                 table: "Certificates",
-                columns: new[] { "Id", "CertificateDescription", "CertificateFileName", "CertificateName", "SkillId" },
-                values: new object[] { 2, "Basics of CSS3", null, "Introduction to CSS", 2 });
+                columns: new[] { "Id", "CertificateDescription", "CertificateFileName", "CertificateName", "CourseCategorie", "DateCompleted", "Done", "SkillId" },
+                values: new object[] { 2, "Basics of CSS3", null, "Introduction to CSS", 0, new DateTime(2020, 8, 11, 13, 12, 5, 845, DateTimeKind.Local).AddTicks(9765), false, 2 });
 
             migrationBuilder.InsertData(
                 table: "Certificates",
-                columns: new[] { "Id", "CertificateDescription", "CertificateFileName", "CertificateName", "SkillId" },
-                values: new object[] { 3, "Basics of CSS3", null, "Your First Day with CSS", 2 });
+                columns: new[] { "Id", "CertificateDescription", "CertificateFileName", "CertificateName", "CourseCategorie", "DateCompleted", "Done", "SkillId" },
+                values: new object[] { 3, "Basics of CSS3", null, "Your First Day with CSS", 0, new DateTime(2020, 8, 11, 13, 12, 5, 845, DateTimeKind.Local).AddTicks(9839), false, 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Certificates_SkillId",
