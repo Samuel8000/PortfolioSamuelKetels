@@ -22,7 +22,6 @@
                 <label asp-for="Certificate.CertificateDescription"></label>
                 <input asp-for="Certificate.CertificateDescription" class="form-control" />
             </div>
-
             <div class="form-group">
                 <label asp-for="Certificate.Skill.SkillName">Language</label>
                 <select class="form-control" asp-for="Certificate.SkillId"
@@ -32,18 +31,18 @@
             </div>
 
             @*<div class="form-group">
-                <label asp-for="CertificatePdf"></label>
-                <div class="custom-file">
-                    <input asp-for="CertificatePdf" class="custom-file-input form-control" type="file" name="CertificatePdf" />
-                    <label class="custom-file-label">Click here to upload certificate</label>
-                </div>
-            </div>*@
+            <label asp-for="CertificatePdf"></label>
+            <div class="custom-file">
+                <input asp-for="CertificatePdf" class="custom-file-input form-control" type="file" name="CertificatePdf" />
+                <label class="custom-file-label">Click here to upload certificate</label>
+            </div>
+        </div>*@
             <div class="form-group">
                 <label class="form-check-label">Mark Course as Done</label>
-                <input type="checkbox" asp-for="Certificate.Done" class="form-check-input ml-3" id="doneCheck"/>
+                <input type="checkbox" asp-for="Certificate.Done" class="form-check-input ml-3" id="doneCheck" />
             </div>
 
-            <div id="afterChecked">
+            <div class="d-none" id="afterChecked">
                 <div class="form-group">
                     <label asp-for="CertificatePdf"></label>
                     <div class="custom-file">
@@ -69,6 +68,7 @@
 
         ($('#doneCheck').click(function () {
             if ($(this).is(':checked')) {
+                $('#afterChecked').removeClass('d-none');
                 $('#afterChecked').show();
             }
             else {

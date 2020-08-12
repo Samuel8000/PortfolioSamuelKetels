@@ -22,6 +22,7 @@ namespace Portfolio.Data
             return newSkill;
         }
 
+
         public int Commit()
         {
             return _context.SaveChanges();
