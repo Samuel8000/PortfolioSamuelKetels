@@ -21,6 +21,7 @@ namespace Portfolio.Data
         public DbSet<PPTag> PersonalProjectTags { get; set; }
         public DbSet<AboutMeInfo> AboutMe { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<SkillPath> SkillPaths { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
