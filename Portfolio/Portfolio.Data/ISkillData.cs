@@ -8,6 +8,7 @@ namespace Portfolio.Data
 {
     public interface ISkillData
     {
+        //SkillPath AddNewSkillPath(SkillPath path);
         IEnumerable<Skill> GetAllSkills();
         Skill GetSkillById(int skillId);
         Skill UpdateSkill(Skill updatedSkill);
