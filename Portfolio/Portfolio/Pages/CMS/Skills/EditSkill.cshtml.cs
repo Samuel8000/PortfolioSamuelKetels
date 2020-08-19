@@ -14,18 +14,22 @@ namespace Portfolio.Pages.CMS.Skills
         private readonly ISkillData _skillData;
         private readonly IHtmlHelper _htmlHelper;
         private readonly IFileUploader _fileUploader;
+        private readonly ISkillPathData _skillPathData;
         private string uploadPath  = Constants.ImageLocation;
         public IFormFile Logo { get; set; }
         public IFormFile Chart { get; set; }
         [BindProperty]
         public Skill Skill { get; set; }
+        [BindProperty]
+        public SkillPath SkillPath { get; set; }
         public IEnumerable<SelectListItem> SkillLevels { get; set; }
         public string Heading { get; set; }
-        public EditSkillModel(ISkillData skillData, IHtmlHelper htmlHelper, IFileUploader fileUploader)
+        public EditSkillModel(ISkillData skillData, IHtmlHelper htmlHelper, IFileUploader fileUploader, ISkillPathData skillPathData)
         {
             _skillData = skillData;
             _htmlHelper = htmlHelper;
             _fileUploader = fileUploader;
+            _skillPathData = skillPathData;
         }
         public IActionResult OnGet(int? skillId)
         {
@@ -34,11 +38,13 @@ namespace Portfolio.Pages.CMS.Skills
             {
                 Heading = "Edit ";
                 Skill = _skillData.GetSkillById(skillId.Value);
+                SkillPath = new SkillPath();
             }
             else
             {
                 Heading = "Add New Skill";
                 Skill = new Skill();
+                SkillPath = new SkillPath();
             }
             if(Skill == null)
             {
@@ -60,6 +66,8 @@ namespace Portfolio.Pages.CMS.Skills
             if(Skill.Id > 0)
             {
                 _skillData.UpdateSkill(Skill);
+                _skillData.Commit();
+                OnPostSkillPath();
             }
             else
             {
@@ -67,9 +75,20 @@ namespace Portfolio.Pages.CMS.Skills
             }
 
             _skillData.Commit();
+            _skillPathData.CommitSP();
             TempData["Message"] = $"{Skill.SkillName} Saved";
 
             return RedirectToPage("/Skills/SkillDetail", new { skillId = Skill.Id });
+        }
+
+        public IActionResult OnGetPartial() => Partial("_SkillPathPartial");
+
+        public void OnPostSkillPath()
+        {
+            SkillPath.Id += 1;
+            _skillPathData.AddNewSkillPath(SkillPath);
+            _skillPathData.CommitSP();
+
         }
 
         private void UploadLogo()

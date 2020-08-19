@@ -10,6 +10,6 @@ namespace Portfolio.Core
         public int Id { get; set; }
         public string SkillPathName { get; set; }
         public int SkillId { get; set; }
-        public Skill Skill { get; set; }
+        public virtual Skill Skill { get; set; }
     }
 }

@@ -24,6 +24,11 @@ namespace Portfolio.Data
             return newSkill;
         }
 
+        public SkillPath AddNewSkillPath(SkillPath path)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public int Commit()
         {
             return 0;
